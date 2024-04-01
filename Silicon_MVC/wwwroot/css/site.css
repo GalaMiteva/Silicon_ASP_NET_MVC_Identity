@@ -187,7 +187,7 @@ h6, .h6 {
 }
 
 .dark-mode {
-  background-color: #0B0F19;
+  background-color: #FFFFFF;
   color: #FFFFFF;
 }
 .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact {
@@ -197,14 +197,14 @@ h6, .h6 {
   color: #FFFFFF !important;
 }
 .dark-mode p, .dark-mode label {
-  color: #B4B7C9;
+  color: #D4D7E5;
 }
 .dark-mode .btn-gray {
   background-color: #171b25;
-  color: #D4D7E5;
+  color: #B4B7C9;
 }
 .dark-mode .btn-gray i {
-  color: #D4D7E5;
+  color: #B4B7C9;
 }
 .dark-mode input, .dark-mode select, .dark-mode textarea {
   background-color: #1a1d26;
@@ -216,7 +216,7 @@ h6, .h6 {
 }
 .dark-mode .features .tools .box:hover h5:hover {
   background-color: #FFFFFF;
-  color: #0B0F19 !important;
+  color: #FFFFFF !important;
 }
 .dark-mode .features .tools .box img {
   background-color: #1E212B !important;
@@ -228,7 +228,7 @@ h6, .h6 {
   color: #FFFFFF !important;
 }
 .dark-mode .contact .container .info .email-us .round {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode .contact .container .info .email-us .round i {
   color: #6366F1 !important;
@@ -237,7 +237,7 @@ h6, .h6 {
   color: #6366F1 !important;
 }
 .dark-mode .contact .container .info .careers .round {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode .contact .container .info .careers .round i {
   color: #6366F1 !important;
@@ -246,19 +246,19 @@ h6, .h6 {
   color: #6366F1 !important;
 }
 .dark-mode .contact .container .get-contact {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode .contact .container .get-contact form label {
   color: #FFFFFF !important;
 }
 .dark-mode .switch .light {
-  color: #0B0F19 !important;
+  color: #FFFFFF !important;
 }
 .dark-mode .download .content-info .icon a img {
   filter: invert(1);
 }
 .dark-mode .download .stars i {
-  color: #FFBA08 !important;
+  color: #FFE8AD !important;
 }
 .dark-mode .want i {
   color: #43464d;
@@ -267,27 +267,27 @@ h6, .h6 {
   color: #6366F1 !important;
 }
 .dark-mode .integrate .features {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
   color: #FFFFFF;
 }
 .dark-mode .integrate .features:hover img {
   background-color: #FFFFFF !important;
 }
 .dark-mode #courses .container .filters .search select {
-  border: 2px solid #9397AD;
+  border: 2px solid #E2E5F1;
 }
 .dark-mode #courses .container .filters .search select option {
-  color: #9397AD;
+  color: #E2E5F1;
 }
 .dark-mode #courses .container .filters .search .input-container input {
-  border: 2px solid #9397AD;
+  border: 2px solid #E2E5F1;
 }
 .dark-mode #courses .container nav .page-link {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
   border: none;
 }
 .dark-mode #courses .container .get-started {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode #courses .container .get-started .image-box img {
   filter: invert(1);
@@ -302,21 +302,21 @@ h6, .h6 {
   color: #000000 !important;
 }
 .dark-mode .courses .course .course-info .price-with-sale, .dark-mode .courses .course .course-info .price {
-  border-bottom: 3px solid #9397AD !important;
+  border-bottom: 3px solid #E2E5F1 !important;
 }
 .dark-mode .courses .course .card-bottom p i {
-  color: #9397AD !important;
+  color: #E2E5F1 !important;
 }
 .dark-mode #account-details aside nav a {
   /*text-align: left;*/
-  color: #D4D7E5 !important;
+  color: #B4B7C9 !important;
 }
 .dark-mode #account-details aside nav a i {
-  color: #D4D7E5 !important;
+  color: #B4B7C9 !important;
 }
 @media (min-width: 992px) {
   .dark-mode #account-details aside {
-    border-right: 0.063rem solid #33354D;
+    border-right: 0.063rem solid #F3F6FF;
   }
 }
 .dark-mode #account-details .basicInfoForm form h5 {
@@ -326,10 +326,10 @@ h6, .h6 {
   color: #6366F1 !important;
 }
 .dark-mode #basicInfoForm {
-  border-bottom: 0.063rem solid #33354D;
+  border-bottom: 0.063rem solid #F3F6FF;
 }
 .dark-mode #form-email {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode .get-started .container {
   background-color: #151822;
@@ -338,16 +338,16 @@ h6, .h6 {
   color: #FFFFFF !important;
 }
 .dark-mode header.gray {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode header #btn-switch label {
-  color: #B4B7C9;
+  color: #D4D7E5;
 }
 .dark-mode header .toggleMenu {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode header #mobileMenu {
-  background-color: #0B0F19 !important;
+  background-color: #FFFFFF !important;
 }
 .dark-mode footer a {
   background-color: #171b25;
@@ -366,7 +366,7 @@ h6, .h6 {
 }
 
 .alert-danger {
-  background: #ec4899;
+  background: #F5D7DA;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -375,7 +375,16 @@ h6, .h6 {
 }
 
 .alert-success {
-  background: #14b8a6;
+  background: #BCF7D2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.alert-danger-dark {
+  background: #c92464;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -600,16 +609,16 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  background: #ec4899;
+  background: #c92464;
   color: #FFFFFF;
   border: none;
   margin-top: 1rem;
 }
 .btn-delete:hover {
   text-decoration: none;
-  background: #ec4899;
+  background: #F5D7DA;
   opacity: 0.8;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .btn-social {
@@ -649,7 +658,7 @@ form .checkbox span.field-validation-error {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #ec4899;
+  color: #c92464;
 }
 form .checkbox span.field-validation-error::after {
   display: none;
@@ -682,11 +691,11 @@ form input::placeholder {
   opacity: 0.5;
 }
 form input.input-validation-error {
-  border: 0.063rem solid #ec4899 !important;
-  color: #ec4899;
+  border: 0.063rem solid #c92464 !important;
+  color: #c92464;
 }
 form input.input-validation-error::placeholder {
-  color: #ec4899;
+  color: #c92464;
 }
 form textarea {
   padding: 1rem;
@@ -698,11 +707,11 @@ form textarea::placeholder {
   opacity: 0.5;
 }
 form textarea.input-validation-error {
-  border: 0.063rem solid #ec4899 !important;
-  color: #ec4899;
+  border: 0.063rem solid #c92464 !important;
+  color: #c92464;
 }
 form textarea.input-validation-error::placeholder {
-  color: #ec4899;
+  color: #c92464;
 }
 form span.field-validation-error {
   position: absolute;
@@ -713,7 +722,7 @@ form span.field-validation-error {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #ec4899;
+  color: #c92464;
 }
 form span.field-validation-error::after {
   position: absolute;
@@ -1404,7 +1413,7 @@ footer .container .social-media {
 .manage .container .info .manage-text i {
   margin-right: 10px;
   margin-bottom: 12px;
-  color: #4C82F7;
+  color: #CFDEFD;
 }
 .manage .container .info .btn-theme-s {
   width: 40%;
@@ -1468,7 +1477,7 @@ footer .container .social-media {
   }
 }
 .download .container .content-info .appstore .stars {
-  color: #FFBA08;
+  color: #FFE8AD;
   margin-bottom: 10px;
   margin-top: -10px;
 }
@@ -1489,7 +1498,7 @@ footer .container .social-media {
   }
 }
 .download .container .content-info .googleplay .stars {
-  color: #FFBA08;
+  color: #FFE8AD;
   margin-bottom: 10px;
   margin-top: -10px;
 }
@@ -1840,9 +1849,9 @@ footer .container .social-media {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #14b8a6;
+  background: #BCF7D2;
   color: #FFFFFF;
-  border: 1px solid #14b8a6;
+  border: 1px solid #BCF7D2;
   border-radius: 10px;
   padding: 2px 5px;
 }
@@ -1872,7 +1881,7 @@ footer .container .social-media {
 #courses .container .courses .course .course-info .price {
   gap: 5px;
   border-bottom: 3px solid #EFF2FC;
-  color: #4C82F7;
+  color: #CFDEFD;
   font-weight: 600;
   padding-bottom: 10px;
   font-weight: 600;
@@ -1887,7 +1896,7 @@ footer .container .social-media {
   font-weight: 600;
 }
 #courses .container .courses .course .course-info .price-with-sale .sales-price {
-  color: #ec4899;
+  color: #F5D7DA;
   margin-right: 8px;
   font-weight: 600;
 }
@@ -1912,7 +1921,7 @@ footer .container .social-media {
   color: #000000;
 }
 #courses .container nav .pagination .page-item a:active {
-  background-color: #4C82F7;
+  background-color: #CFDEFD;
 }
 #courses .container .get-started {
   background-color: #F3F6FF;
@@ -1935,7 +1944,7 @@ footer .container .social-media {
   width: 350px;
 }
 #courses .container .get-started .text-box h5 span {
-  color: #4C82F7;
+  color: #CFDEFD;
 }
 #courses .container .get-started .text-box a {
   width: 162px;

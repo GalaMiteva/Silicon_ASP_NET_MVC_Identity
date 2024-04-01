@@ -13,7 +13,7 @@ form {
                 top: 0;
                 right: 0;
                 @include text-s;
-                color: $danger;
+                color: $danger-dark;
 
                 &::after {
                     display: none;
@@ -55,11 +55,11 @@ form {
         }
 
         &.input-validation-error {
-            border: 0.063rem solid $danger !important;
-            color: $danger;
+            border: 0.063rem solid $danger-dark !important;
+            color: $danger-dark;
 
             &::placeholder {
-                color: $danger;
+                color: $danger-dark;
             }
         }
     }
@@ -75,11 +75,11 @@ form {
         }
 
         &.input-validation-error {
-            border: 0.063rem solid $danger !important;
-            color: $danger;
+            border: 0.063rem solid $danger-dark !important;
+            color: $danger-dark;
 
             &::placeholder {
-                color: $danger;
+                color: $danger-dark;
             }
         }
     }
@@ -90,7 +90,7 @@ form {
             top: 0;
             right: 0;
             @include text-s;
-            color: $danger;
+            color: $danger-dark;
 
             &::after {
                 position: absolute;

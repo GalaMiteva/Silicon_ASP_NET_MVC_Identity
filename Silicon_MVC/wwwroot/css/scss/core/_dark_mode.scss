@@ -1,4 +1,25 @@
 .dark-mode {
+    $transparent: transparent;
+    $white: #FFFFFF;
+    $gray-100: #33354D;
+    $gray-200: #565973;
+    $gray-300: #9397AD;
+    $gray-400: #B4B7C9;
+    $gray-500: #D4D7E5;
+    $gray-600: #E2E5F1;
+    $gray-700: #EFF2FC;
+    $gray-800: #F3F6FF;
+    $gray-900: #FFFFFF;
+    $blue: #1E212B;
+    $black: #000000;
+    $danger: #F5D7DA;
+    $danger-dark: #c92464;
+    $success: #BCF7D2;
+
+    $warning: #FFE8AD;
+    $info: #CFDEFD;
+
+
     background-color: $gray-900;
     color: $white;
 
