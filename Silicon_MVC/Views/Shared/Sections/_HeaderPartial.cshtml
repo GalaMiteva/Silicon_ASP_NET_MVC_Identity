@@ -1,0 +1,96 @@
+﻿@inject SignInManager<UserEntity> _signInManager
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<header class="header @if (currentController == "Contact" && currentAction == "Index") {
+ <text>gray</text>
+ }">
+    <div class="container">
+
+
+        <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/Silicon-Logotype -Light-Mode.svg" id="logo"></a>
+
+
+        <div id="menu" class="hide menu-nav">
+            <nav>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+
+
+
+
+                @if (_signInManager.IsSignedIn(User))
+                {
+                    <a class="menu-link" asp-controller="Courses" asp-action="Index" asp-fragment="courses">Courses</a>
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="menu-link" asp-controller="Admin" asp-action="Index">Admin Portal</a>
+
+                    }
+                    @*  else if (User.IsInRole("CIO")
+                {
+                < a class="menu-link" asp-controller="Admin" asp-action="Settings">Settings</a>
+                } *@
+                }
+                else
+                {
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                }
+
+
+                <a class="menu-link" asp-controller="Contact" asp-action="Index" asp-fragment="contactus">Contact</a>
+
+            </nav>
+
+
+
+        </div>
+
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" />
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+
+
+        <div class="account-buttons" id="account-buttons">
+            @if (_signInManager.IsSignedIn(User))
+            {
+
+
+                <a class="btn-theme" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+                <div class="profile-img">
+                    <a asp-controller="Account" asp-action="Details" asp-fragment="account-details">
+                        <img src="~/images/profile-image.svg" alt="Profile image">
+                    </a>
+                </div>
+            }
+            else
+            {
+                <a class="btn-gray" asp-controller="Auth" asp-action="SignIn" asp-fragment="signin"><i class="fa-solid fa-right-to-bracket"></i><span>Sign in</span></a>
+                <a class="btn-theme" asp-controller="Auth" asp-action="SignUp" asp-fragment="signup"><i class="fa-regular fa-user"></i><span>Sign up</span></a>
+            }
+
+        </div>
+
+
+
+
+        <button onclick="toggleMenu()" class="btn-mobilemenu" id="mobileMenu">
+
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+    </div>
+
+
+
+
+
+</header>
