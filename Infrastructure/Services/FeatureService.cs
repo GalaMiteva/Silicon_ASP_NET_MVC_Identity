@@ -6,7 +6,7 @@ using Infrastructure.Repositories;
 
 namespace Infrastructure.Services;
 
-public class FeatureService(FeatureRepository featureReposotory, FeatureItemRepository featureItemRepository)
+public class FeatureService(FeatureRepository featureReposotory)
 {
     private readonly FeatureRepository _featureReposotory = featureReposotory;
 
