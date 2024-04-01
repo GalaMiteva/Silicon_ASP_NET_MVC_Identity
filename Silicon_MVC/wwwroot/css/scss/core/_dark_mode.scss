@@ -1,40 +1,18 @@
 .dark-mode {
-    $transparent: transparent;
-    $white: #FFFFFF;
-    $gray-100: #33354D;
-    $gray-200: #565973;
-    $gray-300: #9397AD;
-    $gray-400: #B4B7C9;
-    $gray-500: #D4D7E5;
-    $gray-600: #E2E5F1;
-    $gray-700: #EFF2FC;
-    $gray-800: #F3F6FF;
-    $gray-900: #FFFFFF;
-    $blue: #1E212B;
-    $black: #000000;
-    $danger: #F5D7DA;
-    $danger-dark: #c92464;
-    $success: #BCF7D2;
-
-    $warning: #FFE8AD;
-    $info: #CFDEFD;
-
-
-    background-color: $gray-900;
+    background-color: #151822 !important;
     color: $white;
 
 
-    .features, .download, .want, .contact {
-        background-color: #151822;
+    header, .features, .download, .want, .contact, .manage, .integrate, footer, #courses, #overview {
+        background-color: #151822 !important;
     }
 
-    h1, h2, h3, h4, h5, h6, h7, h8, a, i {
+    h1, h2, h3, h4, h5, h6, h7, h8 {
         color: $white !important;
     }
-
-    p, label {
+    /*p, label {
         color: $gray-500;
-    }
+    }*/
 
     .btn-gray {
         background-color: #171b25;
@@ -50,22 +28,42 @@
         border: 0.063rem solid #43464d;
         color: $white;
     }
+    /* #overview {
+        background-color: #151822 !important;
+    }*/
+
+
+    header {
+        background-color: #151822 !important;
+    }
 
     .features {
+        background-color: #151822 !important;
 
-        .tools {
-            .box {
-                border: none !important;
+        .container {
+            .tools {
+                .box {
+                    border: 0.0002rem solid $gray-800;
+                }
 
                 &:hover h5:hover {
-                    background-color: $white;
-                    color: $gray-900 !important;
+                    background-color: #ffffff !important;
+                    color: #33354D !important;
                 }
 
+
                 img {
-                    background-color: $blue !important;
+                    background-color: #1a1d26 !important;
                 }
             }
+        }
+    }
+
+
+
+    .switch {
+        .light {
+            color: $gray-100 !important;
         }
     }
 
@@ -76,6 +74,145 @@
 
         .fa-arrow-right {
             color: $white !important;
+        }
+    }
+
+
+
+    .download {
+        .content-info {
+            .icon {
+                a {
+                    img {
+                        filter: invert(1);
+                    }
+                }
+            }
+        }
+
+        .stars {
+            i {
+                color: $warning !important;
+            }
+        }
+    }
+
+
+    .want {
+        .title {
+            img {
+            }
+        }
+
+        .contentEmail {
+            label {
+                color: $gray-400;
+                font-weight: 400;
+            }
+
+            .terms {
+                a {
+                    color: #6366F1 !important;
+                }
+            }
+        }
+    }
+
+    footer {
+        .btn-social {
+            background-color: #151822 !important;
+            color: $gray-100;
+        }
+    }
+
+    #courses {
+        .container {
+            .filters {
+                .search {
+                    select {
+                        border: 2px solid $gray-600;
+
+                        option {
+                            color: $gray-600;
+                        }
+                    }
+
+                    .input-container {
+                        input {
+                            border: 2px solid $gray-600;
+                        }
+                    }
+                }
+            }
+
+            nav {
+                .pagination {
+                    color: $gray-600;
+
+                    .page-link {
+                        background-color: #151822 !important;
+                        border: none;
+                        color: $gray-600;
+
+
+
+
+                        span {
+                            color: $gray-600;
+                        }
+                    }
+                }
+            }
+
+            .get-started {
+                background-color: #151822 !important;
+            }
+        }
+    }
+
+    .courses {
+        .breadcrumbs {
+            .home-and-contact {
+                color: #B4B7C9 !important;
+            }
+        }
+
+        .course {
+            border: none !important;
+
+            .tag {
+                p {
+                    color: $white;
+                }
+            }
+
+            .save-icon {
+                i {
+                    color: $black !important;
+                }
+            }
+
+            .course-info {
+                .price-with-sale, .price {
+                    border-bottom: 3px solid $gray-600 !important;
+                }
+            }
+
+            .card-bottom {
+                p {
+                    i {
+                        color: $gray-600 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #admin-portal {
+        background-color: #151822 !important;
+
+        .container {
+            background-color: #151822 !important;
         }
     }
 
@@ -127,130 +264,44 @@
         }
     }
 
-
-    .switch {
-        .light {
-            color: $gray-900 !important;
-        }
-    }
-
-    .download {
-        .content-info {
-            .icon {
-                a {
-                    img {
-                        filter: invert(1);
-                    }
-                }
+    #signin {
+        form {
+            .alert-danger {
+                background-color: $danger-dark !important;
             }
-        }
 
-        .stars {
-            i {
-                color: $warning !important;
-            }
-        }
-    }
-
-
-    .want {
-
-        i {
-            color: #43464d;
-        }
-
-        .contentEmail {
-            .terms {
+            p {
                 a {
                     color: #6366F1 !important;
                 }
             }
-        }
-    }
 
 
-
-    .integrate {
-        .features {
-            background-color: $gray-900 !important;
-            color: $white;
-
-            &:hover {
-                img {
-                    background-color: $white !important;
-                }
+            #form-forgot-password {
+                color: $theme !important;
             }
         }
     }
 
 
-    #courses {
-        .container {
-            .filters {
-                .search {
-                    select {
-                        border: 2px solid $gray-600;
 
-                        option {
-                            color: $gray-600;
-                        }
-                    }
+    #signup {
+        form {
 
-                    .input-container {
-                        input {
-                            border: 2px solid $gray-600;
-                        }
-                    }
+            .alert-danger {
+                background-color: $danger-dark !important;
+            }
+
+            p {
+                a {
+                    color: $theme !important;
                 }
             }
 
-            nav {
-                .page-link {
-                    background-color: $gray-900 !important;
-                    border: none;
-                }
-            }
-
-            .get-started {
-                background-color: $gray-900 !important;
-
-                .image-box {
-                    img {
-                        filter: invert(1);
-                    }
-                }
-            }
-        }
-    }
-
-
-    .courses {
-
-        .course {
-            border: none !important;
-
-            .tag {
-                p {
-                    color: $white;
-                }
-            }
-
-            .save-icon {
-                i {
-                    color: $black !important;
-                }
-            }
-
-            .course-info {
-                .price-with-sale, .price {
-                    border-bottom: 3px solid $gray-600 !important;
-                }
-            }
-
-            .card-bottom {
-                p {
-                    i {
-                        color: $gray-600 !important;
+            #form-terms {
+                .checkbox-group {
+                    a {
+                        color: $theme !important;
                     }
                 }
             }
@@ -261,7 +312,7 @@
         aside {
             nav {
                 a {
-                    /*text-align: left;*/
+                    text-align: left;
                     color: $gray-400 !important;
 
                     i {
@@ -276,6 +327,14 @@
         }
 
         .basicInfoForm {
+            .alert-danger {
+                background-color: $danger-dark !important;
+            }
+
+            .alert-success {
+                background-color: $success-dark !important;
+            }
+
             form {
                 h5 {
                     color: $theme !important;
@@ -289,27 +348,6 @@
                     color: $theme !important;
                 }
             }
-        }
-    }
-
-    #basicInfoForm {
-        border-bottom: 0.063rem solid $gray-800;
-    }
-
-    #form-email {
-        background-color: $gray-900 !important;
-    }
-
-
-    .get-started {
-        .container {
-            background-color: #151822;
-        }
-    }
-
-    .delete-account {
-        p {
-            color: $white !important;
         }
     }
 
@@ -331,46 +369,8 @@
 
         #mobileMenu {
             background-color: $gray-900 !important;
+            color:$white;
         }
     }
-
-    footer {
-        a {
-            background-color: #171b25;
-        }
-    }
-
-    #signin {
-        form {
-            p {
-                a {
-                    color: #6366F1 !important;
-                }
-            }
-
-
-            #form-forgot-password {
-                color: $theme !important;
-            }
-        }
-    }
-
-
-    #signup {
-        form {
-            p {
-                a {
-                    color: $theme !important;
-                }
-            }
-
-            #form-terms {
-                .checkbox-group {
-                    a {
-                        color: $theme !important;
-                    }
-                }
-            }
-        }
-    }
+    
 }

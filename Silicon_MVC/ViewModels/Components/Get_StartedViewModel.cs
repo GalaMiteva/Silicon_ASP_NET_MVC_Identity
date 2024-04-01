@@ -8,4 +8,5 @@ public class Get_StartedViewModel
     public string Title2 { get; set; } = null!;
     public LinkViewModel Link { get; set; } = null!;
     public ImageViewModel Image { get; set; } = null!;
+    
 }

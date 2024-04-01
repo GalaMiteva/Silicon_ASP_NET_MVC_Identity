@@ -2,10 +2,7 @@
     background-color: $gray-100;
     padding: 80px 0;
 
-    .dark-mode & {
-        background-color: $gray-900;
-        color: $white;
-    }
+
 
 
     .container {
@@ -35,8 +32,10 @@
             img {
                 display: none;
 
+
                 @include lg {
                     display: block;
+                    margin-left: 30px;
                 }
             }
         }

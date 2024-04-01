@@ -25,14 +25,14 @@ public class SignUpModel
                           ErrorMessage = "The email format is not valid.")]
     public string Email { get; set; } = null!;
 
-    [Display(Name = "Password", Prompt = "Enter your password", Order = 3)]
+    [Display(Name = "Password", Prompt = "********", Order = 3)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "At least one lowercase, uppercase letter and  one special character.")]
     [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s])(?=.*[a-zA-Z\d]).{8,}$",
                       ErrorMessage = " At least one lowercase, uppercase letter and  one special character.")]
     public string Password { get; set; } = null!;
 
-    [Display(Name = "Confirm Password", Prompt = "Confirm your password", Order = 4)]
+    [Display(Name = "Confirm Password", Prompt = "********", Order = 4)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Password must be comfirmd")]
     [Compare("Password", ErrorMessage = "The confirmation password do not match.")]

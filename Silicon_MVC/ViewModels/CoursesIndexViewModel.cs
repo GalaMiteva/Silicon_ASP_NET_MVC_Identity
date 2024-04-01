@@ -27,7 +27,7 @@ public class CoursesIndexViewModel
         BlueTitle = "Skills",
         Title2 = " to the Next Level",
         Link = new() { Text = "Work with us", ControllerName = "", ActionName = "" },
-        Image = new() { ImageUrl = "/images/courses/illustration.svg", AltText = "Illustration" }
-
+        Image = new() { ImageUrl = "", AltText = "Illustration" },
+        
     };
 }
