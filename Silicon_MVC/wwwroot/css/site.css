@@ -327,6 +327,12 @@ h6, .h6 {
 .dark-mode .contact .container .get-contact form label {
   color: #FFFFFF !important;
 }
+.dark-mode #security .security .security-info .alert-danger {
+  background-color: #c92464;
+}
+.dark-mode #security .security .security-info .alert-success {
+  background-color: #5bc784;
+}
 .dark-mode #signin form .alert-danger {
   background-color: #c92464 !important;
 }

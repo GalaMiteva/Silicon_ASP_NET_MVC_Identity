@@ -225,6 +225,15 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region External Account  | Coogle
 
     [HttpGet]
+    public IActionResult Google()
+    {
+        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("GoogleCallback"));
+        return new ChallengeResult("Google", authProps);
+    }
+
+
+
+    [HttpGet]
     public async Task<IActionResult> GoogleCallback()
     {
         var info = await _signInManager.GetExternalLoginInfoAsync();

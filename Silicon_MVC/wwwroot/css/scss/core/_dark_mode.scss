@@ -264,6 +264,23 @@
         }
     }
 
+
+    #security {
+        .security {
+            .security-info {
+                
+                .alert-danger {
+                    background-color: $danger-dark;
+                }
+
+                .alert-success {
+                    background-color: $success-dark;
+                }
+                
+            }
+        }
+    }
+
     #signin {
         form {
             .alert-danger {
@@ -369,8 +386,7 @@
 
         #mobileMenu {
             background-color: $gray-900 !important;
-            color:$white;
+            color: $white;
         }
     }
-    
 }

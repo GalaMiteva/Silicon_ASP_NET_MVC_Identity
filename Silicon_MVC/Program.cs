@@ -11,6 +11,8 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
