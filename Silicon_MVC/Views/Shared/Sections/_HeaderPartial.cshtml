@@ -3,6 +3,9 @@
 @{
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light-mode";
+    var isDark = (themeMode == "dark-mode") ? true : false;
+
 }
 
 <header class="header @if (currentController == "Contact" && currentAction == "Index") {
@@ -11,7 +14,7 @@
     <div class="container">
 
 
-        <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/Silicon-Logotype -Light-Mode.svg" id="logo"></a>
+        <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/@(isDark ? "silicone-logo-dark_theme.svg" : "silicone-logo-light_theme")" id="logo"></a>
 
 
         <div id="menu" class="hide menu-nav">
@@ -52,7 +55,7 @@
         <div class="btn-switch">
             <label>Light</label>
             <label class="switch" for="switch-mode">
-                <input type="checkbox" id="switch-mode" />
+                <input type="checkbox" id="switch-mode" checked="@isDark"/>
                 <span class="slider round"></span>
             </label>
             <label>Dark</label>
