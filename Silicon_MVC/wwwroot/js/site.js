@@ -36,7 +36,7 @@ const imgGet = document.getElementById('illustration');
 
 
 const body = document.body;
-var imageUrlLight = '/images/Silicon-Logotype -Light-Mode.svg';
+var imageUrlLight = '/images/silicone-logo-light_theme.svg';
 var imageUrlDark = '/images/silicone-logo-dark_theme.svg';
 
 var imageGetCourses = '/images/courses/illustration.svg';
