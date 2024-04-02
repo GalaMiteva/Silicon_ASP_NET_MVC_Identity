@@ -410,6 +410,15 @@ h6, .h6 {
   border-radius: 8px;
 }
 
+.alert-success-dark {
+  background: #5bc784;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
 a {
   line-height: 160%;
   font-weight: 400;
@@ -2346,6 +2355,12 @@ footer .container .social-media {
   margin: 20px 0;
   display: flex;
   gap: 20px;
+}
+#security .security .security-info form .content .form-buttons .btn-gray {
+  background-color: #565973;
+}
+#security .security .security-info form .content .form-buttons .btn-gray:hover {
+  background-color: #6366F1;
 }
 #security .security .delete-account {
   margin-top: 30px;

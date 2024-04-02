@@ -34,10 +34,11 @@
 
                 @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"]?.ToString()))
                 {
-                    <span class="alert-success">
+                    <span class="alert-success-dark">
                         @ViewData["SuccessMessage"]
                     </span>
                 }
+            @* <partial name="~/Views/Shared/Sections/_StatusMessage.cshtml" /> *@
 
                 <form id="securityPasswordForm" method="post" asp-controller="Account" asp-action="Security" novalidate>
                     <h2>Security</h2>

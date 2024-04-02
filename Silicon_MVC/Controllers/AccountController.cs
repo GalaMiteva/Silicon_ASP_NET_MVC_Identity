@@ -144,28 +144,40 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     {
         var user = await _userManager.GetUserAsync(User);
 
-        return new ProfileInfoViewModel()
+        
+        if(user != null)
         {
-            FirstName = user!.FirstName,
-            LastName = user.LastName,
-            Email = user.Email!,
-            IsExternalAccount = user.IsExternalAccount,
-        };
+            return new ProfileInfoViewModel()
+            {
+                FirstName = user!.FirstName,
+                LastName = user.LastName,
+                Email = user.Email!,
+                IsExternalAccount = user.IsExternalAccount,
+            };
+
+        }
+
+        return null!;
+
     }
 
     private async Task<BasicInfoFormViewModel> PopulateBasicInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);
 
-        return new BasicInfoFormViewModel()
+       if(user != null)
         {
-            UserId = user!.Id,
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email!,
-            PhoneNumber = user.PhoneNumber,
-            Biography = user.Bio,
-        };
+            return new BasicInfoFormViewModel()
+            {
+                UserId = user!.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email!,
+                PhoneNumber = user.PhoneNumber,
+                Biography = user.Bio,
+            };
+        }
+       return null!;
 
     }
 

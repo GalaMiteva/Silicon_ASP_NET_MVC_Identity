@@ -153,7 +153,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     public new async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("Default", "Home");
+        return RedirectToAction( "Home", "Default");
     }
     #endregion
 

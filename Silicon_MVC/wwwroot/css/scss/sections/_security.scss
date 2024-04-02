@@ -105,6 +105,14 @@
                         margin: 20px 0;
                         display: flex;
                         gap: 20px;
+
+                        .btn-gray {
+                            background-color: $gray-700;
+
+                            &:hover {
+                                background-color: $theme;
+                            }
+                        }
                     }
                 }
             }

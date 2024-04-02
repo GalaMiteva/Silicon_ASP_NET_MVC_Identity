@@ -1,11 +1,18 @@
 ﻿@model AccountDetailsViewModel
+@inject SignInManager<UserEntity> _signInManager
 
 
-@{
-    ViewData["Title"] = $"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo!.LastName}";
+     ViewData["Title"] = $"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo!.LastName}";
+
+@* @{
+    @if (_signInManager.IsSignedIn(User))
+    {
+        ViewData["Title"] = $"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo!.LastName}";
+    }
+    
 
 }
-
+ *@
 
 <div class="container">
     <section id="account-details">
