@@ -25,19 +25,7 @@
 
         <div class="security">
             <section class="security-info">
-               @*  @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
-                {
-                    <span class="alert-danger-dark">
-                        @ViewData["ErrorMessage"]
-                    </span>
-                }
-
-                @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"]?.ToString()))
-                {
-                    <span class="alert-success-dark">
-                        @ViewData["SuccessMessage"]
-                    </span>
-                } *@
+               
              <partial name="~/Views/Shared/Sections/_StatusMessage.cshtml" />
 
                 <form id="securityPasswordForm" method="post" asp-controller="Account" asp-action="Security" novalidate>

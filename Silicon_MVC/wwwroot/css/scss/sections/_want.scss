@@ -40,7 +40,7 @@
             }
         }
 
-        .contentEmail {
+       /* .contentEmail {
 
 
             .contentSign {
@@ -66,7 +66,7 @@
                     }
                 }
             }
-        }
+        }*/
 
         .contentEmail {
             .email {
@@ -84,17 +84,10 @@
                 .input-group {
                     display: block;
                     width: 100%;
-                    /*                    border: 0px;
-                    border-radius: 5px;
-                    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M22 5H2C0.9 5 0 5.9 0 7v10c0 1.1 0.9 2 2 2h20c1.1 0 2-0.9 2-2V7c0-1.1-0.9-2-2-2zM12 15.5L2 9V7l10 6.5L22 7v2L12 15.5z"/></svg>');
-                    background-repeat: no-repeat;
-                    background-size: 20px 20px;
-                    background-position: 5px center;*/
-
+                   
 
                     @include lg {
-                        display: block;
-                        /*    width: 650px;*/
+                        display: block;                        
                         padding: 13px;
                         padding-left: 30px;
                         border: 0px;
@@ -119,8 +112,7 @@
 
                     @include lg {
                         margin: 0px;
-                        margin-left: 20px;
-                        /*margin-top: 23px;*/
+                        margin-left: 20px;                       
                         padding-left: 50px;
                         padding-right: 50px;
                         padding-top: 15px;

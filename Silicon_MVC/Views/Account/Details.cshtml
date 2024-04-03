@@ -20,7 +20,7 @@
         <aside class="account-profile">
             <div class=" profile">
 
-                <img src="~/images/@Model.ProfileInfo.ProfileImageUrl" alt="@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName" />
+                <img src="~/images/@Model.ProfileInfo!.ProfileImageUrl" alt="@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName" />
                 <h5>@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName</h5>
                 <p>@Model.ProfileInfo.Email</p>
             </div>
@@ -51,7 +51,7 @@
                     <div class="content">
                         <div id="form-firstname" class="input-group">
                             <label asp-for="BasicInfoForm!.FirstName"></label>
-                            @if (Model.ProfileInfo.IsExternalAccount)
+                            @if (Model.ProfileInfo!.IsExternalAccount)
                             {
                                 <input asp-for="BasicInfoForm!.FirstName" disabled />
                                 <input asp-for="BasicInfoForm!.FirstName" hidden />
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="form-buttons">
-                            <button class="btn-gray" type="reset">Cansel</button>
+                            <button class="btn-gray" type="reset">Cancel</button>
                             <button class="btn-theme" type="submit">Save changes</button>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="form-buttons">
-                            <button class="btn-gray" type="reset">Cansel</button>
+                            <button class="btn-gray"  type="reset">Cancel</button>
                             <button class="btn-theme" type="submit">Save changes</button>
                         </div>
                     </div>

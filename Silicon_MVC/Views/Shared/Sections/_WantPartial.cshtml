@@ -1,5 +1,9 @@
 ﻿
-@model WantViewModel
+@model SubscriberViewModel
+
+@{
+    ViewData["Title"] = "Subscribe";
+}
 
 <div class="want">
     <div class="container">
@@ -17,42 +21,42 @@
                     </div>
                         <div class="column">
                         <div class="input-group">
-                                <input asp-for="Form.Checkbox1" />
-                                <label asp-for="Form.Checkbox1">Daily Roundup</label>
+                                <input asp-for="Circle1" />
+                                <label asp-for="Circle1">Daily Roundup</label>
                             </div>
-                                <span asp-validation-for="Form.Checkbox1"> </span>
+                                <span asp-validation-for="Circle1"> </span>
 
                             <div class="input-group">
-                                <input asp-for="Form.Checkbox2" />
-                                <label asp-for="Form.Checkbox2">Weekly Roundup</label>
+                                <input asp-for="Circle2" />
+                                <label asp-for="Circle2">Weekly Roundup</label>
                             </div>
-                                <span asp-validation-for="Form.Checkbox2"> </span>
+                                <span asp-validation-for="Circle2"> </span>
                         </div>
                         
                         <div class="column">
                         <div class="input-group">
-                                <input asp-for="Form.Checkbox3" />
-                                <label asp-for="Form.Checkbox3">Monthly Roundup</label>
+                                <input asp-for="Circle3" />
+                                <label asp-for="Circle3">Monthly Roundup</label>
                             </div>
-                                <span asp-validation-for="Form.Checkbox3"> </span>
+                                <span asp-validation-for="Circle3"> </span>
                             <div class="input-group">
-                                <input asp-for="Form.Checkbox4" />
-                                <label asp-for="Form.Checkbox4">Special Offers</label>
+                                <input asp-for="Circle4" />
+                                <label asp-for="Circle4">Special Offers</label>
                             </div>
-                                <span asp-validation-for="Form.Checkbox4"> </span>
+                                <span asp-validation-for="Circle4"> </span>
                         </div>
 
                         <div class="column">
                             <div class="input-group">
-                                <input asp-for="Form.Checkbox5" />
-                                <label asp-for="Form.Checkbox5">New Products</label>
+                                <input asp-for="Circle5" />
+                                <label asp-for="Circle5">New Products</label>
                             </div class="input-group">
-                                <span asp-validation-for="Form.Checkbox5"> </span>
+                                <span asp-validation-for="Circle5"> </span>
                             <div class="input-group">
-                                <input asp-for="Form.Checkbox6" />
-                                <label asp-for="Form.Checkbox6">Events</label>
+                                <input asp-for="Circle6" />
+                                <label asp-for="Circle6">Events</label>
                             </div>
-                                <span asp-validation-for="Form.Checkbox6"> </span>
+                                <span asp-validation-for="Circle6"> </span>
 
 
                         </div>
@@ -62,21 +66,55 @@
                     <div class="email">
                         <div id="form-email" class="input-group">
                             
-                            <span asp-validation-for="Form.Email"> </span>
-                            <input asp-for="Form.Email"/>
+                            <span asp-validation-for="Email"> </span>
+                            <input asp-for="Email"/>
                         </div>
-                        <button id="form-submit" type="submit" class="btn-theme">@Model.Title </button>
+                        <button id="form-submit" type="submit" class="btn-theme">Subscribe</button>
                     </div>
                     
-                    <div class="terms">
+                     <div class="terms">
                         <p> <a href="#">*</a> Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
-
+                        <p><a asp-action="Index" asp-controller="Unsubscriber">Unsubscribe</a></p>
                     </div>
+
+                   
                 </div>
             </form>
         </div>
 
+         @if (ViewData["Status"]?.ToString() == "Success")
+        {
+            <span class="alert alert-success">
+                Thank you for subscribing!
+            </span>
+        }
+        else if (ViewData["Status"]?.ToString() == "AlreadyExist")
+        {
+            <span class="alert alert-warning">
+                You have already subscribe!
+            </span>
+        }
 
+        else if (ViewData["Status"]?.ToString() == "Invalid")
+        {
+            <span class="alert alert-danger">
+                You must enter a vaild email address!
+            </span>
+        }
+
+        else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+        {
+            <span class="alert alert-danger">
+                Unable to contact the server. Please try again later.
+            </span>
+        }
+
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+        {
+            <span class="alert alert-danger">
+                An error occurred. Please contact web admin.
+            </span>
+        }
 
     </div>
 </div>

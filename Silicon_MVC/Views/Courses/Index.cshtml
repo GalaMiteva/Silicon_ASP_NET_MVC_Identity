@@ -18,24 +18,54 @@
 
 
         </div>
+
+
+
+
         <div class="filters">
-            <h1>Courses</h1>
-            <div class="search">
-                <select name="categories" id="categories">
-                    <option value="developers">All Categories</option>
-                    <option value="developer">developer</option>
-                    <option value="frontend">frontend</option>
-                    <option value="full-stack">full-stack</option>
-                    <option value="python">python</option>
-                    <option value="ultimate">ultimate</option>
-                </select>
-                <div class="input-container">
-                    <input type="text" placeholder="Search courses" />
-                    <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="header">
+                <h1 class="my5">Courses</h1>
+            </div>
+
+            <div class="dropdown-links">
+                <div class="dropdown">
+                    <button class="dropdown-btn">All categories<i class="fa-regular fa-arrow-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" data-filter="all">All Courses</a>
+                        <a href="#" data-filter="bestsellers">Bestsellers</a>
+                        <a href="#" data-filter="non-bestsellers">Non-Bestsellers</a>
+                    </div>
+                    </<div>
+                    </div>
+
+
+                    <div class="search">
+                        <input id="courseSearchInput" type="text" placeholder="Search for courses">
+                        <button class="btn-search" id="courseSearchButton"><i class="fa-regular fa-search"></i></button>
+                    </div>
                 </div>
 
+               
             </div>
-        </div>
+
+             <span class="information">
+
+            @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unable to contact the server. Please try again later.
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            {
+                <span class="alert alert-danger">
+                    An error occurred. Please contact web admin.
+                </span>
+            }
+        </span>
+
+
+
         @await Html.PartialAsync("~/Views/Shared/Sections/_CoursePartial.cshtml", Model.Course)
         @await Html.PartialAsync("~/Views/Shared/Sections/_GetStartedPartial.cshtml", Model.Started)
     </div>

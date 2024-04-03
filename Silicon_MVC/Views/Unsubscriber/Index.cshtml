@@ -1,0 +1,73 @@
+﻿
+@model UnsubscriberViewModel
+
+@{
+    ViewData["Title"] = "Unsubscribe";
+}
+
+
+<div class="container">
+    <h2>Unsubscribe from Newsletters</h2>
+
+    <form method="post" asp-action="Index" asp-controller="Unsubscriber" novalidate>
+        <div class="content-email">
+            <div class="email">
+                <div id="form-email" class="input-group">
+                    <label asp-for="Email"></label>
+                    <span asp-validation-for="Email"></span>
+                    <input asp-for="Email" />
+                </div>
+                <button id="form-submit" type="submit" class="btn-theme mt-3">Unsubscribe</button>
+            </div>
+        </div>
+    </form>
+
+    <span class="d-flex align-items-center justify-content-center">
+
+
+
+        @if (ViewData["Status"]?.ToString() == "Success")
+        {
+            <span class="alert alert-success">
+                Sorry to see you go!
+            </span>
+        }
+        else if (ViewData["Status"]?.ToString() == "AlreadyExist")
+        {
+            <span class="alert alert-warning">
+                You have already subscribed!
+            </span>
+        }
+
+        else if (ViewData["Status"]?.ToString() == "Invalid")
+        {
+            <span class="alert alert-danger">
+                You must enter a valid email address!
+            </span>
+        }
+
+        else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+        {
+            <span class="alert alert-danger">
+                Unable to contact the server. Please try again later.
+            </span>
+        }
+
+        else if (ViewData["Status"]?.ToString() == "Unauthorized")
+        {
+            <span class="alert alert-danger">
+                An error occurred. Please contact the web admin.
+            </span>
+        }
+        else if (ViewData["StatusCode"] != null)
+        {
+            <span class="alert alert-danger">
+                Error: @ViewData["StatusCode"]
+            </span>
+        }
+
+    </span>
+</div>
+
+
+

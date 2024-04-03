@@ -1,0 +1,243 @@
+﻿
+@model CourseModel
+
+<section class="separate-course">
+    <section class="separate-course-box">
+        <img src="~/images/courses/@Model.Img" alt="Separate course Image">
+
+        <div class="container">
+            <div class="home-course">
+                
+                <a class="home-and-course" asp-controller="Default" asp-action="Home">
+
+                    <i class="fa-solid fa-house"></i>
+                    <p class="home">Home</p>
+                </a>
+
+                <i class="fa-solid fa-angles-right"></i>
+                <p class="courses">Courses</p>
+
+                <i class="fa-solid fa-angles-right"></i>
+                <p class="courses">@Model.Title</p>
+            </div>
+
+            <div class="content">
+                <div class="label">
+                    <div class="bestseller">
+                        <p>Best Seller</p>
+                    </div>
+                    <div class="digital">
+                        <p>Digital</p>
+                    </div>
+                </div>
+
+                <h1 class="h1">@Model.Title</h1>
+                <p class="text-xl">Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
+
+                <div class="rating">
+                    <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star star-gray"></i>
+                    </div>
+
+                    <div class="reviews">
+                        <p>(1.2K reviews)</p>
+                        <div></div>
+                    </div>
+
+                    <div class="likes">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <p>5K likes</p>
+                        <div>.</div>
+                    </div>
+
+                    <div class="hours">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>220 hours</p>
+                    </div>
+                </div>
+
+                <div class="author">
+                    <div class="author-image">
+                        <img class="created-img" src="~/images/courses/author.svg" alt="Author Image">
+                    </div>
+                    <div class="author-info">
+                        <p class="created">Created by</p>
+                        <p class="author-name">Albert Flores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="description container">
+        <div class="box-one">
+            <div class="course-description"></div>
+            <h2>Course Description</h2>
+            <p>Suspendisse natoque sagittis, consequat turpis. Sed tristique tellus morbi magna. At vel senectus accumsan, arcu mattis id tempor. Tellus sagittis, euismod porttitor sed tortor est id. Feugiat velit velit, tortor ut. Ut libero cursus nibh lorem urna amet tristique leo. Viverra lorem arcu nam nunc at ipsum quam. A proin id sagittis dignissim mauris condimentum ornare. Tempus mauris sed dictum ultrices.</p>
+            <h3>What you'll learn</h3>
+            <div class="content-box">
+                <div class="box">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Sed lectus donec amet eu turpis interdum.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Nulla at consectetur vitae dignissim porttitor.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Phasellus id vitae dui aliquet mi.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>Integer cursus vitae, odio feugiat iaculis aliquet diam, et purus.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <p>In aenean dolor diam tortor orci eu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-right">
+            <h3>This course includes:</h3>
+            <div class="content-box">
+                <div class="box">
+                    <i class="fa-solid fa-tv"></i>
+                    <p>148 hours on-demand video</p>
+                </div>
+                <div class="box">
+                    <i class="fa-regular fa-newspaper"></i>
+                    <p>18 articles</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-download"></i>
+                    <p>25 downloadable resources</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-infinity"></i>
+                    <p>Full lifetime access</p>
+                </div>
+                <div class="box">
+                    <<i class="fa-solid fa-trophy"></i>
+                    <p>Certificate of completion</p>
+                </div>
+            </div>
+
+            <div class="price">
+                <h1>$28.99</h1>
+                <h3>$49.00</h3>
+            </div>
+
+            <button class="btn-theme">Join course</button>
+
+        </div>
+    </section>
+
+    <section class="course-details">
+        <div class="container">
+            <div class="box-one">
+                <h2>Program Details</h2>
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>Introduction. Getting started</h3>
+                        <p>Nulla faucibus mauris pellentesque blandit faucibus non. Sit ut et at suspendisse gravida hendrerit tempus placerat.</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>2</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>The ultimate HTML developer: advanced HTML</h3>
+                        <p>Lobortis diam elit id nibh ultrices sed penatibus donec. Nibh iaculis eu sit cras ultricies. Nam eu eget etiam egestas donec scelerisque ut ac enim. Vitae ac nisl, enim nec accumsan vitae est.</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>3</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>CSS & CSS3: basic</h3>
+                        <p>Duis euismod enim, facilisis risus tellus pharetra lectus diam neque. Nec ultrices mi faucibus est. Magna ullamcorper potenti elementum ultricies auctor nec volutpat augue.</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>4</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>JavaScript basics for beginners</h3>
+                        <p>Morbi porttitor risus imperdiet a, nisl mattis. Amet, faucibus eget in platea vitae, velit, erat eget velit. At lacus ut proin erat.</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>5</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>Understanding APIs</h3>
+                        <p>Risus morbi euismod in congue scelerisque fusce pellentesque diam consequat. Nisi mauris nibh sed est morbi amet arcu urna. Malesuada feugiat quisque consectetur elementum diam vitae. Dictumst facilisis odio eu quis maecenas risus odio fames bibendum.</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="circle-gray">
+                        <div class="circle-wite">
+                            <p>6</p>
+                        </div>
+                    </div>
+                    <div class="content-text">
+                        <h3>C# and .NET from beginner to advanced</h3>
+                        <p>Quis risus quisque diam diam. Volutpat neque eget eu faucibus sed urna fermentum risus. Est, mauris morbi nibh massa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-two"> </div>
+
+        </div>
+    </section>
+
+    <section class="albert-flores">
+        <div class="container">
+            <div class="albert-flores-img">
+                <img class="author-image" src="~/images/author-image-dark.png" alt="Albert Flores Image">
+            </div>
+
+            <div class="albert-flores-text">
+                <div class="wave">
+                    <img src="~/images/pattern.svg" alt="">
+                </div>
+                <h5>Learn from the best</h5>
+                <h2>Albert Flores</h2>
+                <p>Dolor ipsum amet cursus quisque porta adipiscing. Lorem convallis malesuada sed maecenas. Ac dui at vitae mauris cursus in nullam porta sem. Quis pellentesque elementum ac bibendum. Nunc aliquam in tortor facilisis. Vulputate eget risus, metus phasellus. Pellentesque faucibus amet, eleifend diam quam condimentum convallis ultricies placerat. Duis habitasse placerat amet, odio pellentesque rhoncus, feugiat at. Eget pellentesque tristique felis magna fringilla.</p>
+                <div class="button">
+                    <button class="btn-theme danger"><i class="fa-brands fa-youtube"></i>240k subscribers</button>
+                    <button class="btn-theme"><i class="fa-brands fa-square-facebook"></i>180k followers</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

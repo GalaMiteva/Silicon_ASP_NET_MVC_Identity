@@ -10,12 +10,10 @@
     h1, h2, h3, h4, h5, h6, h7, h8 {
         color: $white !important;
     }
-    /*p, label {
-        color: $gray-500;
-    }*/
+
 
     .btn-gray {
-        background-color: #171b25;
+        background-color: #565973 !important;
         color: $gray-400;
 
         i {
@@ -28,9 +26,7 @@
         border: 0.063rem solid #43464d;
         color: $white;
     }
-    /* #overview {
-        background-color: #151822 !important;
-    }*/
+
 
 
     header {
@@ -268,7 +264,7 @@
     #security {
         .security {
             .security-info {
-                
+
                 .alert-danger {
                     background-color: $danger-dark;
                 }
@@ -276,6 +272,7 @@
                 .alert-success {
                     background-color: $success-dark;
                 }
+
                 
             }
         }
@@ -294,9 +291,7 @@
             }
 
 
-            #form-forgot-password {
-                color: $theme !important;
-            }
+            
         }
     }
 
@@ -356,6 +351,12 @@
                 h5 {
                     color: $theme !important;
                 }
+
+                .form-buttons {
+                    .btn-gray {
+                        background-color: #565973 !important;
+                    }
+                }
             }
         }
 
@@ -363,6 +364,10 @@
             form {
                 h5 {
                     color: $theme !important;
+                }
+
+                #btn-gray {
+                    background-color: #565973 !important;
                 }
             }
         }

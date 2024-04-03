@@ -1,8 +1,68 @@
-﻿
+﻿@model CoursesIndexModel
+
+
 
 
 <div class="courses">
-    @foreach (var course in Model.Course)
+
+    @foreach (var course in Model.Courses)
+    {
+        <a asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
+
+            <div class="course-card">
+                <div class="course-card_img">
+                    <img class="img-card" src="~/images/courses/@course.Img" alt="Course card">
+                    @if (course.IsBestseller)
+                    {
+                        <div class="bestseller">
+                            <p>Bestseller</p>
+                        </div>
+                    }
+                    <img class="bookmark" src="images/courses/bookmark.svg" alt="bookmark">
+                </div>
+                <div class="course-card-content">
+                    <h2 class="h5">@course.Title</h2>
+                    <p class="text-s">@course.Author</p>
+                    <div class="price">
+
+                        @if (course.DiscountPrice <= 0)
+                        {
+                            <p class="original-price">$@course.Price</p>
+                        }
+
+                        @if (course.DiscountPrice > 0)
+                        {
+
+                            <p class="original-price"></p>
+                            <p class="discounted-price">$@course.DiscountPrice</p>
+                            <p class="discounted-price-with-line">$@course.Price</p>
+                        }
+                    </div>
+
+                </div>
+                <div class="line"></div>
+                <div class="course-card_icons">
+                    <div>
+                        <i class="fa-regular fa-clock"></i>
+                        <p>@course.Hours hours</p>
+                    </div>
+                    <div>
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <p>
+                            @($"{course.LikesInProcent * 100:0}%")
+                            @($"{course.LikesInNumbers / 1000:N1}K")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    }
+
+</div>
+
+@* <div class="courses">
+    @foreach (var course in Model.Courses)
     {
         <div class="course">
             <div class="course-image">
@@ -45,7 +105,12 @@
             </div>
         </div>
     }
-</div>
+</div> *@
+
+
+
+
+
 <nav aria-label="course pagination">
     <ul class="pagination">
         <li class="page-item">

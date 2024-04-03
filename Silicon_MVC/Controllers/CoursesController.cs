@@ -21,16 +21,19 @@ public class CoursesController : Controller
     public async Task<IActionResult> Index(ActionExecutedContext context)
     {
         var viewModel = new CoursesIndexModel();
+
         var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-        
+        var apiKey = configuration!.GetValue<string>("ApiKey");
+        var url = $"https://localhost:7029/api/courses?key={apiKey}";
+
+
 
         try
         {
-            var apiKey = configuration!.GetValue<string>("ApiKey");
-
-            //var response = await _http.GetAsync("https://localhost:7029/api/courses?key=dbee8814-f79e-4790-8ac0-8d29775d9545");
             
-            var response = await _http.GetAsync("https://localhost:7029/api/courses?key=${apiKey}");
+
+            
+            var response = await _http.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
@@ -55,11 +58,13 @@ public class CoursesController : Controller
     {
         var viewModel = new CoursesIndexViewModel();
         var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
+        var apiKey = configuration!.GetValue<string>("ApiKey");
+        var url = $"https://localhost:7029/api/courses/{id}?key={apiKey}";
 
         try
         {
-            var apiKey = configuration!.GetValue<string>("ApiKey");
-            var response = await _http.GetAsync($"https://localhost:7029/api/courses/{id}?key={apiKey}");
+            
+            var response = await _http.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
