@@ -4,7 +4,6 @@
 
 
 
-
     .container {
         display: flex;
         justify-content: start;
@@ -15,7 +14,6 @@
             display: flex;
             justify-content: start;
             align-items: center;
-
 
             @include lg {
                 justify-content: flex-start;
@@ -32,19 +30,14 @@
             img {
                 display: none;
 
-
                 @include lg {
                     display: block;
-                    margin-left: 30px;
                 }
             }
         }
 
-       /* .contentEmail {
-
-
-            .contentSign {
-
+        .content {
+            .content-signin {
                 @include lg {
                     display: flex;
                     justify-content: start;
@@ -66,13 +59,12 @@
                     }
                 }
             }
-        }*/
+        }
 
-        .contentEmail {
+        .content-email {
             .email {
                 margin-top: 40px;
                 margin-bottom: 10px;
-
 
                 @include lg {
                     display: flex;
@@ -84,10 +76,9 @@
                 .input-group {
                     display: block;
                     width: 100%;
-                   
 
                     @include lg {
-                        display: block;                        
+                        display: block;
                         padding: 13px;
                         padding-left: 30px;
                         border: 0px;
@@ -112,7 +103,7 @@
 
                     @include lg {
                         margin: 0px;
-                        margin-left: 20px;                       
+                        margin-left: 20px;
                         padding-left: 50px;
                         padding-right: 50px;
                         padding-top: 15px;

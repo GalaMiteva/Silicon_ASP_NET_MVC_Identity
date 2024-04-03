@@ -14,7 +14,7 @@ public class SubscriberController : Controller
 
     [HttpPost]
 
-    public async Task<IActionResult> Index(SubscriberViewModel viewModel, ActionExecutedContext context)
+    public async Task<IActionResult> Index(SubscriberViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
@@ -22,8 +22,10 @@ public class SubscriberController : Controller
             {
                 using var http = new HttpClient();
 
-                var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-                var apiKey = configuration!.GetValue<string>("ApiKey");
+                //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
+                //var apiKey = configuration!.GetValue<string>("ApiKey");
+                var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
                 var url = $"https://localhost:7029/api/subscribers?key={apiKey}&email={viewModel.Email}&circle1={viewModel.Circle1}&cirle2={viewModel.Circle2}&circle3={viewModel.Circle3}&circle4={viewModel.Circle4}&circle5={viewModel.Circle5}&circle6={viewModel.Circle6}&isSubscribed={viewModel.IsSubscribed}";
 
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
@@ -56,8 +58,9 @@ public class SubscriberController : Controller
 
         }
 
-        //return View(viewModel);
-        return RedirectToAction( "Home", "Default");
+        return View(viewModel);
+        //return RedirectToAction( "Home", "Default");
+
     }
 
 }

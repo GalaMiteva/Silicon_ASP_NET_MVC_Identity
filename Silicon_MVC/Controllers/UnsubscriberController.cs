@@ -12,15 +12,18 @@ public class UnsubscriberController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(UnsubscriberViewModel viewModel, ActionExecutedContext context)
+    public async Task<IActionResult> Index(UnsubscriberViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
             try
             {
                 using var http = new HttpClient();
-                var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-                var apiKey = configuration!.GetValue<string>("ApiKey");
+                //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
+                //var apiKey = configuration!.GetValue<string>("ApiKey");
+
+                var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
                 var url = $"https://localhost:7029/api/subscribers?key={apiKey}&email={viewModel.Email}";
 
                 

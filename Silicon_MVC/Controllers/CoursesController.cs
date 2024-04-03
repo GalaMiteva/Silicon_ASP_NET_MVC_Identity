@@ -18,12 +18,17 @@ public class CoursesController : Controller
     }
 
 
-    public async Task<IActionResult> Index(ActionExecutedContext context)
+    
+    public async Task<IActionResult> Index()
+    //public async Task<IActionResult> Index(ActionExecutedContext context)
     {
         var viewModel = new CoursesIndexModel();
+        var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
 
-        var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-        var apiKey = configuration!.GetValue<string>("ApiKey");
+        //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
+        //var apiKey = configuration!.GetValue<string>("ApiKey");
+
+
         var url = $"https://localhost:7029/api/courses?key={apiKey}";
 
 
@@ -53,12 +58,16 @@ public class CoursesController : Controller
     }
 
 
+    public async Task<IActionResult> Details(int id)
 
-    public async Task<IActionResult> Details(int id, ActionExecutedContext context)
+    //public async Task<IActionResult> Details(int id, ActionExecutedContext context)
     {
-        var viewModel = new CoursesIndexViewModel();
-        var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-        var apiKey = configuration!.GetValue<string>("ApiKey");
+        var viewModel = new CoursesIndexModel();
+
+        //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
+        //var apiKey = configuration!.GetValue<string>("ApiKey");
+        var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
         var url = $"https://localhost:7029/api/courses/{id}?key={apiKey}";
 
         try

@@ -23,6 +23,9 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
 }).AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<DataContext>();
 
+
+
+
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<FeatureItemRepository>();

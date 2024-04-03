@@ -13,48 +13,49 @@
             <img src="/images/Group.svg" alt="symbol of arrow">
         </div>
 
-        <div class="contentEmail">
-            <form method="post" asp-controller="Want" asp-action="Want" novalidate>
-                <div class="contentSign">
+        <div class="content">
+            <form method="post" asp-controller="Subscribers" asp-action="Index" novalidate>
+               
+                <div class="content-signin">
                     <div class="column">
                         <h6>Sign up for <br> Newsletters</h6>
                     </div>
                         <div class="column">
-                        <div class="input-group">
-                                <input asp-for="Circle1" />
-                                <label asp-for="Circle1">Daily Roundup</label>
+                            <div class="input-group">
+                                <input type = "checkbox" asp-for="Circle1" />
+                                <label asp-for="Circle1">Daily Newsletter</label>
                             </div>
                                 <span asp-validation-for="Circle1"> </span>
 
                             <div class="input-group">
-                                <input asp-for="Circle2" />
-                                <label asp-for="Circle2">Weekly Roundup</label>
+                                <input type="checkbox" asp-for="Circle2" />
+                                <label asp-for="Circle2">Event Updates</label>
                             </div>
                                 <span asp-validation-for="Circle2"> </span>
                         </div>
                         
                         <div class="column">
-                        <div class="input-group">
-                                <input asp-for="Circle3" />
-                                <label asp-for="Circle3">Monthly Roundup</label>
+                            <div class="input-group">
+                                <input type="checkbox" asp-for="Circle3" />
+                                <label asp-for="Circle3">Advertising Updates</label>
                             </div>
                                 <span asp-validation-for="Circle3"> </span>
                             <div class="input-group">
-                                <input asp-for="Circle4" />
-                                <label asp-for="Circle4">Special Offers</label>
+                                <input type="checkbox" asp-for="Circle4" />
+                                <label asp-for="Circle4">Startups Weekly</label>
                             </div>
                                 <span asp-validation-for="Circle4"> </span>
                         </div>
 
                         <div class="column">
                             <div class="input-group">
-                                <input asp-for="Circle5" />
-                                <label asp-for="Circle5">New Products</label>
+                                <input type="checkbox" asp-for="Circle6" />
+                                <label asp-for="Circle6">Week in Review</label>
                             </div class="input-group">
-                                <span asp-validation-for="Circle5"> </span>
+                                <span asp-validation-for="Circle6"> </span>
                             <div class="input-group">
-                                <input asp-for="Circle6" />
-                                <label asp-for="Circle6">Events</label>
+                                <input type="checkbox" asp-for="Circle6" />
+                                <label asp-for="Circle6">Podcasts</label>
                             </div>
                                 <span asp-validation-for="Circle6"> </span>
 
@@ -62,27 +63,26 @@
                         </div>
                 </div>
 
-                <div class="contentEmail">
+                <div class="content-email">
                     <div class="email">
                         <div id="form-email" class="input-group">
-                            
+                           
                             <span asp-validation-for="Email"> </span>
-                            <input asp-for="Email"/>
+                            <input asp-for="Email" />
                         </div>
-                        <button id="form-submit" type="submit" class="btn-theme">Subscribe</button>
+                        <button id="form-submit" type="submit" class="btn-theme">Subscribe@* @Model.Title *@ </button>
                     </div>
                     
-                     <div class="terms">
+                    <div class="terms">
                         <p> <a href="#">*</a> Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
-                        <p><a asp-action="Index" asp-controller="Unsubscriber">Unsubscribe</a></p>
+                        <p><a asp-action="Index" asp-controller="Unsubscribe">Unsubscribe</a></p>
                     </div>
 
-                   
                 </div>
             </form>
         </div>
 
-         @if (ViewData["Status"]?.ToString() == "Success")
+        @if (ViewData["Status"]?.ToString() == "Success")
         {
             <span class="alert alert-success">
                 Thank you for subscribing!
@@ -118,4 +118,4 @@
 
     </div>
 </div>
-@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml") 
+<script defer src="~/js/validation.js"></script> 

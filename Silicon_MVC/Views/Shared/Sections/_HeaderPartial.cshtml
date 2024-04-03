@@ -12,15 +12,7 @@
  }">
     <div class="container">
 
-        @* @if (themeMode == "dark-mode")
-        {
-            <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/silicone-logo-dark_theme.svg id="logo"></a>
-        }
-        else
-        {
-           <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/silicone-logo-light_theme.svg id="logo"></a>
-
-        } *@
+        
 <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/@(isDark ? "silicone-logo-dark_theme.svg" : "silicone-logo-light_theme")" id="logo"></a>
  
 

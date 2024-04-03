@@ -40,6 +40,8 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     //    return View(viewModel);
     //}
 
+
+
     [HttpPost]
     [Route("/signup")]
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
@@ -83,11 +85,12 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
     #endregion
 
+
+
+
     #region Sign In
     [HttpGet]
     [Route("/signin")]
-
-
 
     public IActionResult SignIn()
     {
@@ -138,6 +141,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         return RedirectToAction( "Home", "Default");
     }
     #endregion
+
 
 
 
@@ -212,7 +216,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("GoogleCallback"));
         return new ChallengeResult("Google", authProps);
     }
-
 
 
     [HttpGet]
