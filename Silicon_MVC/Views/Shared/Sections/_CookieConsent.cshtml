@@ -1,20 +1,22 @@
-﻿@if(Context.Request.Cookies["CookieConsent"]==null)
+﻿@if (Context.Request.Cookies["CookieConsent"] == null)
 {
-    <div id="cookie-consent" class="alert-gray fixed-bottom">
-        <div class="container">
-            <span>This website uses cookies to improve the user experiense.</span>
-            <button class="btn btn-theme" onclick="acceptCookieConsent()">OK</button>
+    <div>
+        <div id="cookie-consent" class="alert alert-dark fixed-bottom">
+            <div class="container d-flex justify-content-between align-items-center">
+                <span>This website uses cookies to ensure you get the best experience on our website.</span>
+                <button class="btn btn-theme" onclick="acceptCookieConsent()">Got it!</button>
+            </div>
         </div>
     </div>
 
     <script>
         function acceptCookieConsent() {
-            document.getElementById('cookie-consent').style.display='none'
+            document.getElementById("cookie-consent").style.display = "none"
 
             fetch('@Url.Action("CookieConsent", "SiteSettings")', {
-                method: 'post',
-                headers{
-                    'X-Requested-With':'XMLHttpRequest'
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
                 }
             })
         }
