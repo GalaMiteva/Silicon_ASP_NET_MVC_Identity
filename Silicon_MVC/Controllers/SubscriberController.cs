@@ -13,8 +13,8 @@ public class SubscriberController : Controller
 
 
     [HttpPost]
-
     public async Task<IActionResult> Index(SubscriberViewModel viewModel)
+    //public async Task<IActionResult> Index(SubscriberViewModel viewModel, ActionExecutedContext context)
     {
         if (ModelState.IsValid)
         {

@@ -66,7 +66,7 @@ public class CoursesController : Controller
 
         //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
         //var apiKey = configuration!.GetValue<string>("ApiKey");
-        var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+       var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
 
         var url = $"https://localhost:7029/api/courses/{id}?key={apiKey}";
 

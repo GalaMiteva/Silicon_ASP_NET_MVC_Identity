@@ -217,17 +217,17 @@ h6, .h6 {
 .dark-mode .features .container .tools .box {
   border: 0.0002rem solid #33354D;
 }
-.dark-mode .features .container .tools:hover {
+.dark-mode .features .container .tools .box:hover {
   background-color: #ffffff !important;
   color: #33354D !important;
 }
-.dark-mode .features .container .tools:hover h5 {
+.dark-mode .features .container .tools .box:hover h5 {
   color: #0B0F19 !important;
 }
-.dark-mode .features .container .tools:hover p {
+.dark-mode .features .container .tools .box:hover p {
   color: #D4D7E5 !important;
 }
-.dark-mode .features .container .tools:hover img {
+.dark-mode .features .container .tools .box:hover img {
   background-color: #FFFFFF !important;
 }
 .dark-mode .features .container .tools img {
@@ -262,7 +262,7 @@ h6, .h6 {
 .dark-mode #courses .container a:hover {
   border: 1px solid #e2e5f1;
   /*@include shadow-l;*/
-  box-shadow: 0 0 10px rgba(1, 2, 2, 0.2);
+  box-shadow: 0 0 20px #e2e5f1 !important;
 }
 .dark-mode #courses .container a .course-card-content .text-s {
   color: #9397AD;
