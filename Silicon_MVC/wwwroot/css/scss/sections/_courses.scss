@@ -71,7 +71,7 @@
                     border: 1px solid $gray-600;
                     cursor: pointer;
 
-                    .fa-regular {
+                    .fa-angle-down {
                         padding-left: 85px;
                     }
                 }
@@ -156,87 +156,103 @@
             }
 
 
-            .course-card {
-                position: relative;
-
-                .img-card {
-                    width: 100%;
+            a {
+                &:hover {
+                    text-decoration: none;
+                   /* border: 0.063rem solid $gray-600;*/
+                    @include shadow-l;
                 }
 
-                .bookmark {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
-                    background: $white;
-                    padding: 0.5rem;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    transition: 0.3s;
+                .course-card {
+                    position: relative;
 
-                    &:hover {
-                        background: $theme;
+
+                    .img-card {
+                        width: 100%;
+                    }
+
+                    .bookmark {
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                        background: $white;
+                        padding: 0.5rem;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        transition: 0.3s;
+
+                        &:hover {
+                            background: $theme;
+                            color: $white;
+                        }
+                    }
+
+                    .bestseller {
+                        position: absolute;
+                        top: 1rem;
+                        left: 1rem;
+                        background: $success-dark;
                         color: $white;
+                        padding: 0.5rem;
+                        border-radius: 5px;
+
+                        p {
+                            margin: 0;
+                        }
                     }
-                }
 
-                .bestseller {
-                    position: absolute;
-                    top: 1rem;
-                    left: 1rem;
-                    background: $success;
-                    color: $white;
-                    padding: 0.5rem;
-                    border-radius: 5px;
+                    .course-card-content {
+                        /*text-s {
+                            color: $gray-600;
+                        }*/
 
-                    p {
-                        margin: 0;
+                        .price {
+                            display: flex;
+
+                            .original-price {
+                                color: $theme;
+                                font-weight: 700;
+                                /*margin-right: 1rem;*/
+                            }
+
+                            .discounted-price {
+                                color: $danger-dark;
+                                margin-right: 1rem;
+                                font-weight: 700;
+                            }
+
+                            .discounted-price-with-line {
+                                color: $gray-600;
+                                text-decoration: line-through;
+                            }
+                        }
                     }
-                }
 
-                .price {
-                    display: flex;
-
-                    .original-price {
-                        color: $theme;
-                        font-weight: 700;
+                    .line {
+                        border-top: 1px solid $gray-400;
+                        margin-left: 1rem;
                         margin-right: 1rem;
                     }
 
-                    .discounted-price {
-                        color: $danger;
-                        margin-right: 1rem;
-                    }
-
-                    .discounted-price-with-line {
-                        color: $gray-600;
-                        text-decoration: line-through;
-                    }
-                }
-
-                .line {
-                    border-top: 1px solid $gray-400;
-                    margin-left: 1rem;
-                    margin-right: 1rem;
-                }
-
-                &_icons {
-                    display: flex;
-                    gap: 2rem;
-                    padding: 1rem;
-
-                    div {
+                    &_icons {
                         display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                    }
+                        @include standard-text;
+                        color: $gray-600;
+                        font-size: 14px !important;
+                        gap: 2rem;
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
 
-                    p {
-                        margin: 0;
-                    }
-                }
+                        div {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        }
 
-                course-card-content {
-                    padding-left: 1rem;
+                        p {
+                            margin: 0;
+                        }
+                    }
                 }
             }
         }
@@ -275,6 +291,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 100px;
+
+
 
             .text-box {
                 h5 {

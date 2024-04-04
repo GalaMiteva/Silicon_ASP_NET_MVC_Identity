@@ -55,7 +55,7 @@
                     }
 
                     img {
-                        background-color:$white !important;
+                        background-color: $white !important;
                     }
                 }
 
@@ -136,21 +136,24 @@
 
     #courses {
         .container {
-            .filters {
-                .search {
-                    select {
-                        border: 2px solid $gray-600;
 
-                        option {
-                            color: $gray-600;
-                        }
-                    }
+            a {
+                &:hover {
+                    border: 1px solid #e2e5f1;
+                    /*@include shadow-l;*/
+                    box-shadow: 0 0 10px rgba(1,2,2,0.2);
+                }
 
-                    .input-container {
-                        input {
-                            border: 2px solid $gray-600;
-                        }
+                .course-card-content {
+                    .text-s {
+                        color: $gray-600;
                     }
+                }
+            }
+
+            .course-card-content {
+                .text-s {
+                    color: $gray-600;
                 }
             }
 
@@ -183,36 +186,6 @@
         .breadcrumbs {
             .home-and-contact {
                 color: #B4B7C9 !important;
-            }
-        }
-
-        .course {
-            border: none !important;
-
-            .tag {
-                p {
-                    color: $white;
-                }
-            }
-
-            .save-icon {
-                i {
-                    color: $black !important;
-                }
-            }
-
-            .course-info {
-                .price-with-sale, .price {
-                    border-bottom: 3px solid $gray-600 !important;
-                }
-            }
-
-            .card-bottom {
-                p {
-                    i {
-                        color: $gray-600 !important;
-                    }
-                }
             }
         }
     }

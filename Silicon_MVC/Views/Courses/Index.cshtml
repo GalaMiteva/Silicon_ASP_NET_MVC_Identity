@@ -29,7 +29,7 @@
 
             <div class="dropdown-links">
                 <div class="dropdown">
-                    <button class="dropdown-btn">All categories<i class="fa-regular fa-arrow-down"></i></button>
+                    <button class="dropdown-btn">All categories<i class="fa-solid fa-angle-down"></i></button>
                     <div class="dropdown-content">
                         <a href="#" data-filter="all">All Courses</a>
                         <a href="#" data-filter="bestsellers">Bestsellers</a>
@@ -41,7 +41,7 @@
 
                     <div class="search">
                         <input id="courseSearchInput" type="text" placeholder="Search for courses">
-                        <button class="btn-search" id="courseSearchButton"><i class="fa-regular fa-search"></i></button>
+                        <button class="btn-search" id="courseSearchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
 
@@ -50,25 +50,25 @@
 
              <span class="information">
 
-            @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
-            {
-                <span class="alert alert-danger">
-                    Unable to contact the server. Please try again later.
-                </span>
-            }
-            else if (ViewData["Status"]?.ToString() == "Unauthorized")
-            {
-                <span class="alert alert-danger">
-                    An error occurred. Please contact web admin.
-                </span>
-            }
-        </span>
+                @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+                {
+                    <span class="alert alert-danger">
+                        Unable to contact the server. Please try again later.
+                    </span>
+                }
+                else if (ViewData["Status"]?.ToString() == "Unauthorized")
+                {
+                    <span class="alert alert-danger">
+                        An error occurred. Please contact web admin.
+                    </span>
+                }
+            </span>
 
             <div class="courses">
 
                 @foreach (var course in Model.Courses)
                 {
-                    <a asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
+                    <a  asp-action="Details" asp-controller="Courses" asp-route-id="@course.Id">
 
                         <div class="course-card">
                             <div class="course-card_img">
@@ -102,7 +102,7 @@
 
                             </div>
                             <div class="line"></div>
-                            <div class="course-card_icons">
+                            <div class="course-card_icons ">
                                 <div>
                                     <i class="fa-regular fa-clock"></i>
                                     <p>@course.Hours hours</p>
@@ -163,9 +163,9 @@
             </div>
 
 
-        @* @await Html.PartialAsync("~/Views/Shared/Sections/_CoursePartial.cshtml")
-        @await Html.PartialAsync("~/Views/Shared/Sections/_GetStartedPartial.cshtml") *@
-    </div>
+        </div>
 
 </section>
+@* @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml") *@
+<script defer src="~/js/validation.js"></script>
 
