@@ -1,4 +1,12 @@
 ﻿@model AccountSecurityViewModel
+@inject SignInManager<UserEntity> _signInManager
+@inject UserManager<UserEntity> _userManager
+
+
+@{
+    var user = await _signInManager.UserManager.GetUserAsync(User);
+    var ProfileImageUrl = user != null ? user.ProfileImageUrl : null;
+}
 
 @{
     ViewData["Title"] = $"{Model.BasicInfoForm?.FirstName} {Model.BasicInfoForm?.LastName}";
@@ -8,7 +16,20 @@
     <section id="security">
         <aside>
             <div class="profile-info">
-                <img src="~/images/@Model.ProfileInfo?.ProfileImageUrl" alt="@Model.ProfileInfo?.FirstName @Model.ProfileInfo?.LastName" />
+                
+
+                <div class=" profile-info-img">
+
+                    <img src="~/images/uploads/@user!.ProfileImageUrl" alt="@Model.ProfileInfo.FirstName @Model.ProfileInfo.LastName" />
+                    <form enctype="multipart/form-data" method="post" asp-action="UploadProfilImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn btn-circle btn-circle-sm">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </label>
+                    </form>
+
+                </div>
+
                 <h5>@Model.BasicInfoForm?.FirstName @Model.BasicInfoForm?.LastName</h5>
                 <p>@Model.BasicInfoForm?.Email</p>
             </div>
@@ -16,7 +37,7 @@
             <nav>
                 <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
                 <a class="btn-theme-s" asp-controller="Account" asp-action="Security"><i class="fa-solid fa-lock"></i>Security</a>
-                <a class="btn-transparent" asp-controller="Courses" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a class="btn-transparent" asp-controller="Courses" asp-action="GetSavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
                 <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
 
 
@@ -85,3 +106,4 @@
         </div>
     </section>
 </div>
+<script defer src="~/js/validation.js"></script>

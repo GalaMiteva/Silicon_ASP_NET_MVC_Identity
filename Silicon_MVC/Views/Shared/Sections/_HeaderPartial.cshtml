@@ -1,11 +1,15 @@
 ﻿@inject SignInManager<UserEntity> _signInManager
+@inject UserManager<UserEntity> _userManager
+
 
 @{
+
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light-mode";
     var isDark = (themeMode == "dark-mode") ? true : false;
-
+    var user = await _signInManager.UserManager.GetUserAsync(User);
+    var ProfileImageUrl = user != null ? user.ProfileImageUrl : null;
 }
 
 <header class="header @if (currentController == "Contact" && currentAction == "Index") {<text>gray</text>
@@ -13,7 +17,7 @@
     <div class="container">
 
         
-<a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/@(isDark ? "silicone-logo-dark_theme.svg" : "silicone-logo-light_theme")" id="logo"></a>
+        <a class="logo" asp-controller="Default" asp-action="Home"><img alt="Silicon" src="~/images/@(isDark ? "silicone-logo-dark_theme.svg" : "silicone-logo-light_theme.svg")" id="logo"></a>
  
 
         <div id="menu" class="hide menu-nav">
@@ -67,9 +71,18 @@
 
 
                 <a class="btn-theme" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+                
                 <div class="profile-img">
+                    
                     <a asp-controller="Account" asp-action="Details" asp-fragment="account-details">
-                        <img src="~/images/profile-image.svg" alt="Profile image">
+                        @if (user != null && !string.IsNullOrEmpty(user.ProfileImageUrl))
+                        {
+                            <img src="~/images/uploads/@user.ProfileImageUrl" alt="Profile image">
+                        }
+                        else
+                        {
+                            <img src="~/images/uploads/avatar.jpg" alt="Default Profile Image">
+                        }
                     </a>
                 </div>
             }
@@ -92,6 +105,27 @@
     </div>
 
 
+    @* <div id="mobil-menu" class="wrapper" aria-expanded="false" />
+
+    <div class="account-buttons">
+        @if (_signInManager.IsSignedIn(User))
+        {
+            <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-light fa-right-to-bracket"></i><span>Sign Out</span></a>
+        }
+        else
+        {
+            <a class="btn-gray" asp-controller="Auth" asp-action="SignIn"><i class="fa-light fa-right-to-bracket"></i><span>Sign in</span></a>
+            <a class="btn-theme" asp-controller="Auth" asp-action="SignUp"><i class="fa-regular fa-user"></i><span>Sign up</span></a>
+        }
+
+        <div class="menu">
+            <nav>
+                <a class="menu-link" href="#overview">Overview</a>
+                <a class="menu-link" href="#features">Featueres</a>
+                <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+            </nav>
+        </div>
+    </div> *@
 
 
 

@@ -1,0 +1,241 @@
+﻿@model SavedCourseViewModel
+
+@inject UserManager<UserEntity> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@* <div class="container">
+   
+
+
+    <partial name="~/Views/Shared/Sections/_StatusMessage.cshtml" />
+
+
+    <section id="saved-courses">
+        <aside>
+            <div class="profile-info">
+                <div class=" profile-info-img">
+
+                    <img src="~/images/uploads/profiles/@user!.ProfileImageUrl" alt="@user.FirstName @user.LastName" />
+                    <form enctype="multipart/form-data" method="post" asp-action="UploadProfilImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn btn-circle btn-circle-sm">
+                            <i class="fa-light fa-refresh"></i>
+                        </label>
+                    </form>
+
+                </div>
+
+                <h5>@user.FirstName @user.LastName</h5>
+                <p>@user.Email</p>
+            </div>
+
+            <nav>
+                <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="Security"><i class="fa-solid fa-lock"></i>Security</a>
+                <a class="btn-theme-s" asp-controller="Courses" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+
+
+            </nav>
+        </aside>
+
+        @if (Model.Courses != null)
+        {
+            <div class="grid">
+
+                @foreach (var item in Model.Courses)
+                {
+                    <a asp-action="Details" asp-controller="Courses" asp-route-id="@item.Id">
+
+                        <div class="course-card">
+                            <div class="course-card_img">
+                                <img class="img-card" src="~/images/courses/@item.Img" alt="Course card">
+                                @if (item.IsBestseller)
+                                {
+                                    <div class="bestseller">
+                                        <p>Bestseller</p>
+                                    </div>
+                                }
+                                <form asp-controller="Account" asp-action="SavedCourses" method="post" style="display: inline;">
+                                    <input type="hidden" name="courseId" value="@item.Id" />
+                                    <button type="submit" class="bookmark" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                        <img class="bookmark" src="~/images/courses/bookmark.svg" alt="bookmark" style="display: block;">
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="course-card_body">
+                                <h2 class="h5">@item.Title</h2>
+                                <p class="text-s">@item.Author</p>
+                                <div class="price">
+
+                                    @if (item.DiscountPrice <= 0)
+                                    {
+                                        <p class="original-price">$@item.Price</p>
+                                    }
+
+                                    @if (item.DiscountPrice > 0)
+                                    {
+
+                                        <p class="original-price"></p>
+                                        <p class="discounted-price">$@item.DiscountPrice</p>
+                                        <p class="discounted-price-line-through">$@item.Price</p>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="line"></div>
+                            <div class="course-card__footer">
+                                <div>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>@item.Hours hours</p>
+                                </div>
+                                <div>
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>
+                                        @($"{item.LikesInProcent * 100:0}%")
+                                        @($"{item.LikesInNumbers / 1000:N1}K")
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                }
+
+            </div>
+        }
+    </section>
+</div> *@
+
+<div class="container">
+    <section id="saved-courses">
+        <aside>
+            <div class="profile-info">
+                
+
+                <div class=" profile-info-img">
+
+                    <img src="~/images/uploads/@user!.ProfileImageUrl" alt="@user.FirstName @user.LastName" />
+                    <form enctype="multipart/form-data" method="post" asp-action="UploadProfilImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn btn-circle btn-circle-sm">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </label>
+                    </form>
+
+                </div>
+
+                <h5>@user.FirstName @user.LastName</h5>
+                <p>@user.Email</p>
+            </div>
+
+            <nav>
+                
+                
+                <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="Security"><i class="fa-solid fa-lock"></i>Security</a>
+                <a class="btn-theme-s" asp-controller="Account" asp-action="GetSavedCourses"><i class="fa-regular fa-bookmark"></i>Saved Courses</a>
+                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+
+            </nav>
+        </aside>
+        <div class="content">
+            <div class="headning">
+                <h1 class="h3">Saved Courses</h1>
+                <span>
+                    <form asp-controller="Account" asp-action="DeleteAllSavedCourses" method="post">
+                        <button class="btn-delete" type="submit">
+                            <i class="fa-regular fa-trash-can"></i> Delete all
+                        </button>
+
+                    </form>
+                </span>
+            </div>
+
+
+            <span class="information mt-3 mb-3">
+                @if (TempData["StatusCode"] != null)
+                {
+                    <span class="alert alert-danger">Status Code: @TempData["StatusCode"]</span>
+                }
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <span class="alert alert-success">@TempData["SuccessMessage"]</span>
+                }
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <span class="alert alert-danger">@TempData["ErrorMessage"]</span>
+                }
+            </span>
+
+            @if (Model.Courses != null)
+            {
+                <div class="grid">
+
+                    @foreach (var item in Model.Courses)
+                    {
+                        /*!!!!!!!!SAVEDCOURSE*/
+                        <a asp-action="SavedCourse" asp-controller="Account" asp-route-id="@item.CourseId">
+
+                            <div class="course-card">
+                                <div class="course-card_img">
+                                    <img class="img-card" src="~/images/courses/@item.Img" alt="Course card">
+                                    @if (item.IsBestseller)
+                                    {
+                                        <div class="bestseller">
+                                            <p>Bestseller</p>
+                                        </div>
+                                    }
+                                    <form asp-controller="Account" asp-action="DeleteSavedCourse" method="post" style="display: inline;">
+                                        <input type="hidden" name="courseId" value="@item.CourseId" />
+                                        <button type="submit" class="bookmark" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                            <img class="bookmark" src="~/images/courses/bookmark_add.svg" alt="bookmark" style="display: block;">
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="course-card_body">
+                                    <h2 class="h5">@item.Title</h2>
+                                    <p class="text-s">@item.Author</p>
+                                    <div class="price">
+
+                                        @if (item.DiscountPrice <= 0)
+                                        {
+                                            <p class="original-price">$@item.Price</p>
+                                        }
+
+                                        @if (item.DiscountPrice > 0)
+                                        {
+
+                                            <p class="original-price"></p>
+                                            <p class="discounted-price">$@item.DiscountPrice</p>
+                                            <p class="discounted-price-line-through">$@item.Price</p>
+                                        }
+                                    </div>
+
+                                </div>
+                                <div class="line"></div>
+                                <div class="course-card__footer">
+                                    <div>
+                                        <i class="fa-regular fa-clock"></i>
+                                        <p>@item.Hours hours</p>
+                                    </div>
+                                    <div>
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                        <p>
+                                            @($"{item.LikesInProcent * 100:0}%")
+                                            @($"{item.LikesInNumbers / 1000:N1}K")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</div>
+

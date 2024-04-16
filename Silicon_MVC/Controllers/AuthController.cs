@@ -34,6 +34,8 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         return View(new SignUpViewModel());
     }
+
+
     //public IActionResult SignUp()
     //{
     //    var viewModel = new SignUpViewModel();
@@ -60,7 +62,9 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             if (exist != null)
             {
                 ModelState.AddModelError("Email", "Email already exists");
-                ViewData["ErrorMessage"] = "User with the same email already exists";
+               // ViewData["ErrorMessage"] = "User with the same email already exists";
+                ViewData["StatusMessage"] = "danger|User with the same email already exists";
+
                 return View(viewModel);
             }
 
@@ -198,7 +202,8 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         }
 
         ModelState.AddModelError("Facebook", "Failed to sign in with Facebook");
-        ViewData["ErrorMessage"] = "Failed to sign in with Facebook";
+        //ViewData["ErrorMessage"] = "Failed to sign in with Facebook";
+        ViewData["StatusMessage"] = "danger|Failed to sign in with Facebook";
         return RedirectToAction("SignIn", "Auth");
     }
 
@@ -259,8 +264,8 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         }
 
-        ModelState.AddModelError("InvalidFasebookAutentcation", "danger|Failed to authenticate with Facebook.");
-        ViewData["StatusMessage"] = "danger|Failed to authenticate with Facebook.";
+        //ModelState.AddModelError("InvalidAutentcation", "danger|Failed to authenticate with Google.");
+        ViewData["StatusMessage"] = "danger|Failed to authenticate with Google.";
         return RedirectToAction("SignIn", "Auth");
     }
 

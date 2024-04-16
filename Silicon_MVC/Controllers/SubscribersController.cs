@@ -4,7 +4,7 @@ using Silicon_MVC.ViewModels;
 
 namespace Silicon_MVC.Controllers;
 
-public class SubscriberController : Controller
+public class SubscribersController : Controller
 {
     public IActionResult Index()
     {
@@ -33,34 +33,29 @@ public class SubscriberController : Controller
 
                 if (response.IsSuccessStatusCode)
                 {
-                    ViewData["Status"] = "Success";
+                    TempData["Status"] = "Success";
                     viewModel.IsSubscribed = true;
-                    //return RedirectToAction("Index", "Home");
                 }
 
                 else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
-                    ViewData["Status"] = "AlreadyExist";
+                    TempData["Status"] = "AlreadyExist";
                 }
 
 
                 else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    ViewData["Status"] = "Unauthorized";
+                    TempData["Status"] = "Unauthorized";
                 }
 
             }
 
             catch
             {
-                ViewData["Status"] = "ConnectionFailed";
+                TempData["Status"] = "ConnectionFailed";
             }
 
         }
-
-        return View(viewModel);
-        //return RedirectToAction( "Home", "Default");
-
+        return RedirectToAction("Index", "Home", "dontWant");
     }
-
 }

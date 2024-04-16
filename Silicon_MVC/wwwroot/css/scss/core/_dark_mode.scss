@@ -3,7 +3,7 @@
     color: $white;
 
 
-    header, .features, .download, .want, .contact, .manage, .integrate, footer, #courses, #overview {
+    header, .features, .download, .want, .contact, .manage, .integrate, footer, .courses, #overview, #account-details, #dontWant {
         background-color: #151822 !important;
     }
 
@@ -133,15 +133,21 @@
             color: $gray-100;
         }
     }
+    /*    #courses .container .filters .dropdown-links .dropdown-btn {*/
 
-    #courses {
+
+    .courses {
         .container {
+
 
             a {
                 &:hover {
-                    border: 1px solid #e2e5f1;
-                    /*@include shadow-l;*/
+                   
                     box-shadow: 0 0 20px #e2e5f1 !important;
+                }
+
+                h2 {
+                    color: $gray-900 !important;
                 }
 
                 .course-card-content {
@@ -151,11 +157,7 @@
                 }
             }
 
-            .course-card-content {
-                .text-s {
-                    color: $gray-600;
-                }
-            }
+
 
             nav {
                 .pagination {
@@ -200,7 +202,7 @@
 
     .contact {
         .container {
-            .info {
+            .contact-info {
                 .email-us {
                     .round {
                         background-color: $gray-900 !important;
@@ -210,7 +212,7 @@
                         }
                     }
 
-                    .email-content {
+                    .email-text {
                         a {
                             color: $theme !important;
                         }
@@ -226,7 +228,7 @@
                         }
                     }
 
-                    .text {
+                    .careers-text {
                         a {
                             color: $theme !important;
                         }
@@ -234,12 +236,36 @@
                 }
             }
 
-            .get-contact {
-                background-color: $gray-900 !important;
+            .get-in-contact {
+                background-color: $black !important;
 
-                form {
-                    label {
-                        color: $white !important;
+                .contact-form {
+                    form {
+                        background-color: $black !important;
+
+                        label {
+                            color: $gray-100;
+                        }
+
+                        .input-group {
+                            input {
+                                border: 1px solid $gray-800 !important;
+                            }
+                        }
+
+                        select {
+                            border: 1px solid $gray-800 !important;
+
+                            option {
+                                color: $gray-800 !important;
+                            }
+                        }
+
+                        #contact-message {
+                            textarea {
+                                border: 1px solid $gray-800 !important;
+                            }
+                        }
                     }
                 }
             }
@@ -302,6 +328,7 @@
     }
 
     #account-details {
+
         aside {
             nav {
                 a {
@@ -309,7 +336,7 @@
                     color: $gray-400 !important;
 
                     i {
-                        color: $gray-400 !important;
+                        color: $gray-600 !important;
                     }
                 }
             }

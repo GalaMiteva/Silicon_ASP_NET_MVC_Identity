@@ -99,20 +99,14 @@ inputs.forEach(input => {
 })
 
 function checkFields() {
-    let allFieldsFilled = true;
-
+    
     inputs.forEach(input => {
         if (!input.value) {
             allFieldsFilled = false;
         }
     });
 
-    const submitButton = document.querySelector('button[type="submit"]');
-    if (allFieldsFilled) {
-        submitButton.disabled = false;
-    } else {
-        submitButton.disabled = true;
-    }
+    
 }
 
 inputs.forEach(input => {

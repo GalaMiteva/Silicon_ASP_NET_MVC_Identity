@@ -22,14 +22,14 @@ public class SignUpModel
     [Display(Name = "Email", Prompt = "Enter your email", Order = 2)]
     [Required(ErrorMessage = "Email is required")]
     [RegularExpression(@"^(?=.*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$",
-                          ErrorMessage = "The email format is not valid.")]
+    ErrorMessage = "The email format is not valid.")]
     public string Email { get; set; } = null!;
 
     [Display(Name = "Password", Prompt = "********", Order = 3)]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "At least one lowercase, uppercase letter and  one special character.")]
     [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s])(?=.*[a-zA-Z\d]).{8,}$",
-                      ErrorMessage = " At least one lowercase, uppercase letter and  one special character.")]
+    ErrorMessage = " At least one lowercase, uppercase letter and  one special character.")]
     public string Password { get; set; } = null!;
 
     [Display(Name = "Confirm Password", Prompt = "********", Order = 4)]

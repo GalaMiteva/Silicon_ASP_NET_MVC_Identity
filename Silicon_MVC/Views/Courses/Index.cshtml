@@ -1,7 +1,360 @@
-﻿@model CoursesIndexModel
+﻿@model CoursesIndexViewModel
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<section class="courses">
+    <div class="container">
+        <div class="home-course">
+            <a class="home-and-course">
+                <i class="fa-solid fa-house"></i>
+                <p class="home">Home</p>
+            </a>
+
+            <i class="fa-solid fa-angles-right"></i>
+            <p class="courses">Courses</p>
+        </div>
+
+        <div class="bord">
+            <div class="header">
+                <h1 class="my5">Courses</h1>
+            </div>
+
+            <form class="filters">
+                <div class="select">
+
+                    <div class="input-search-group">
+                        <input id="searchQuery" name="searchQuery" placeholder="Search courses">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="selected">All categories</div>
+                    <div class="select-options">
+                        <div class="option" data-value="all">All categories</div>
+                        @if (Model.Categories != null)
+                        {
+                            foreach (var category in Model.Categories)
+                            {
+                                <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                            }
+                        }
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <span class="information">
+
+            @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unable to contact the server. Please try again later.
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            {
+                <span class="alert alert-danger">
+                    An error occurred. Please contact web admin.
+                </span>
+            }
+        </span>
+
+        @if (Model.Courses != null)
+        {
+            <div class="grid">
+
+                @foreach (var item in Model.Courses)
+                {
+                    <a asp-action="Details" asp-controller="Courses" asp-route-id="@item.Id">
+
+                        <div class="course-card">
+                            <div class="course-card_img">
+                                <img class="img-card" src="~/images/courses/@item.Img" alt="Course card">
+                                @if (item.IsBestseller)
+                                {
+                                    <div class="bestseller">
+                                        <p>Bestseller</p>
+                                    </div>
+                                }
+                                <form asp-controller="Account" asp-action="SavedCourses" method="post" style="display: inline;">
+                                    <input type="hidden" name="courseId" value="@item.Id" />
+                                    <button type="submit" class="bookmark" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                        <img class="bookmark" src="~/images/courses/bookmark.svg" alt="bookmark" style="display: block;">
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="course-card_body">
+                                <h2 class="h5">@item.Title</h2>
+                                <p class="text-s">@item.Author</p>
+                                <div class="price">
+
+                                    @if (item.DiscountPrice <= 0)
+                                    {
+                                        <p class="original-price">$@item.Price</p>
+                                    }
+
+                                    @if (item.DiscountPrice > 0)
+                                    {
+
+                                        <p class="original-price"></p>
+                                        <p class="discounted-price">$@item.DiscountPrice</p>
+                                        <p class="discounted-price-line-through">$@item.Price</p>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="line"></div>
+                            <div class="course-card__footer">
+                                <div>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>@item.Hours hours</p>
+                                </div>
+                                <div>
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>
+                                        @($"{item.LikesInProcent * 100:0}%")
+                                        @($"{item.LikesInNumbers / 1000:N1}K")
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                }
+
+            </div>
+        }
+
+        @if (Model.Pagination != null && Model.Pagination.TotalPages > 1)
+        {
+            <div class="pagination">
+                <a class="btn-transparent"><i class="fa-solid fa-chevron-left"></i></a>
+                @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                {
+                    if (i == Model.Pagination.CurrentPage)
+                    {
+                        <a class="btn-theme">@i</a>
+                    }
+                    else
+                    {
+                        <a class="btn-gray" href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
+                    }
+                }
+                <a class="btn-transparent"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        }
+
+        <div class="banner">
+            <div class="banner-text">
+                <p class="text-l">Ready to get started?</p>
+                <div>
+                    <div class="skills-text"><h2 class="h2">Take Your </h2><h2 class="h2 blue"> Skills </h2> <h2 class="h2">to the</h2></div><div><h2 class="h2"> Next Level</h2></div>
+                </div>
+                <a class="btn-theme" href="#">Work with us</a>
+            </div>
+            <div class="banner-img">
+
+                <img src="images/courses/illustration.svg" alt="banner-illustration" id="illustration">
+            </div>
+        </div>
+        
 
 
-<section id="courses">
+
+    </div>
+</section>
+
+<script defer src="~/js/validation.js"></script>
+
+
+@* 
+<section class="courses">
+   
+
+        <div class="container">
+        <div class="home-course">
+            
+            <a class="home-and-course" asp-controller="Default" asp-action="Home">
+
+                <i class="fa-solid fa-house"></i>
+                <p class="home">Home</p>
+            </a>
+            
+            <i class="fa-solid fa-angles-right"></i>
+            <p class="courses">Courses</p>
+        </div>
+
+        <div class="bord">
+            <div class="header">
+                <h1 class="my5">Courses</h1>
+            </div>
+
+            <form class="filters">
+                <div class="select">
+
+                    <div class="input-search-group">
+                        <input id="searchQuery" name="searchQuery" placeholder="Search courses">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="selected">All categories</div>
+                    <div class="select-options">
+                        <div class="option" data-value="all">All categories</div>
+                        
+                        @if (Model.Categories != null)
+                        {
+                            foreach (var category in Model.Categories)
+                            {
+                                <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                            }
+                        }
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+        <span class="information">
+
+            @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unable to contact the server. Please try again later.
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            {
+                <span class="alert alert-danger">
+                    An error occurred. Please contact web admin.
+                </span>
+            }
+        </span>
+
+        @if (Model.Courses != null)
+        {
+            <div class="grid">
+
+                @foreach (var item in Model.Courses)
+                {
+                    <a asp-action="Details" asp-controller="Courses" asp-route-id="@item.Id">
+
+                        <div class="course-card">
+                            <div class="course-card_img">
+                                <img class="img-card" src="~/images/courses/@item.Img" alt="Course card">
+                                @if (item.IsBestseller)
+                                {
+                                    <div class="bestseller">
+                                        <p>Bestseller</p>
+                                    </div>
+                                }
+                                <form asp-controller="Account" asp-action="SavedCourses" method="post" style="display: inline;">
+                                    <input type="hidden" name="courseId" value="@item.Id" />
+                                    <button type="submit" class="bookmark" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                        <img class="bookmark" src="~/images/courses/bookmark.svg" alt="bookmark" style="display: block;">
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="course-card_body">
+                                <h2 class="h5">@item.Title</h2>
+                                <p class="text-s">@item.Author</p>
+                                <p class="text-s">@item.Category</p>
+                                <div class="price">
+
+                                    @if (item.DiscountPrice <= 0)
+                                    {
+                                        <p class="original-price">$@item.Price</p>
+                                    }
+
+                                    @if (item.DiscountPrice > 0)
+                                    {
+
+                                        <p class="original-price"></p>
+                                        <p class="discounted-price">$@item.DiscountPrice</p>
+                                        <p class="discounted-price-line-through">$@item.Price</p>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="line"></div>
+                            <div class="course-card__footer">
+                                <div>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>@item.Hours hours</p>
+                                </div>
+                                <div>
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>
+                                        @($"{item.LikesInProcent * 100:0}%")
+                                        @($"{item.LikesInNumbers / 1000:N1}K")
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                }
+
+            </div>
+        }
+
+        @if (Model.Pagination != null && Model.Pagination.TotalPages > 1)
+        {
+            <div class="pagination">
+                <a class="btn-transparent"><i class="fa-solid fa-chevron-left"></i>
+                @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                {
+                    if (i == Model.Pagination.CurrentPage)
+                    {
+                        <a class="btn-theme">@i</a>
+                    }
+                    else
+                    {
+                        <a class="btn-gray" href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
+                    }
+                }
+                <a class="btn-transparent"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        }
+
+
+     
+
+        <div class="banner">
+            <div class="banner-text">
+                <p class="text-l">Ready to get started?</p>
+                <div>
+                    <div class="skills-text"><h2 class="h2">Take Your </h2><h2 class="h2 blue"> Skills </h2> <h2 class="h2">to the</h2></div><div><h2 class="h2"> Next Level</h2></div>
+                </div>
+                <a class="btn-theme" href="#">Work with us</a>
+            </div>
+            <div class="banner-img">
+                
+                <img src="images/courses/illustration.svg" alt="banner-illustration" id="illustration">
+            </div>
+
+            
+
+        </div>
+
+    </div>
+</section>
+
+
+ *@
+
+
+
+
+
+
+
+
+
+
+@* <section id="courses">
     <div class="container">
         <div class="breadcrumbs">
 
@@ -165,7 +518,11 @@
 
         </div>
 
-</section>
-@* @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml") *@
-<script defer src="~/js/validation.js"></script>
+</section> *@
+
+
+
+
+
+
 

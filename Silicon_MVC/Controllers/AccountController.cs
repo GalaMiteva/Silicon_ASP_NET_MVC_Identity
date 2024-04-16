@@ -1,18 +1,34 @@
-﻿using Infrastructure.Entities;
+﻿using Infrastructure.Contexts;
+using Infrastructure.Entities;
+using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+
+using Silicon_MVC.ViewModels;
 using Silicon_MVC.ViewModels.Account;
+
+using System.Diagnostics;
+using System.Security.Claims;
+using static System.Net.WebRequestMethods;
 
 namespace Silicon_MVC.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressManager addressManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager,AddressManager addressManager, CategoryService categoryService, CourseService courseService, IConfiguration configuration) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
-    private readonly AddressManager _addressManager = addressManager;
+    private readonly AddressManager _addressManager = addressManager; 
+    private readonly CategoryService _categoryService = categoryService;
+    private readonly CourseService _courseService = courseService;
+    private readonly IConfiguration _configuration = configuration;
+    
+    private readonly HttpClient _http = new HttpClient();
+    
+
 
 
     #region Details
@@ -144,21 +160,13 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
     {
         var user = await _userManager.GetUserAsync(User);
 
-        
-        if(user != null)
+        return new ProfileInfoViewModel()
         {
-            return new ProfileInfoViewModel()
-            {
-                FirstName = user!.FirstName,
-                LastName = user.LastName,
-                Email = user.Email!,
-                IsExternalAccount = user.IsExternalAccount,
-            };
-
-        }
-
-        return null!;
-
+            FirstName = user!.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+            IsExternalAccount = user.IsExternalAccount,
+        };
     }
 
     private async Task<BasicInfoFormViewModel> PopulateBasicInfoAsync()
@@ -248,14 +256,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                         {
                             ViewData["StatusMessage"] = "success|Password updated successfully!";
                         }
-
-                        
-
                     }
                 }
                 else
                 {
                     ModelState.AddModelError("PasswordMismatch", "New password and confirm password do not match.");
+
                     ViewData["ErrorMessage"] = "New password and confirm password do not match.";
                 }
             }
@@ -312,18 +318,18 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
                 if (result.Succeeded)
                 {
                     await HttpContext.SignOutAsync();
-                    ViewData["SuccessMessage"] = "Account deleted successfully!";
+                    TempData["SuccessMessage"] = "Account deleted successfully!";
                     await Task.Delay(1000);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Subscribers");
                 }
                 else
                 {
-                    ViewData["ErrorMessage"] = "Failed to delete the account";
+                    TempData["ErrorMessage"] = "Failed to delete the account";
                 }
             }
             else
             {
-                ViewData["ErrorMessage"] = "User not found";
+                TempData["ErrorMessage"] = "User not found";
             }
         }
         else
@@ -340,5 +346,198 @@ public class AccountController(UserManager<UserEntity> userManager, AddressManag
 
 
     #endregion
+
+    //[HttpPost]
+
+    //public async Task<IActionResult> UploadImage(IFormFile file)
+    //{
+    //    var result = await _accountManager.UploadUserProfilImageAsync(User, file);
+    //    return RedirectToAction("Details", "Account");
+    //}
+    
+    
+
+
+
+    public async Task<IActionResult> GetSavedCourses()
+    {
+        try
+        {
+            
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user!.Id;
+            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+            //var uri = $"https://localhost:7029/api/UserCourses/{userId}?key={apiKey}";
+            var url = $"https://localhost:7029/api/UserCourses/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+
+
+            var response = await _http.GetAsync(url);
+
+            response.EnsureSuccessStatusCode();
+
+            var coursesResultJson = await response.Content.ReadAsStringAsync();
+            var coursesResult = JsonConvert.DeserializeObject<List<UserSavedCourseModel>>(coursesResultJson);
+
+            var viewModel = new SavedCourseViewModel
+            {
+                Courses = coursesResult!
+            };
+
+            return View(viewModel);
+        }
+        catch (Exception ex)
+        {
+            var statusCode = ex is HttpRequestException httpEx && httpEx.StatusCode.HasValue ?
+                ((int)httpEx.StatusCode.Value).ToString() :
+                "Unknown"; 
+
+            TempData["StatusCode"] = statusCode;
+
+            var viewModel = new SavedCourseViewModel();
+            return View(viewModel);
+        }
+    }
+
+
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteSavedCourse(int courseId)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user!.Id;
+            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+
+            //var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key={apiKey}";
+            var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+            var response = await _http.DeleteAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Course removed successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to remove course.";
+            }
+
+            return RedirectToAction(nameof(GetSavedCourses));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            TempData["ErrorMessage"] = "Failed to remove course. Please try again later.";
+            return RedirectToAction(nameof(GetSavedCourses));
+        }
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteAllSavedCourses()
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user!.Id;
+            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+
+            //var url = $"https://localhost:7029/api/UserCourses/all/{userId}?key={apiKey}";
+            var url = $"https://localhost:7029/api/UserCourses/all/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+
+            var response = await _http.DeleteAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "All courses removed successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to remove all courses.";
+            }
+
+            return RedirectToAction(nameof(GetSavedCourses));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            TempData["ErrorMessage"] = "Failed to remove all courses. Please try again later.";
+
+            return RedirectToAction(nameof(GetSavedCourses));
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SavedCourses(UserCourseModel userCourse)
+    {
+        try
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            var response = await _courseService.AddCourseToSavedAsync(user.Id, userCourse.CourseId);
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Course added to saved courses successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Course already exists for this user.";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            TempData["ErrorMessage"] = "Failed to add course to saved courses. Please try again later.";
+        }
+
+
+        return RedirectToAction("GetSavedCourses", "Account");
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> UploadProfilImage(IFormFile file)
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        if (user != null && file != null && file.Length != 0)
+        {
+            var fileName = $"p_{user.Id}_{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/uploads", fileName);
+
+            using (var fs = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fs);
+            }
+
+            user.ProfileImageUrl = fileName;
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "Image uploaded successfully!";
+            }
+
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Failed to upload the image";
+        }
+
+        return RedirectToAction("Details", "Account");
+
+    }
 }
 

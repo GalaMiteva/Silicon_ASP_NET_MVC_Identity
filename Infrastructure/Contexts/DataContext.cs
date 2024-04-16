@@ -26,4 +26,6 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
 
     public DbSet<FeatureEntity> Features { get; set; }
     public DbSet<FeatureItemEntity> FeaturesItems { get; set; }
+
+    
 }

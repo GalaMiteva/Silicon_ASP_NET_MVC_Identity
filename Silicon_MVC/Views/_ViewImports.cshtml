@@ -8,3 +8,9 @@
 @using Silicon_MVC.ViewModels.Account
 @using Infrastructure.Services
 @using Silicon_MVC.Models
+@using Silicon_MVC.ViewModels.Components
+@inject IConfiguration Configuration
+@inject UserManager<UserEntity> UserManager
+@inject SignInManager<UserEntity> _signInManager
+
+

@@ -1,6 +1,7 @@
 ﻿
 @model UnsubscriberViewModel
 
+
 @{
     ViewData["Title"] = "Unsubscribe";
 }
@@ -9,7 +10,7 @@
 <div class="container">
     <h2>Unsubscribe from Newsletters</h2>
 
-    <form method="post" asp-action="Index" asp-controller="Unsubscriber" novalidate>
+    <form method="post" asp-action="Index" asp-controller="Unsubscribe" asp-fragment="dontwant" novalidate>
         <div class="content-email">
             <div class="email">
                 <div id="form-email" class="input-group">
@@ -68,7 +69,3 @@
 
     </span>
 </div>
-
-@* @await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml") *@
-<script defer src="~/js/validation.js"></script>
-

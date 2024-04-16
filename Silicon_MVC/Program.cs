@@ -3,7 +3,10 @@ using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
+
 using Microsoft.EntityFrameworkCore;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -34,6 +37,9 @@ builder.Services.AddScoped<FeatureRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<AddressManager>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<CourseService>();
+//builder.Services.AddScoped<AccountManager>();
 
 builder.Services.ConfigureApplicationCookie(x =>
 {
