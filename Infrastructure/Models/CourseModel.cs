@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Models;
+﻿namespace Silicon_MVC.Models.Views;
 
 public class CourseModel
 {

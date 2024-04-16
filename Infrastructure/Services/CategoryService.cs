@@ -3,11 +3,12 @@
 using Infrastructure.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Silicon_MVC.Models.Views;
 
 
 
 
-namespace Infrastructure.Services;
+namespace Silicin_MVC.Services;
 public class CategoryService(HttpClient http, IConfiguration configuration)
 {
 

@@ -1,5 +1,7 @@
 ﻿
 
+using Silicon_MVC.Models.Views;
+
 namespace Infrastructure.Models;
 
 public class CourseResultModel
