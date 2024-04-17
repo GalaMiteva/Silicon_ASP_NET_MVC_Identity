@@ -180,3 +180,20 @@ function handleProfileImageUpload() {
         console.error(error);
     }
 }
+
+
+const myTimeout = setTimeout(alert, 5000);
+
+
+function alert() {
+    const alertsSucces = document.querySelector('.alert-success')
+    const alertsDanger = document.querySelector('.alert-danger')
+    const alertsWarning = document.querySelector('.alert-warning')
+    const alert = document.querySelector('.alert')
+    const message = document.getElementById('statusMessage')
+    alert.classList.add('hide')
+    alertsSucces.classList.add('hide')
+    alertsDanger.classList.add('hide')
+    alertsWarning.classList.add('hide')
+    message.classList.add('hide')
+}

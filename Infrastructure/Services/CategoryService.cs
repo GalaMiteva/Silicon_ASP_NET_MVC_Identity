@@ -11,10 +11,8 @@ using Silicon_MVC.Models.Views;
 namespace Silicin_MVC.Services;
 public class CategoryService(HttpClient http, IConfiguration configuration)
 {
-
     private readonly HttpClient _http = http;
     private readonly IConfiguration _configuration = configuration;
-
 
     public async Task<IEnumerable<CategoryModel>> GetCategoriesAsync()
     {

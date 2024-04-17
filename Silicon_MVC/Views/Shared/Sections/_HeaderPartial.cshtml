@@ -29,7 +29,7 @@
 
                 @if (_signInManager.IsSignedIn(User))
                 {
-                    <a class="menu-link" asp-controller="Courses" asp-action="Index" asp-fragment="courses">Courses</a>
+                    <a class="menu-link" asp-controller="Courses" asp-action="Index" >Courses</a>
                     <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
                     @if (User.IsInRole("SuperAdmin"))
                     {

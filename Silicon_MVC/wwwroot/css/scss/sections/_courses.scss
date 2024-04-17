@@ -23,9 +23,11 @@
             }
 
             &:hover {
+                border-radius: 5px;
+
                 .home,
                 .fa-house {
-                    color: $black;
+                    color: $white !important;
                 }
 
                 text-decoration: none;
@@ -145,17 +147,17 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
-        a {
+        .course-a {
             text-decoration: none;
 
             :hover {
                 background-color: $white;
-              
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
             }
 
             .course-card {
                 position: relative;
+                //background-color: $gray-800;
 
                 .img-card {
                     width: 100%;
@@ -204,6 +206,7 @@
                     .discounted-price {
                         color: $danger-dark;
                         font-weight: 700;
+                        margin-right: 1rem;
                     }
 
                     .discounted-price-line-through {

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Silicin_MVC.Services;
+using Silicon_MVC.Models.Views;
 using Silicon_MVC.ViewModels;
 using Silicon_MVC.ViewModels.Account;
 
@@ -368,12 +369,11 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
             var userId = user!.Id;
             //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
 
-            //var uri = $"https://localhost:7029/api/UserCourses/{userId}?key={apiKey}";
-            var url = $"https://localhost:7029/api/UserCourses/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+            var uri = $"https://localhost:7029/api/UserCourses/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
 
 
 
-            var response = await _http.GetAsync(url);
+            var response = await _http.GetAsync(uri);
 
             response.EnsureSuccessStatusCode();
 
@@ -416,6 +416,7 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
 
             //var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key={apiKey}";
             var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+
 
             var response = await _http.DeleteAsync(uri);
 

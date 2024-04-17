@@ -1,5 +1,5 @@
 #saved-courses {
-    background-color: $gray-100;
+    background-color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +72,10 @@
             flex-direction: column;
             gap: 10px;
             margin-top: 50px;
-            text-align: center;
+            text-align: left !important;
+
+
+
 
             a {
                 display: block;
@@ -82,8 +85,12 @@
                 font-weight: 600;
 
                 i {
-                    color: $gray-700;
+                    color: $gray-700 ;
                     padding-right: 10px;
+
+                    /*&.fa-solid.fa-gear {
+                        color: $white;
+                    }*/
                 }
             }
 
@@ -149,7 +156,7 @@
                         position: absolute;
                         top: 1rem;
                         right: 1rem;
-                        background: var(--white);
+                        background: $white;
                         padding: 0.5rem;
                         border-radius: 50%;
                         cursor: pointer;
@@ -187,6 +194,7 @@
                         .discounted-price {
                             color: $danger-dark;
                             margin-right: 1rem;
+                            font-weight: 700;
                         }
 
                         .discounted-price-line-through {

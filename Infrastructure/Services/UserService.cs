@@ -19,14 +19,12 @@ public class UserService(UserRepository repository)
                 return exist;
 
             var result = await _repository.CreateOneAsync(UserFactory.Create(model));
-            if (result.StatusCode != StatusCode.OK)
+            if (result.StatusCode != StatusCode.EXISTS)
                 return result;
 
             return ResponseFactory.Ok("User was crated succssfully.");
-
-
-
         }
+
         catch (Exception ex)
         {
             return ResponseFactory.Error(ex.Message);
@@ -41,7 +39,7 @@ public class UserService(UserRepository repository)
             if (result.StatusCode == StatusCode.OK && result.ContentResult != null)
             {
                 var userEntity = (UserEntity)result.ContentResult;
-                if ((model.Password == userEntity.PasswordHash))
+                if ((model.Password == userEntity.PasswordHash)) 
                     return ResponseFactory.Ok();
             }
 

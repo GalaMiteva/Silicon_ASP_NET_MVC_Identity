@@ -3,7 +3,7 @@
     color: $white;
 
 
-    header, .features, .download, .want, .contact, .manage, .integrate, footer, .courses, #overview, #account-details, #dontWant {
+    header, .features, .download, .want, .contact, .manage, .integrate, footer, .courses, #overview, #account-details, #dontWant, #saved-courses {
         background-color: #151822 !important;
     }
 
@@ -133,7 +133,6 @@
             color: $gray-100;
         }
     }
-    /*    #courses .container .filters .dropdown-links .dropdown-btn {*/
 
 
     .courses {
@@ -142,13 +141,17 @@
 
             a {
                 &:hover {
-                   
                     box-shadow: 0 0 20px #e2e5f1 !important;
+                    color: $black !important;
+
+                    h2 {
+                        color: $gray-900 !important;
+                    }
                 }
 
-                h2 {
-                    color: $gray-900 !important;
-                }
+
+
+
 
                 .course-card-content {
                     .text-s {
@@ -178,19 +181,17 @@
                 }
             }
 
-            .get-started {
-                background-color: #151822 !important;
+            .banner {
+                background-color: $gray-800 !important;
+
+                #blue {
+                    color: #6366f1 !important;
+                }
             }
         }
     }
 
-    .courses {
-        .breadcrumbs {
-            .home-and-contact {
-                color: #B4B7C9 !important;
-            }
-        }
-    }
+
 
     #admin-portal {
         background-color: #151822 !important;
@@ -400,6 +401,35 @@
         #mobileMenu {
             background-color: $gray-900 !important;
             color: $white;
+        }
+    }
+
+    #saved-courses {
+        aside {
+            nav {
+                a {
+                    text-align: left;
+                    color: $gray-400 !important;
+
+                    i {
+                        color: $gray-600 !important;
+                    }
+                }
+            }
+
+            @include lg {
+                border-right: 0.063rem solid $gray-800;
+            }
+        }
+
+        .content {
+            span {
+                form {
+                    .btn-delete {
+                        background-color: $gray-900;
+                    }
+                }
+            }
         }
     }
 }

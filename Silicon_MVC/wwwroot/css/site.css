@@ -189,9 +189,8 @@ h6, .h6 {
 .dark-mode {
   background-color: #151822 !important;
   color: #FFFFFF;
-  /*    #courses .container .filters .dropdown-links .dropdown-btn {*/
 }
-.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #account-details, .dark-mode #dontWant {
+.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #account-details, .dark-mode #dontWant, .dark-mode #saved-courses {
   background-color: #151822 !important;
 }
 .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, .dark-mode h7, .dark-mode h8 {
@@ -262,8 +261,9 @@ h6, .h6 {
 }
 .dark-mode .courses .container a:hover {
   box-shadow: 0 0 20px #e2e5f1 !important;
+  color: #000000 !important;
 }
-.dark-mode .courses .container a h2 {
+.dark-mode .courses .container a:hover h2 {
   color: #0B0F19 !important;
 }
 .dark-mode .courses .container a .course-card-content .text-s {
@@ -280,11 +280,11 @@ h6, .h6 {
 .dark-mode .courses .container nav .pagination .page-link span {
   color: #9397AD;
 }
-.dark-mode .courses .container .get-started {
-  background-color: #151822 !important;
+.dark-mode .courses .container .banner {
+  background-color: #33354D !important;
 }
-.dark-mode .courses .breadcrumbs .home-and-contact {
-  color: #B4B7C9 !important;
+.dark-mode .courses .container .banner #blue {
+  color: #6366f1 !important;
 }
 .dark-mode #admin-portal {
   background-color: #151822 !important;
@@ -394,6 +394,21 @@ h6, .h6 {
 .dark-mode header #mobileMenu {
   background-color: #0B0F19 !important;
   color: #FFFFFF;
+}
+.dark-mode #saved-courses aside nav a {
+  text-align: left;
+  color: #D4D7E5 !important;
+}
+.dark-mode #saved-courses aside nav a i {
+  color: #9397AD !important;
+}
+@media (min-width: 992px) {
+  .dark-mode #saved-courses aside {
+    border-right: 0.063rem solid #33354D;
+  }
+}
+.dark-mode #saved-courses .content span form .btn-delete {
+  background-color: #0B0F19;
 }
 
 .alert-danger {
@@ -1590,921 +1605,175 @@ footer .container .social-media {
   color: #0B0F19 !important;
 }
 
-.courses {
+.contact {
   background-color: #FFFFFF;
 }
-.courses .home-course {
+.contact .container {
+  position: relative;
+}
+.contact .container .home-contact {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 1rem;
 }
-.courses .home-course .home-and-course {
+.contact .container .home-contact .home-and-contact {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 0.5rem;
 }
-.courses .home-course .home-and-course .fa-house {
+.contact .container .home-contact .home-and-contact .fa-house {
   color: #9397AD;
 }
-.courses .home-course .home-and-course .home {
+.contact .container .home-contact .home-and-contact .home {
   color: #9397AD;
   margin-bottom: 0;
 }
-.courses .home-course .home-and-course:hover {
+.contact .container .home-contact .home-and-contact:hover {
   text-decoration: none;
   cursor: pointer;
 }
-.courses .home-course .home-and-course:hover .home,
-.courses .home-course .home-and-course:hover .fa-house {
+.contact .container .home-contact .home-and-contact:hover .home,
+.contact .container .home-contact .home-and-contact:hover .fa-house {
   color: #000000;
 }
-.courses .home-course .fa-angles-right {
+.contact .container .home-contact .fa-angles-right {
   color: #9397AD;
 }
-.courses .home-course .courses {
+.contact .container .home-contact .contact {
   color: #6366F1;
   margin-bottom: 0;
 }
-.courses .bord {
-  /*     flex-direction: column;*/
-  /*.dropdown-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-
-      @include lg {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-direction: row;
-          gap: 1rem;
-      }
-
-      .dropbtn {
-          background-color: #fff;
-          color: var(--gray-600);
-          width: 200px;
-          height: 30px;
-          font-size: 12px;
-          border: none;
-          border: 1px solid var(--gray-600);
-          cursor: pointer;
-
-          .fa-regular {
-              padding-left: 85px;
-          }
-      }
-
-      .dropdown {
-          position: relative;
-          display: inline-block;
-      }
-
-      .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f9f9f9;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-      }
-
-      .dropdown-content a {
-          color: var(--gray-600);
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-          font-size: 12px;
-      }
-
-      .dropdown-content a:hover {
-          background-color: #f1f1f1;
-      }
-
-      .dropdown:hover .dropdown-content {
-          display: block;
-      }
-
-      .dropdown:hover .dropbtn {
-          background-color: #ffffff;
-      }
-
-      .search {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-
-          input {
-              border: 1px solid var(--gray-600);
-              font-size: 80%;
-              padding-left: 0.5rem;
-              width: 200px;
-              height: 30px;
-              border-radius: 0;
-          }
-
-          button {
-              position: absolute;
-              right: 0;
-              padding: 0.5rem;
-              border: none;
-              background: transparent;
-              color: var(--black);
-              border-radius: 5px;
-              color: var(--gray-600);
-              cursor: pointer;
-          }
-      }
-  }*/
+.contact .container .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
 }
-@media (min-width: 992px) {
-  .courses .bord {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media (min-width: 1200px) {
+  .contact .container .contact-info {
+    max-width: 30%;
   }
 }
-@media (min-width: 992px) {
-  .courses .bord {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.contact .container .contact-info h1 {
+  margin-bottom: 2rem;
 }
-.courses .bord .select {
-  /*flex-direction: row;*/
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-  position: relative;
-}
-@media (min-width: 992px) {
-  .courses .bord .select {
-    min-width: 300px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-}
-.courses .bord .select .selected {
-  padding: 8px 16px;
-  border: 1px solid #D4D7E5;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-}
-@media (min-width: 992px) {
-  .courses .bord .select .selected {
-    width: 300px;
-  }
-}
-.courses .bord .select .select-options {
-  display: none;
-  position: absolute;
-  top: 100%;
-  /*left: 0;*/
-  right: 0;
-  background: #FFFFFF;
-  border: 1px solid #D4D7E5;
-  z-index: 10;
-  width: 100%;
-}
-@media (min-width: 992px) {
-  .courses .bord .select .select-options {
-    width: 300px;
-  }
-}
-.courses .bord .select .select-options .option {
-  padding: 8px 16px;
-  cursor: pointer;
-}
-.courses .bord .select .select-options .option:hover {
-  background: var(--gray-100);
-}
-.courses .bord .select .input-search-group {
-  margin-right: 2rem;
-  position: relative;
-}
-.courses .bord .select .input-search-group #searchQuery {
-  padding: 8px 16px;
-  width: 100%;
+.contact .container .contact-info .email-us {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
   margin-bottom: 1rem;
 }
-@media (min-width: 992px) {
-  .courses .bord .select .input-search-group #searchQuery {
-    margin: 0;
-  }
+.contact .container .contact-info .email-us .round {
+  background-color: #FFFFFF;
+  color: #6366F1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.courses .bord .select .input-search-group .fa-search {
-  position: absolute;
-  right: 1rem;
-  top: 30%;
+.contact .container .contact-info .email-us .email-text a .fa-arrow-right-long {
+  margin-left: 1rem;
 }
-.courses .grid {
-  display: grid;
+.contact .container .contact-info .careers {
+  display: flex;
+  justify-content: start;
+  align-items: center;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-@media (min-width: 768px) {
-  .courses .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.contact .container .contact-info .careers .round {
+  background-color: #FFFFFF;
+  color: #6366F1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-@media (min-width: 992px) {
-  .courses .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.contact .container .contact-info .careers .careers-text a .fa-arrow-right-long {
+  margin-left: 1rem;
 }
-.courses .grid a {
-  text-decoration: none;
-}
-.courses .grid a :hover {
-  background-color: var(--gray-200);
-}
-.courses .grid a .course-card {
+.contact .container .get-in-contact {
   position: relative;
 }
-.courses .grid a .course-card .img-card {
-  width: 100%;
+@media (min-width: 1200px) {
+  .contact .container .get-in-contact {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    width: 40%;
+    height: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
 }
-.courses .grid a .course-card .bookmark {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--white);
-  padding: 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.courses .grid a .course-card .bookmark:hover {
-  background: var(--theme);
-  color: var(--white);
-}
-.courses .grid a .course-card .bestseller {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: var(--success);
-  color: var(--white);
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-.courses .grid a .course-card .bestseller p {
-  margin: 0;
-}
-.courses .grid a .course-card .price {
-  display: flex;
-}
-.courses .grid a .course-card .price .original-price {
-  color: var(--theme);
-  font-weight: 700;
-  margin-right: 1rem;
-}
-.courses .grid a .course-card .price .discounted-price {
-  color: var(--danger);
-  margin-right: 1rem;
-}
-.courses .grid a .course-card .price .discounted-price-line-through {
-  color: var(--gray-600);
-  text-decoration: line-through;
-}
-.courses .grid a .course-card .line {
-  border-top: 1px solid var(--gray-400);
+.contact .container .get-in-contact h2 {
   margin-left: 1rem;
-  margin-right: 1rem;
 }
-.courses .grid a .course-card__footer {
-  display: flex;
-  gap: 2rem;
+.contact .container .get-in-contact .contact-form {
   padding: 1rem;
-  color: var(--gray-600);
 }
-.courses .grid a .course-card__footer div {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.contact .container .get-in-contact .contact-form .form-group .input-group {
+  font-weight: 600;
+  color: #0B0F19;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
-.courses .grid a .course-card__footer p {
-  margin: 0;
-}
-.courses .grid a .course-card .course-card_body {
-  padding-left: 1rem;
-}
-.courses .pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-.courses .pagination a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  margin: 0 5px;
+.contact .container .get-in-contact .contact-form .form-group .input-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #D4D7E5;
   border-radius: 5px;
-  text-decoration: none;
-  padding: 0;
 }
-@media (min-width: 992px) {
-  .courses .pagination a {
-    width: 40px;
-    height: 40px;
-  }
+.contact .container .get-in-contact .contact-form .form-group .lable {
+  color: #0B0F19;
+  margin-top: 2rem;
+  position: relative;
 }
-.courses .pagination a i {
-  margin: 0;
+.contact .container .get-in-contact .contact-form .form-group .lable .fa-angle-down {
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  z-index: 9;
 }
-.courses .banner {
+.contact .container .get-in-contact .contact-form .form-group .form-control {
+  color: #9397AD;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+.contact .container .get-in-contact .contact-form .form-group #contact-message textarea {
+  height: 200px;
+  width: 100%;
+  color: #0B0F19;
+}
+.contact .container .get-in-contact .contact-form .form-group .btn-theme {
+  margin-top: 2rem;
+}
+.contact .map {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: var(--theme-opacity);
-  margin-top: 50px;
-  padding: 50px;
+  margin-top: 60px;
+}
+.contact .map img {
+  width: 100vw;
 }
 @media (min-width: 992px) {
-  .courses .banner .banner-text div {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    margin-right: 1rem;
-  }
-}
-.courses .banner .banner-text div .skills-text {
-  flex-direction: row;
-}
-.courses .banner .banner-text div .skills-text .h2 {
-  margin-right: 0.7rem;
-}
-.courses .banner .banner-text .blue {
-  color: var(--theme);
-}
-.courses .banner .banner-text .btn-theme {
-  margin-top: 1rem;
-  width: fit-content;
-}
-.courses .banner .banner-img {
-  display: none;
-}
-@media (min-width: 992px) {
-  .courses .banner .banner-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .contact .map img {
+    margin-top: 120px;
   }
 }
 
-/*.courses {
-
-    .home-course {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 1rem;
-
-
-        .home-and-course {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 0.5rem;
-
-            .fa-house {
-                color: $gray-600;
-            }
-
-            .home {
-                color: $gray-600;
-                margin-bottom: 0;
-            }
-
-
-            &:hover {
-                .home,
-                .fa-house {
-                    color: $black;
-                }
-
-                text-decoration: none;
-                cursor: pointer;
-            }
-        }
-
-
-
-        .fa-angles-right {
-            color: $gray-600;
-        }
-
-        .courses {
-            color: $theme;
-            margin-bottom: 0;
-        }
-    }
-
-    .bord {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        @include lg {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-
-        .dropdown-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-
-            @include lg {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-direction: row;
-                gap: 1rem;
-            }
-
-            .dropbtn {
-                background-color: #fff;
-                color: $gray-600;
-                width: 200px;
-                height: 30px;
-                font-size: 12px;
-                border: none;
-                border: 1px solid $gray-600;
-                cursor: pointer;
-
-                .fa-regular {
-                    padding-left: 85px;
-                }
-            }
-
-
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-
-
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: #f9f9f9;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-            }
-
-            .dropdown-content a {
-                color: $gray-600;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                font-size: 12px;
-            }
-
-            .dropdown-content a:hover {
-                background-color: #f1f1f1
-            }
-
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-
-            .dropdown:hover .dropbtn {
-                background-color: #ffffff;
-            }
-
-            .search {
-                position: relative;
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-
-
-
-                input {
-                    border: 1px solid $gray-600;
-                    font-size: 80%;
-                    padding-left: 0.5rem;
-                    width: 200px;
-                    height: 30px;
-                    border-radius: 0;
-                }
-
-                button {
-                    position: absolute;
-                    right: 0;
-                    padding: 0.5rem;
-                    border: none;
-                    background: transparent;
-                    color: $black;
-                    border-radius: 5px;
-                    color: $gray-600;
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
-    .grid {
-        display: grid;
-        gap: 2rem;
-        margin-top: 1rem;
-
-        @include md {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @include lg {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    .course-card {
-        position: relative;
-
-        .img-card {
-            width: 100%;
-        }
-
-        .bookmark {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: $white;
-            padding: 0.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-
-            &:hover {
-                background: $theme;
-                color: $white;
-            }
-        }
-
-        .bestseller {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: $success;
-            color: $white;
-            padding: 0.5rem;
-            border-radius: 5px;
-
-            p {
-                margin: 0;
-            }
-        }
-
-        .price {
-            display: flex;
-
-            .original-price {
-                color: $theme;
-                font-weight: 700;
-                margin-right: 1rem;
-            }
-
-            .discounted-price {
-                color: $danger;
-                margin-right: 1rem;
-            }
-
-            .discounted-price-line-through {
-                color: $gray-600;
-                text-decoration: line-through;
-            }
-        }
-
-
-        .line {
-            border-top: 1px solid $gray-400;
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-
-        &__footer {
-            display: flex;
-            gap: 2rem;
-            padding: 1rem;
-
-            div {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            p {
-                margin: 0;
-            }
-        }
-
-        .course-card_body {
-            padding-left: 1rem;
-        }
-    }
-
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-    }
-
-    .pagination a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        margin: 0 5px;
-        border-radius: 5px;
-        text-decoration: none;
-        padding: 0;
-
-        @include lg {
-            width: 40px;
-            height: 40px;
-        }
-    }
-
-    .pagination a i {
-        margin: 0;
-    }
-
-
-
-    .banner {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: $theme-opacity;
-        margin-top: 50px;
-        padding: 50px;
-
-        .banner-text {
-
-            div {
-                @include lg {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: left;
-                    margin-right: 1rem;
-                }
-
-
-                .skills-text {
-                    flex-direction: row;
-
-
-                    .h2 {
-                        margin-right: 0.7rem;
-                    }
-                }
-            }
-
-            .blue {
-                color: $theme;
-            }
-
-            .btn-theme {
-                margin-top: 1rem;
-                width: fit-content;
-            }
-        }
-
-        .banner-img {
-            display: none;
-
-            @include lg {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-    }
-}
-*/
-/*.courses {
-    background-color: $gray-100;
-
-    .container {
-        position: relative;
-
-        .home-contact {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 1rem;
-
-            .home-and-contact {
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                gap: 0.5rem;
-
-                .fa-house {
-                    color: $gray-600;
-                }
-
-                .home {
-                    color: $gray-600;
-                    margin-bottom: 0;
-                }
-
-                &:hover {
-                    .home,
-                    .fa-house {
-                        color: $black;
-                    }
-
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-            }
-
-            .fa-angles-right {
-                color: $gray-600;
-            }
-
-            .contact {
-                color: $theme;
-                margin-bottom: 0;
-            }
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 2rem;
-
-            @include xl {
-                max-width: 30%;
-            }
-
-            h1 {
-                margin-bottom: 2rem;
-            }
-
-            .email-us {
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                gap: 2rem;
-                margin-bottom: 1rem;
-
-                .round {
-                    background-color: $white;
-                    color: $theme;
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-bottom: 1rem;
-                }
-
-                .email-text {
-                    a {
-                        .fa-arrow-right-long {
-                            margin-left: 1rem;
-                        }
-                    }
-                }
-            }
-
-            .careers {
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                gap: 2rem;
-                margin-bottom: 1rem;
-
-                .round {
-                    background-color: $white;
-                    color: $theme;
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-bottom: 1rem;
-                }
-
-                .careers-text {
-                    a {
-                        .fa-arrow-right {
-                            margin-left: 1rem;
-                        }
-                    }
-                }
-            }
-        }
-
-        .get-in-contact {
-            position: relative;
-
-            @include xl {
-                position: absolute;
-                right: 0;
-                top: 80px;
-                background-color: $white;
-                padding: 2rem;
-                width: 40%;
-                height: 800px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                border-radius: 5px;
-            }
-
-            h2 {
-                margin-left: 1rem;
-            }
-
-            .contact-form {
-                form {
-                    padding: 1rem;
-                    background-color: $white;
-
-                    .form-group {
-                        .input-group {
-                            font-weight: 600;
-                            color: $gray-900;
-                            margin-bottom: 0.5rem;
-                            margin-top: 2rem;
-
-
-                            input {
-                                width: 100%;
-                                padding: 0.5rem;
-                                border: 1px solid $gray-300;
-                                border-radius: 5px;
-                            }
-                        }
-
-                        .lable {
-                            color: $gray-900;
-                            margin-top: 2rem;
-                            position: relative;
-
-                            .fa-angle-down {
-                                position: absolute;
-                                right: 1rem;
-                                top: 2.5rem;
-                                z-index: 9;
-                            }
-                        }
-
-                        .form-control {
-                            color: $gray-600;
-                            margin-bottom: 0.5rem;
-                            margin-top: 0;
-                            border: 1px solid $gray-300;
-                            border-radius: 5px;
-                        }
-
-                        #contact-message textarea {
-                            height: 200px;
-                            width: 100%;
-                            color: $gray-900;
-                            border: 1px solid $gray-300;
-                        }
-
-                        .btn-theme {
-                            margin-top: 2rem;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .map {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 60px;
-
-        img {
-            width: 100vw;
-
-            @media (min-width: 992px) {
-                margin-top: 120px;
-            }
-        }
-    }
-}*/
 .courses {
   background-color: #FFFFFF;
 }
@@ -2528,12 +1797,13 @@ footer .container .social-media {
   margin-bottom: 0;
 }
 .courses .home-course .home-and-course:hover {
+  border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
 }
 .courses .home-course .home-and-course:hover .home,
 .courses .home-course .home-and-course:hover .fa-house {
-  color: #000000;
+  color: #FFFFFF !important;
 }
 .courses .home-course .fa-angles-right {
   color: #9397AD;
@@ -2639,20 +1909,20 @@ footer .container .social-media {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-.courses .grid a {
+.courses .grid .course-a {
   text-decoration: none;
 }
-.courses .grid a :hover {
+.courses .grid .course-a :hover {
   background-color: #FFFFFF;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
 }
-.courses .grid a .course-card {
+.courses .grid .course-a .course-card {
   position: relative;
 }
-.courses .grid a .course-card .img-card {
+.courses .grid .course-a .course-card .img-card {
   width: 100%;
 }
-.courses .grid a .course-card .bookmark {
+.courses .grid .course-a .course-card .bookmark {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -2662,12 +1932,12 @@ footer .container .social-media {
   cursor: pointer;
   transition: 0.3s;
 }
-.courses .grid a .course-card .bookmark:hover {
+.courses .grid .course-a .course-card .bookmark:hover {
   background: #6366F1;
   color: #FFFFFF;
   border: 1px solid #6366F1;
 }
-.courses .grid a .course-card .bestseller {
+.courses .grid .course-a .course-card .bestseller {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -2676,44 +1946,45 @@ footer .container .social-media {
   padding: 0.5rem;
   border-radius: 5px;
 }
-.courses .grid a .course-card .bestseller p {
+.courses .grid .course-a .course-card .bestseller p {
   margin: 0;
 }
-.courses .grid a .course-card .price {
+.courses .grid .course-a .course-card .price {
   display: flex;
 }
-.courses .grid a .course-card .price .original-price {
+.courses .grid .course-a .course-card .price .original-price {
   color: #6366F1;
   font-weight: 700;
 }
-.courses .grid a .course-card .price .discounted-price {
+.courses .grid .course-a .course-card .price .discounted-price {
   color: #c92464;
   font-weight: 700;
+  margin-right: 1rem;
 }
-.courses .grid a .course-card .price .discounted-price-line-through {
+.courses .grid .course-a .course-card .price .discounted-price-line-through {
   color: #9397AD;
   text-decoration: line-through;
 }
-.courses .grid a .course-card .line {
+.courses .grid .course-a .course-card .line {
   border-top: 1px solid #D4D7E5;
   margin-left: 1rem;
   margin-right: 1rem;
 }
-.courses .grid a .course-card__footer {
+.courses .grid .course-a .course-card__footer {
   display: flex;
   gap: 2rem;
   padding: 1rem;
   color: #9397AD;
 }
-.courses .grid a .course-card__footer div {
+.courses .grid .course-a .course-card__footer div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.courses .grid a .course-card__footer p {
+.courses .grid .course-a .course-card__footer p {
   margin: 0;
 }
-.courses .grid a .course-card .course-card_body {
+.courses .grid .course-a .course-card .course-card_body {
   padding-left: 1rem;
 }
 .courses .pagination {
@@ -3640,7 +2911,7 @@ footer .container .social-media {
 }
 
 #saved-courses {
-  background-color: #F3F6FF;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3709,7 +2980,7 @@ footer .container .social-media {
   flex-direction: column;
   gap: 10px;
   margin-top: 50px;
-  text-align: center;
+  text-align: left !important;
 }
 #saved-courses aside nav a {
   display: block;
@@ -3721,6 +2992,9 @@ footer .container .social-media {
 #saved-courses aside nav a i {
   color: #565973;
   padding-right: 10px;
+  /*&.fa-solid.fa-gear {
+      color: $white;
+  }*/
 }
 #saved-courses aside nav .btn-theme-s {
   display: block;
@@ -3773,7 +3047,7 @@ footer .container .social-media {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--white);
+  background: #FFFFFF;
   padding: 0.5rem;
   border-radius: 50%;
   cursor: pointer;
@@ -3806,6 +3080,7 @@ footer .container .social-media {
 #saved-courses .content .grid a .course-card .price .discounted-price {
   color: #c92464;
   margin-right: 1rem;
+  font-weight: 700;
 }
 #saved-courses .content .grid a .course-card .price .discounted-price-line-through {
   color: #9397AD;

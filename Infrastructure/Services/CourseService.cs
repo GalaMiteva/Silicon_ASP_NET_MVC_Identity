@@ -13,12 +13,8 @@ public class CourseService(HttpClient http, IConfiguration configuration)
     private readonly HttpClient _http = http;
     private readonly IConfiguration _configuration = configuration;
 
-
-    //GET ALL
     public async Task<CourseResultModel> GetCoursesAsync(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 10)
     {
-        //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
-
         var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}?key=dbee8814-f79e-4790-8ac0-8d29775d9545&category={Uri.UnescapeDataString(category)}&searchQuery={Uri.UnescapeDataString(searchQuery)}&pageNumber={pageNumber}&pageSize={pageSize}");
 
 
@@ -34,7 +30,6 @@ public class CourseService(HttpClient http, IConfiguration configuration)
 
     }
 
-    //GET ONE
     public async Task<CourseModel> GetCourseByIdAsync(int courseId)
     {
         var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}/{courseId}");
@@ -48,8 +43,6 @@ public class CourseService(HttpClient http, IConfiguration configuration)
         return null!;
     }
 
-
-    //CREATE
     public async Task<HttpResponseMessage> CreateCourseAsync(CourseModel course)
     {
 
@@ -64,8 +57,6 @@ public class CourseService(HttpClient http, IConfiguration configuration)
         return response;
     }
 
-
-    //ADD TO SAVED COURSES
     public async Task<HttpResponseMessage> AddCourseToSavedAsync(string userId, int courseId)
     {
         try
@@ -97,7 +88,6 @@ public class CourseService(HttpClient http, IConfiguration configuration)
         }
     }
 
-    // GET ALL SAVED COURSES
     public async Task<List<UserSavedCourseModel>> GetSavedCoursesAsync(string userId)
     {
         try
@@ -119,5 +109,4 @@ public class CourseService(HttpClient http, IConfiguration configuration)
             throw;
         }
     }
-
 }
