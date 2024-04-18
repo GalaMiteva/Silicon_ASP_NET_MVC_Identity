@@ -1,5 +1,4 @@
-﻿@using Silicon_MVC.Models.Views
-@model CoursesIndexViewModel
+﻿@model CoursesIndexViewModel
 
 @{
     ViewData["Title"] = "Courses";
@@ -89,7 +88,7 @@
                                 </form>
                             </div>
                             <div class="course-card_body">
-                                <h2 class="h5">@item.Title</h2>
+                                <h2 class="h5 multi-line-title">@item.Title</h2>
                                 <p class="text-s">@item.Author</p>
                                 <div class="price">
 
@@ -132,20 +131,27 @@
 
         @if (Model.Pagination != null && Model.Pagination.TotalPages > 1)
         {
+            
+
+
             <div class="pagination">
-                <a class="btn-transparent"><i class="fa-solid fa-chevron-left"></i></a>
+                <a class="btn-transparent" href="@Url.Action("Index", new { pageNumber = Model.Pagination.CurrentPage - 1, pageSize = Model.Pagination.PageSize })"><i class="fa-solid fa-chevron-left"></i></a>
                 @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
                 {
                     if (i == Model.Pagination.CurrentPage)
                     {
                         <a class="btn-theme">@i</a>
                     }
+                    else if (i == 1 || i == Model.Pagination.TotalPages)
+                    {
+                        <a class="btn-transparent" href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
+                    }
                     else
                     {
                         <a class="btn-gray" href="@Url.Action("Index", new { pageNumber = i, pageSize = Model.Pagination.PageSize })">@i</a>
                     }
                 }
-                <a class="btn-transparent"><i class="fa-solid fa-chevron-right"></i></a>
+                <a class="btn-transparent" href="@Url.Action("Index", new { pageNumber = Model.Pagination.CurrentPage + 1, pageSize = Model.Pagination.PageSize })"><i class="fa-solid fa-chevron-right"></i></a>
             </div>
         }
 

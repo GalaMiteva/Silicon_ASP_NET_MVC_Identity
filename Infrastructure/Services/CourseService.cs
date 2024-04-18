@@ -32,7 +32,7 @@ public class CourseService(HttpClient http, IConfiguration configuration)
 
     public async Task<CourseModel> GetCourseByIdAsync(int courseId)
     {
-        var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}/{courseId}");
+        var response = await _http.GetAsync($"{_configuration["ApiUris:Courses"]}/{courseId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545");
 
         if (response.IsSuccessStatusCode)
         {
@@ -42,6 +42,7 @@ public class CourseService(HttpClient http, IConfiguration configuration)
 
         return null!;
     }
+
 
     public async Task<HttpResponseMessage> CreateCourseAsync(CourseModel course)
     {
@@ -56,6 +57,7 @@ public class CourseService(HttpClient http, IConfiguration configuration)
 
         return response;
     }
+
 
     public async Task<HttpResponseMessage> AddCourseToSavedAsync(string userId, int courseId)
     {

@@ -9,12 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Silicin_MVC.Services;
 using Silicon_MVC.Models.Views;
-using Silicon_MVC.ViewModels;
+
 using Silicon_MVC.ViewModels.Account;
 
-using System.Diagnostics;
-using System.Security.Claims;
-using static System.Net.WebRequestMethods;
+
 
 namespace Silicon_MVC.Controllers;
 

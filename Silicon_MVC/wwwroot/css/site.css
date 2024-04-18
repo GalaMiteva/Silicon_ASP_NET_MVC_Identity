@@ -2182,6 +2182,9 @@ footer .container .social-media {
     align-items: normal;
   }
 }
+#account-details aside {
+  /*details aside nav a i {*/
+}
 @media (min-width: 992px) {
   #account-details aside {
     border-right: 1px solid #E2E5F1;
@@ -2243,11 +2246,17 @@ footer .container .social-media {
   font-size: 17px;
   font-weight: 600;
 }
+#account-details aside nav a:hover {
+  color: #FFFFFF !important;
+}
 #account-details aside nav a i {
   color: #565973;
   padding-right: 10px;
 }
-#account-details aside nav a i.fa-solid.fa-gear {
+#account-details aside nav a i:hover {
+  color: #FFFFFF !important;
+}
+#account-details aside nav a i.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
   color: #FFFFFF;
 }
 #account-details aside nav .btn-theme-s {
@@ -2427,9 +2436,18 @@ footer .container .social-media {
   font-size: 17px;
   font-weight: 600;
 }
+#security aside nav a:hover {
+  color: #FFFFFF !important;
+}
 #security aside nav a i {
   color: #565973;
   padding-right: 10px;
+}
+#security aside nav a i:hover {
+  color: #FFFFFF !important;
+}
+#security aside nav a i.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
+  color: #FFFFFF;
 }
 #security aside nav .btn-theme-s {
   display: block;
@@ -2547,7 +2565,7 @@ footer .container .social-media {
 .separate-course .separate-course-box .container .home-course .courses {
   color: #E2E5F1;
   margin-bottom: 0;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .separate-course .separate-course-box .content {
   display: none;
@@ -2989,12 +3007,21 @@ footer .container .social-media {
   font-size: 17px;
   font-weight: 600;
 }
+#saved-courses aside nav a:hover {
+  color: #FFFFFF !important;
+}
 #saved-courses aside nav a i {
   color: #565973;
   padding-right: 10px;
-  /*&.fa-solid.fa-gear {
-      color: $white;
-  }*/
+}
+#saved-courses aside nav a i:hover {
+  color: #FFFFFF !important;
+}
+#saved-courses aside nav a i.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
+  color: #FFFFFF;
+}
+#saved-courses aside nav a i .fa-creative-commons {
+  font-weight: 600;
 }
 #saved-courses aside nav .btn-theme-s {
   display: block;

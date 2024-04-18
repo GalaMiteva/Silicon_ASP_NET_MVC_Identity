@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Silicon_MVC.ViewModels.Components;
+namespace Silicon_MVC.Models;
 
 public class CourseRegistrationFormViewModel
 {
@@ -14,8 +14,6 @@ public class CourseRegistrationFormViewModel
     [Display(Name = "Hours")]
     public int Hours { get; set; }
     [Display(Name = "Is Bestseller")]
-
-
     public bool IsBestseller = false;
     [Display(Name = "Likes In Numbers")]
     public decimal LikesInNumbers { get; set; }

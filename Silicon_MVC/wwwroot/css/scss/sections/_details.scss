@@ -67,6 +67,7 @@
                 @include text-m;
             }
         }
+        /*details aside nav a i {*/
 
         nav {
             display: flex;
@@ -75,21 +76,29 @@
             margin-top: 50px;
             text-align: left !important;
 
-           
-                
-                
-                a {
+
+
+
+            a {
                 display: block;
                 margin-top: 10px;
                 text-align: left;
-                font-size:17px;
-                font-weight:600;
+                font-size: 17px;
+                font-weight: 600;
+
+                &:hover {
+                    color: $white !important;
+                }
 
                 i {
                     color: $gray-700;
                     padding-right: 10px;
 
-                    &.fa-solid.fa-gear {
+                    &:hover {
+                        color: $white !important;
+                    }
+
+                    &.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
                         color: $white;
                     }
                 }

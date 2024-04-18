@@ -79,9 +79,21 @@
                 font-size: 17px;
                 font-weight: 600;
 
+                &:hover {
+                    color: $white !important;
+                }
+
                 i {
                     color: $gray-700;
                     padding-right: 10px;
+
+                    &:hover {
+                        color: $white !important;
+                    }
+
+                    &.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
+                        color: $white;
+                    }
                 }
             }
 
