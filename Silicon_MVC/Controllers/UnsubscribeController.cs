@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Configuration;
 using Silicon_MVC.ViewModels;
+using static System.Net.WebRequestMethods;
 
 namespace Silicon_MVC.Controllers;
 
-public class UnsubscribeController : Controller
+public class UnsubscribeController(HttpClient http, IConfiguration configuration) : Controller
 {
+
+    private readonly IConfiguration _configuration = configuration;
+    private readonly HttpClient _http = http;
     public IActionResult Index()
     {
         return View();
@@ -18,11 +23,9 @@ public class UnsubscribeController : Controller
         {
             try
             {
-                using var http = new HttpClient();
-                var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
-                var url = $"https://localhost:7029/api/subscribers?key={apiKey}&email={viewModel.Email}";
-                var request = new HttpRequestMessage(HttpMethod.Delete, url);
-                var response = await http.SendAsync(request);
+                var uri = $"https://localhost:7029/api/subscribers?key={_configuration["ApiKey:Secret"]}&email={viewModel.Email}";
+                var request = new HttpRequestMessage(HttpMethod.Delete, uri);
+                var response = await _http.SendAsync(request);
 
                 ViewData["StatusCode"] = (int)response.StatusCode;
 

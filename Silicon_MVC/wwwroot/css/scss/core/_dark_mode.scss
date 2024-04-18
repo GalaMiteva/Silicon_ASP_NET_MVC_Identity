@@ -432,4 +432,26 @@
             }
         }
     }
+
+    .separate-course {
+        .course-details {
+            .box-one {
+                .content {
+                    .circle-gray {
+                        background-color: $gray-800 !important;
+
+                        .circle-wite {
+                            background-color: $gray-700 !important;
+                            
+
+                            p {
+                                color: $white !important;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -26,7 +26,7 @@ namespace Silicon_MVC.ViewModels.Account
 
         public BasicInfoFormViewModel? BasicInfoForm { get; set; }
 
-        public string ProfileImageUrl { get; set; } = "avatar-user.svg";
+        public string ProfileImageUrl { get; set; } = "avatar.jpg";
 
         //public string? ProfileImageUrl { get; set; }
 

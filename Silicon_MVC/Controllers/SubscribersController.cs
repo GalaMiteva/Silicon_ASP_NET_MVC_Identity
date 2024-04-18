@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Configuration;
 using Silicon_MVC.ViewModels;
+using static System.Net.WebRequestMethods;
 
 namespace Silicon_MVC.Controllers;
 
-public class SubscribersController : Controller
+public class SubscribersController(HttpClient http, IConfiguration configuration) : Controller
 {
+
+    private readonly IConfiguration _configuration = configuration;
+    private readonly HttpClient _http = http;
     public IActionResult Index()
     {
         return View(new SubscriberViewModel());
@@ -14,22 +19,17 @@ public class SubscribersController : Controller
 
     [HttpPost]
     public async Task<IActionResult> Index(SubscriberViewModel viewModel)
-    //public async Task<IActionResult> Index(SubscriberViewModel viewModel, ActionExecutedContext context)
     {
         if (ModelState.IsValid)
         {
             try
             {
-                using var http = new HttpClient();
+                
+                var uri = $"https://localhost:7029/api/subscribers?key={_configuration["ApiKey:Secret"]}&email={viewModel.Email}&circle1={viewModel.Circle1}&cirle2={viewModel.Circle2}&circle3={viewModel.Circle3}&circle4={viewModel.Circle4}&circle5={viewModel.Circle5}&circle6={viewModel.Circle6}&isSubscribed={viewModel.IsSubscribed}";
 
-                //var configuration = context.HttpContext.RequestServices.GetService<IConfiguration>();
-                //var apiKey = configuration!.GetValue<string>("ApiKey");
-                var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
 
-                var url = $"https://localhost:7029/api/subscribers?key={apiKey}&email={viewModel.Email}&circle1={viewModel.Circle1}&cirle2={viewModel.Circle2}&circle3={viewModel.Circle3}&circle4={viewModel.Circle4}&circle5={viewModel.Circle5}&circle6={viewModel.Circle6}&isSubscribed={viewModel.IsSubscribed}";
-
-                var request = new HttpRequestMessage(HttpMethod.Post, url);
-                var response = await http.SendAsync(request);
+                var request = new HttpRequestMessage(HttpMethod.Post, uri);
+                var response = await _http.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {

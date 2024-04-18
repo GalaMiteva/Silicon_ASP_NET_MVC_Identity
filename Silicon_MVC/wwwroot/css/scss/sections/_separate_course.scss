@@ -312,6 +312,13 @@
                     text-decoration: line-through;
                 }
             }
+
+
+            .btn-theme {
+                border: none;
+
+                @include theme-shadow;
+            }
         }
     }
 
@@ -390,7 +397,7 @@
         }
     }
 
-    .albert-flores {
+    .author {
         margin-top: 7rem;
 
         .container {
@@ -399,7 +406,7 @@
             background-color: $gray-900;
             padding-left: 0;
 
-            .albert-flores-img {
+            .author-img {
                 display: none;
 
                 @include lg {
@@ -414,7 +421,7 @@
                 }
             }
 
-            .albert-flores-text {
+            .author-text {
                 flex: 2;
                 padding: 1rem;
 

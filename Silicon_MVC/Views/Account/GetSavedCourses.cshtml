@@ -42,7 +42,7 @@
             </nav>
         </aside>
         <div class="content">
-            <div class="headning">
+            <div class="content-title">
                 <h1 class="h3">Saved Courses</h1>
                 <span>
                     <form asp-controller="Account" asp-action="DeleteAllSavedCourses" method="post">
@@ -120,7 +120,7 @@
 
                                 </div>
                                 <div class="line"></div>
-                                <div class="course-card__footer">
+                                <div class="course-card-hours">
                                     <div>
                                         <i class="fa-regular fa-clock"></i>
                                         <p>@item.Hours hours</p>
@@ -128,8 +128,18 @@
                                     <div>
                                         <i class="fa-regular fa-thumbs-up"></i>
                                         <p>
-                                            @($"{item.LikesInProcent * 100:0}%")
-                                            @($"{item.LikesInNumbers / 1000:N1}K")
+                                            @if (item.LikesInProcent > 1)
+                                            {
+                                                @($"{item.LikesInProcent}%")
+                                                @($"({item.LikesInNumbers / 1000:N1}K)")
+                                            }
+
+                                            else
+                                            {
+                                                @($"{item.LikesInProcent * 100:0}%")
+                                                @($"({item.LikesInNumbers / 1000:N1}K)")
+                                            }
+                                            
                                         </p>
                                     </div>
                                 </div>

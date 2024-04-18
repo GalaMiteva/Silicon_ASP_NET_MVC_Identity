@@ -36,11 +36,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
 
 
-    //public IActionResult SignUp()
-    //{
-    //    var viewModel = new SignUpViewModel();
-    //    return View(viewModel);
-    //}
+   
 
 
 

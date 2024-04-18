@@ -47,7 +47,7 @@
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
+        background: $gray-700 !important;
         color: $white;
     }
 }

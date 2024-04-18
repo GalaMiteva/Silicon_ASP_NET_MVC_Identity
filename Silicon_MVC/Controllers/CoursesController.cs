@@ -9,20 +9,24 @@ using Silicon_MVC.Models;
 using Silicon_MVC.Models.Views;
 using Silicon_MVC.ViewModels;
 using Silicon_MVC.ViewModels.Components;
+using System.Net.Http.Headers;
 using System.Text;
+using static System.Net.WebRequestMethods;
 
 namespace Silicon_MVC.Controllers;
 
 
 
 [Authorize]
-
-public class CoursesController(CategoryService categoryService, CourseService courseService) : Controller
+public class CoursesController(HttpClient http,CategoryService categoryService, CourseService courseService, IConfiguration configuration) : Controller
 {
 
 
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
+    private readonly IConfiguration _configuration = configuration;
+    private readonly HttpClient _http = http;
+
 
     public async Task<IActionResult> Index(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
@@ -56,6 +60,7 @@ public class CoursesController(CategoryService categoryService, CourseService co
         }
     }
 
+    
     public async Task<IActionResult> Details(int id)
     {
 
@@ -83,11 +88,14 @@ public class CoursesController(CategoryService categoryService, CourseService co
         {
             if (ModelState.IsValid)
             {
-                using var http = new HttpClient();
+                //using var http = new HttpClient();
 
                 var json = JsonConvert.SerializeObject(viewModel);
                 using var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await http.PostAsync($"https://localhost:7029/api/courses", content);
+                
+                var response = await _http.PostAsync($"https://localhost:7029/api/courses?key={_configuration["ApiKey:Secret"]}", content);
+
+
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -108,4 +116,6 @@ public class CoursesController(CategoryService categoryService, CourseService co
         return View();
     }
 
+
+    
 }

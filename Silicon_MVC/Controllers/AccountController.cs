@@ -1,9 +1,11 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Migrations;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -346,13 +348,7 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
 
     #endregion
 
-    //[HttpPost]
-
-    //public async Task<IActionResult> UploadImage(IFormFile file)
-    //{
-    //    var result = await _accountManager.UploadUserProfilImageAsync(User, file);
-    //    return RedirectToAction("Details", "Account");
-    //}
+    
     
     
 
@@ -365,7 +361,8 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
             
             var user = await _userManager.GetUserAsync(User);
             var userId = user!.Id;
-            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+
+            //var uri = $"https://localhost:7029/api/UserCourses/{userId}?key={_configuration["ApiKey: Secret"]}";
 
             var uri = $"https://localhost:7029/api/UserCourses/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
 
@@ -409,14 +406,13 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
         {
             var user = await _userManager.GetUserAsync(User);
             var userId = user!.Id;
-            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
+            
 
 
-            //var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key={apiKey}";
-            var uri = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
+            var url = $"https://localhost:7029/api/UserCourses/{userId}/{courseId}?key={_configuration["ApiKey:Secret"]}";
 
 
-            var response = await _http.DeleteAsync(uri);
+            var response = await _http.DeleteAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
@@ -445,12 +441,8 @@ public class AccountController(UserManager<UserEntity> userManager,AddressManage
         {
             var user = await _userManager.GetUserAsync(User);
             var userId = user!.Id;
-            //var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
-
-
-            //var url = $"https://localhost:7029/api/UserCourses/all/{userId}?key={apiKey}";
-            var url = $"https://localhost:7029/api/UserCourses/all/{userId}?key=dbee8814-f79e-4790-8ac0-8d29775d9545";
-
+            
+            var url = $"https://localhost:7029/api/UserCourses/all/{userId}?key={_configuration["ApiKey:Secret"]}";
 
             var response = await _http.DeleteAsync(url);
 

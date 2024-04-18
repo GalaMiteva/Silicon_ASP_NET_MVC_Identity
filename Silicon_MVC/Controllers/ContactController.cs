@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Silicon_MVC.ViewModels;
 using System.Net;
 using System.Text;
@@ -6,8 +7,11 @@ using System.Text.Json;
 
 namespace Silicon_MVC.Controllers;
 
-public class ContactController : Controller
+public class ContactController (HttpClient http, IConfiguration configuration) : Controller
 {
+
+    private readonly IConfiguration _configuration = configuration;
+    private readonly HttpClient _http = http;
     public IActionResult Index()
 
     {
@@ -23,10 +27,9 @@ public class ContactController : Controller
         {
             try
             {
-                using var http = new HttpClient();
-                var apiKey = "dbee8814-f79e-4790-8ac0-8d29775d9545";
-                var url = $"https://localhost:7029/api/contact?key={apiKey}";
-
+                
+                
+                var uri = $"https://localhost:7029/api/contact?key={_configuration["ApiKey:Secret"]}";
 
 
 
@@ -34,7 +37,7 @@ public class ContactController : Controller
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await http.PostAsync(url, content);
+                var response = await _http.PostAsync(uri, content);
 
                 if (response.IsSuccessStatusCode)
                 {

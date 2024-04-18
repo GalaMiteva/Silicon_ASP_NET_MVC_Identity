@@ -45,7 +45,7 @@
         }
     }
 
-    .bord {
+    .table {
 
         @include lg {
             display: flex;
@@ -272,7 +272,7 @@
         margin: 0;
     }
 
-    .banner {
+    .hero {
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -280,7 +280,7 @@
         margin-top: 50px;
         padding: 50px;
 
-        .banner-text {
+        .hero-text {
             div {
                 @include lg {
                     display: flex;
@@ -308,7 +308,7 @@
             }
         }
 
-        .banner-img {
+        .hero-img {
             display: none;
 
             @include lg {

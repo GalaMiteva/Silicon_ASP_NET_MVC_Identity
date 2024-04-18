@@ -16,7 +16,7 @@
             <p class="courses">Courses</p>
         </div>
 
-        <div class="bord">
+        <div class="table">
             <div class="header">
                 <h1 class="my5">Courses</h1>
             </div>
@@ -116,8 +116,17 @@
                                 <div>
                                     <i class="fa-regular fa-thumbs-up"></i>
                                     <p>
-                                        @($"{item.LikesInProcent * 100:0}%")
-                                        @($"{item.LikesInNumbers / 1000:N1}K")
+                                        @if (item.LikesInProcent > 1)
+                                        {
+                                            @($"{item.LikesInProcent}%")
+                                            @($"({item.LikesInNumbers / 1000:N1}K)")
+                                        }
+
+                                        else
+                                        {
+                                            @($"{item.LikesInProcent * 100:0}%")
+                                            @($"({item.LikesInNumbers / 1000:N1}K)")
+                                        }
                                     </p>
                                 </div>
                             </div>
@@ -155,15 +164,15 @@
             </div>
         }
 
-        <div class="banner">
-            <div class="banner-text">
+        <div class="hero">
+            <div class="hero-text">
                 <p class="text-l">Ready to get started?</p>
                 <div>
                     <div class="skills-text"><h2 class="h2">Take Your </h2><h2 class="h2 blue" id="blue"> Skills </h2> <h2 class="h2">to the</h2></div><div><h2 class="h2"> Next Level</h2></div>
                 </div>
                 <a class="btn-theme" href="#">Work with us</a>
             </div>
-            <div class="banner-img">
+            <div class="hero-img">
 
                 <img src="images/courses/illustration.svg" alt="banner-illustration" id="illustration">
             </div>

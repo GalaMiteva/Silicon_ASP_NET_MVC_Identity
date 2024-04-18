@@ -12,5 +12,6 @@ public class CourseModel
     public decimal LikesInProcent { get; set; }
     public string? Author { get; set; }
     public string? Img { get; set; }
+    //public int CategoryId { get; set; } 
     public string Category { get; set; } = null!;
 }
