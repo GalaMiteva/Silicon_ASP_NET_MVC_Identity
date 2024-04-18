@@ -1831,6 +1831,26 @@ footer .container .social-media {
     justify-content: space-between;
   }
 }
+.courses .table .input-search-group {
+  margin-right: 2rem;
+  position: relative;
+}
+.courses .table .input-search-group #searchQuery {
+  padding: 8px 16px;
+  width: 100%;
+  margin-bottom: 1rem;
+  background: #FFFFFF;
+}
+@media (min-width: 992px) {
+  .courses .table .input-search-group #searchQuery {
+    margin: 0;
+  }
+}
+.courses .table .input-search-group .fa-magnifying-glass {
+  position: absolute;
+  right: 1rem;
+  top: 30%;
+}
 .courses .table .select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -1858,16 +1878,19 @@ footer .container .social-media {
     width: 300px;
   }
 }
+.courses .table .select .selected .fa-chevron-down {
+  margin-left: 50%;
+}
 .courses .table .select .select-options {
   display: none;
   position: absolute;
   top: 100%;
-  /*left: 0;*/
+  right: 265px !important;
   right: 0;
-  background: #FFFFFF;
   border: 1px solid #D4D7E5;
   z-index: 10;
   width: 100%;
+  background: #FFFFFF;
 }
 @media (min-width: 992px) {
   .courses .table .select .select-options {
@@ -1879,26 +1902,7 @@ footer .container .social-media {
   cursor: pointer;
 }
 .courses .table .select .select-options .option:hover {
-  background: #F3F6FF;
-}
-.courses .table .select .input-search-group {
-  margin-right: 2rem;
-  position: relative;
-}
-.courses .table .select .input-search-group #searchQuery {
-  padding: 8px 16px;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-@media (min-width: 992px) {
-  .courses .table .select .input-search-group #searchQuery {
-    margin: 0;
-  }
-}
-.courses .table .select .input-search-group .fa-magnifying-glass {
-  position: absolute;
-  right: 1rem;
-  top: 30%;
+  background: #EFF2FC;
 }
 .courses .grid {
   display: grid;

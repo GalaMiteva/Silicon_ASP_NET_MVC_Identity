@@ -58,6 +58,29 @@
             justify-content: space-between;
         }
 
+        .input-search-group {
+            margin-right: 2rem;
+            position: relative;
+
+            #searchQuery {
+                padding: 8px 16px;
+                width: 100%;
+                margin-bottom: 1rem;
+                background: $white;
+
+
+                @include lg {
+                    margin: 0;
+                }
+            }
+
+            .fa-magnifying-glass {
+                position: absolute;
+                right: 1rem;
+                top: 30%;
+            }
+        }
+
         .select {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
@@ -83,18 +106,22 @@
                 @include lg {
                     width: 300px;
                 }
+
+                .fa-chevron-down {
+                    margin-left: 50%;
+                }
             }
 
             .select-options {
                 display: none;
                 position: absolute;
                 top: 100%;
-                /*left: 0;*/
+                right: 265px !important;
                 right: 0;
-                background: $white;
                 border: 1px solid $gray-400;
                 z-index: 10;
                 width: 100%;
+                background: $white;
 
                 @include lg {
                     width: 300px;
@@ -106,29 +133,8 @@
                     cursor: pointer;
 
                     &:hover {
-                        background: $gray-100;
+                        background: $gray-200;
                     }
-                }
-            }
-
-            .input-search-group {
-                margin-right: 2rem;
-                position: relative;
-
-                #searchQuery {
-                    padding: 8px 16px;
-                    width: 100%;
-                    margin-bottom: 1rem;
-
-                    @include lg {
-                        margin: 0;
-                    }
-                }
-
-                .fa-magnifying-glass {
-                    position: absolute;
-                    right: 1rem;
-                    top: 30%;
                 }
             }
         }
