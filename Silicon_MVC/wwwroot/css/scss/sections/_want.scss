@@ -65,6 +65,23 @@
             .email {
                 margin-top: 40px;
                 margin-bottom: 10px;
+                position: relative;
+                z-index: 1;
+
+                .envelope {
+                    display: none;
+
+                    @include lg {
+                        display: block;
+                        position: absolute !important;
+                        top: 50% !important;
+                        left: 40px !important;
+                        transform: translateY(-50%);
+                        color: $gray-500;
+                        z-index: 2 !important;
+                    }
+                }
+
 
                 @include lg {
                     display: flex;
@@ -77,6 +94,7 @@
                     display: block;
                     width: 100%;
 
+
                     @include lg {
                         display: block;
                         padding: 13px;
@@ -87,6 +105,7 @@
 
                     input {
                         width: 100%;
+                        padding: 1rem 1rem 1rem 3rem;
                     }
 
                     span {

@@ -136,8 +136,40 @@
 
 
     .courses {
+
+
         .container {
 
+            .table {
+                .filters {
+                    .select {
+                        .selected {
+                            background-color: #151822 !important;
+                            border: 0.063rem solid $gray-800;
+                            color: $gray-600;
+                        }
+
+
+                        .select-options {
+                            background-color: $gray-900 !important;
+                            border: 0.063rem solid $gray-800;
+                            color: $gray-600;
+                        }
+
+                        .input-search-group {
+                            background-color: #151822 !important;
+
+                            #searchQuery {
+                                background-color: $gray-900 !important;
+                            }
+
+                            i {
+                                color: $gray-600;
+                            }
+                        }
+                    }
+                }
+            }
 
             a {
                 &:hover {
@@ -148,9 +180,6 @@
                         color: $gray-900 !important;
                     }
                 }
-
-
-
 
 
                 .course-card-content {
@@ -275,6 +304,19 @@
 
 
     #security {
+        aside {
+            nav {
+                a {
+                    text-align: left;
+                    color: $gray-600 !important;
+                }
+
+                .btn-theme-s {
+                    color: $white !important;
+                }
+            }
+        }
+
         .security {
             .security-info {
 
@@ -334,11 +376,11 @@
             nav {
                 a {
                     text-align: left;
-                    color: $gray-400 !important;
+                    color: $gray-600 !important;
+                }
 
-                    i {
-                        color: $gray-600 !important;
-                    }
+                .btn-theme-s {
+                    color: $white !important;
                 }
             }
 
@@ -409,11 +451,11 @@
             nav {
                 a {
                     text-align: left;
-                    color: $gray-400 !important;
+                    color: $gray-600 !important;
+                }
 
-                    i {
-                        color: $gray-600 !important;
-                    }
+                .btn-theme-s {
+                    color: $white !important;
                 }
             }
 
@@ -430,6 +472,30 @@
                     }
                 }
             }
+
+            .grid {
+
+                a {
+                    &:hover {
+                        box-shadow: 0 0 20px #e2e5f1 !important;
+                        color: $black !important;
+
+                        h2 {
+                            color: $gray-900 !important;
+                        }
+                    }
+
+
+
+
+
+                    .course-card-content {
+                        .text-s {
+                            color: $gray-600;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -442,11 +508,10 @@
 
                         .circle-wite {
                             background-color: $gray-700 !important;
-                            
+
 
                             p {
                                 color: $white !important;
-                                
                             }
                         }
                     }

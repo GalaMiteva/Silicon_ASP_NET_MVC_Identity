@@ -74,10 +74,7 @@
             flex-direction: column;
             gap: 10px;
             margin-top: 50px;
-            text-align: left !important;
-
-
-
+            text-align: center;
 
             a {
                 display: block;
@@ -88,6 +85,10 @@
 
                 &:hover {
                     color: $white !important;
+
+                    i {
+                        color: $white !important;
+                    }
                 }
 
                 i {

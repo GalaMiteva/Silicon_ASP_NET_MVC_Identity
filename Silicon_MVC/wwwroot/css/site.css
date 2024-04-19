@@ -259,6 +259,25 @@ h6, .h6 {
   background-color: #151822 !important;
   color: #F3F6FF;
 }
+.dark-mode .courses .container .table .filters .select .selected {
+  background-color: #151822 !important;
+  border: 0.063rem solid #33354D;
+  color: #9397AD;
+}
+.dark-mode .courses .container .table .filters .select .select-options {
+  background-color: #0B0F19 !important;
+  border: 0.063rem solid #33354D;
+  color: #9397AD;
+}
+.dark-mode .courses .container .table .filters .select .input-search-group {
+  background-color: #151822 !important;
+}
+.dark-mode .courses .container .table .filters .select .input-search-group #searchQuery {
+  background-color: #0B0F19 !important;
+}
+.dark-mode .courses .container .table .filters .select .input-search-group i {
+  color: #9397AD;
+}
 .dark-mode .courses .container a:hover {
   box-shadow: 0 0 20px #e2e5f1 !important;
   color: #000000 !important;
@@ -331,6 +350,13 @@ h6, .h6 {
 .dark-mode .contact .container .get-in-contact .contact-form form #contact-message textarea {
   border: 1px solid #33354D !important;
 }
+.dark-mode #security aside nav a {
+  text-align: left;
+  color: #9397AD !important;
+}
+.dark-mode #security aside nav .btn-theme-s {
+  color: #FFFFFF !important;
+}
 .dark-mode #security .security .security-info .alert-danger {
   background-color: #c92464;
 }
@@ -354,10 +380,10 @@ h6, .h6 {
 }
 .dark-mode #account-details aside nav a {
   text-align: left;
-  color: #D4D7E5 !important;
-}
-.dark-mode #account-details aside nav a i {
   color: #9397AD !important;
+}
+.dark-mode #account-details aside nav .btn-theme-s {
+  color: #FFFFFF !important;
 }
 @media (min-width: 992px) {
   .dark-mode #account-details aside {
@@ -397,10 +423,10 @@ h6, .h6 {
 }
 .dark-mode #saved-courses aside nav a {
   text-align: left;
-  color: #D4D7E5 !important;
-}
-.dark-mode #saved-courses aside nav a i {
   color: #9397AD !important;
+}
+.dark-mode #saved-courses aside nav .btn-theme-s {
+  color: #FFFFFF !important;
 }
 @media (min-width: 992px) {
   .dark-mode #saved-courses aside {
@@ -409,6 +435,16 @@ h6, .h6 {
 }
 .dark-mode #saved-courses .content span form .btn-delete {
   background-color: #0B0F19;
+}
+.dark-mode #saved-courses .content .grid a:hover {
+  box-shadow: 0 0 20px #e2e5f1 !important;
+  color: #000000 !important;
+}
+.dark-mode #saved-courses .content .grid a:hover h2 {
+  color: #0B0F19 !important;
+}
+.dark-mode #saved-courses .content .grid a .course-card-content .text-s {
+  color: #9397AD;
 }
 .dark-mode .separate-course .course-details .box-one .content .circle-gray {
   background-color: #33354D !important;
@@ -1141,6 +1177,22 @@ footer .container .social-media {
 #dontWant .container .content-email .email {
   margin-top: 40px;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+#dontWant .container .content-email .email .envelope {
+  display: none;
+}
+@media (min-width: 992px) {
+  #dontWant .container .content-email .email .envelope {
+    display: block;
+    position: absolute !important;
+    top: 50% !important;
+    left: 40px !important;
+    transform: translateY(-50%);
+    color: #B4B7C9;
+    z-index: 2 !important;
+  }
 }
 @media (min-width: 992px) {
   #dontWant .container .content-email .email {
@@ -1165,6 +1217,7 @@ footer .container .social-media {
 }
 #dontWant .container .content-email .email .input-group input {
   width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
 }
 #dontWant .container .content-email .email .input-group span {
   margin-top: -25px;
@@ -1832,7 +1885,6 @@ footer .container .social-media {
   }
 }
 .courses .table .input-search-group {
-  margin-right: 2rem;
   position: relative;
 }
 .courses .table .input-search-group #searchQuery {
@@ -1848,11 +1900,15 @@ footer .container .social-media {
 }
 .courses .table .input-search-group .fa-magnifying-glass {
   position: absolute;
-  right: 1rem;
+  right: 1.4rem;
   top: 30%;
 }
+@media (min-width: 992px) {
+  .courses .table .input-search-group .fa-magnifying-glass {
+    top: 40%;
+  }
+}
 .courses .table .select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 16px;
@@ -1879,13 +1935,18 @@ footer .container .social-media {
   }
 }
 .courses .table .select .selected .fa-chevron-down {
-  margin-left: 50%;
+  margin-left: 80%;
+}
+@media (min-width: 992px) {
+  .courses .table .select .selected .fa-chevron-down {
+    margin-left: 55%;
+  }
 }
 .courses .table .select .select-options {
   display: none;
   position: absolute;
   top: 100%;
-  right: 265px !important;
+  right: 230px !important;
   right: 0;
   border: 1px solid #D4D7E5;
   z-index: 10;
@@ -2247,7 +2308,7 @@ footer .container .social-media {
   flex-direction: column;
   gap: 10px;
   margin-top: 50px;
-  text-align: left !important;
+  text-align: center;
 }
 #account-details aside nav a {
   display: block;
@@ -2257,6 +2318,9 @@ footer .container .social-media {
   font-weight: 600;
 }
 #account-details aside nav a:hover {
+  color: #FFFFFF !important;
+}
+#account-details aside nav a:hover i {
   color: #FFFFFF !important;
 }
 #account-details aside nav a i {
@@ -2447,6 +2511,9 @@ footer .container .social-media {
   font-weight: 600;
 }
 #security aside nav a:hover {
+  color: #FFFFFF !important;
+}
+#security aside nav a:hover i {
   color: #FFFFFF !important;
 }
 #security aside nav a i {
@@ -3012,7 +3079,7 @@ footer .container .social-media {
   flex-direction: column;
   gap: 10px;
   margin-top: 50px;
-  text-align: left !important;
+  text-align: center;
 }
 #saved-courses aside nav a {
   display: block;
@@ -3024,25 +3091,22 @@ footer .container .social-media {
 #saved-courses aside nav a:hover {
   color: #FFFFFF !important;
 }
-#saved-courses aside nav a i {
-  color: #565973;
-  padding-right: 10px;
-}
-#saved-courses aside nav a i:hover {
+#saved-courses aside nav a:hover i {
   color: #FFFFFF !important;
+}
+#saved-courses aside nav a i {
+  padding-right: 10px;
 }
 #saved-courses aside nav a i.fa-solid.fa-gear.fa-creative-commons.fa-bookmark {
   color: #FFFFFF;
 }
-#saved-courses aside nav a i .fa-creative-commons {
-  font-weight: 600;
-}
 #saved-courses aside nav .btn-theme-s {
   display: block;
   text-align: left;
+  color: #FFFFFF !important;
 }
 #saved-courses aside nav .btn-theme-s i {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   padding-right: 10px;
 }
 #saved-courses .content .content-title {
@@ -3050,7 +3114,7 @@ footer .container .social-media {
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 #saved-courses .content .content-title .btn-delete {
   background: #FFFFFF;
@@ -3076,7 +3140,8 @@ footer .container .social-media {
   text-decoration: none;
 }
 #saved-courses .content .grid a :hover {
-  background-color: #EFF2FC;
+  background-color: #FFFFFF;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
 }
 #saved-courses .content .grid a .course-card {
   position: relative;
@@ -3116,7 +3181,6 @@ footer .container .social-media {
 #saved-courses .content .grid a .course-card .price .original-price {
   color: #6366F1;
   font-weight: 700;
-  margin-right: 1rem;
 }
 #saved-courses .content .grid a .course-card .price .discounted-price {
   color: #c92464;

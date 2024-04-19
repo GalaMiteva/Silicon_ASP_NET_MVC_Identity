@@ -64,11 +64,11 @@
                 </div>
 
                 <div class="content-email">
-                    <div class="email">
+                     <div class="email">
+                        <span id="envelope" class="envelope"><i class="fa fa-envelope"></i></span>
                         <div id="form-email" class="input-group">
-                           
                             <span asp-validation-for="Email"> </span>
-                            <input asp-for="Email" />
+                            <input asp-for="Email"/>
                         </div>
                         <button id="form-submit" type="submit" class="btn-theme">Subscribe@* @Model.Title *@ </button>
                     </div>

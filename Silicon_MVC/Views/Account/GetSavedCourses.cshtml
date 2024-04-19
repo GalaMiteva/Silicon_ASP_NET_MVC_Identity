@@ -78,7 +78,7 @@
                     @foreach (var item in Model.Courses)
                     {
                         
-                        <a asp-action="Details" asp-controller="Courses" asp-route-id="@item.CourseId">
+                        <a asp-action="Details" asp-controller="Courses" asp-route-id="@item.CourseId" class="course-a">
 
                             <div class="course-card">
                                 <div class="course-card_img">
@@ -95,8 +95,6 @@
                                             <img class="bookmark" src="~/images/courses/bookmark.svg" alt="bookmark" style="display: block;">
                                         </button>
                                     </form>
-
-
 
                                 </div>
                                 <div class="course-card_body">
