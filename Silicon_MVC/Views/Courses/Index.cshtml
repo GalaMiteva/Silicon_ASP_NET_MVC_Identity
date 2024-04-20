@@ -23,31 +23,31 @@
             </div>
 
             <form class="filters">
-                <div class="select">
+               
 
-                    
-
-                    <div class="selected">All categories 
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
-                    <div class="select-options">
-                        <div class="option" data-value="all">All categories</div>
-                        @if (Model.Categories != null)
-                        {
-                            foreach (var category in Model.Categories)
+                <div class="browse-and-search">
+                    <div class="select">
+                        <div class="selected">All categories</div>
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div class="select-options">
+                            <div class="option" data-value="all">All categories</div>
+                            @if (Model.Categories != null)
                             {
-                                <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
-
-                                
+                                foreach (var category in Model.Categories)
+                                {
+                                    <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                                }
                             }
-                            
-                        }
+                        </div>
                     </div>
+
+
 
                     <div class="input-search-group">
-                        <input id="searchQuery" name="searchQuery" placeholder="Search courses">
+                        <input id="searchQuery" name="searchQuery" placeholder="Search courses" />
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
+
                 </div>
             </form>
 
