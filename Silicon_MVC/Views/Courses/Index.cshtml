@@ -25,7 +25,7 @@
             <form class="filters">
                
 
-                <div class="browse-and-search">
+                @* <div class="browse-and-search">
                     <div class="select">
                         <div class="selected">All categories</div>
                         <i class="fa-solid fa-caret-down"></i>
@@ -48,7 +48,38 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
 
+                </div> *@
+
+                <div class="browse-and-search">
+                    <div class="select">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="drop-down-icon" pointer-events="inherit" viewBox="0 0 448 512">
+                            <path fill="currentColor"
+                                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                        </svg>
+                        <div class="selected">All Categories</div>
+                        <div class="select-options">
+                            <div class="option" data-value="all">All Categories</div>
+                            @if (Model.Categories != null && Model.Categories.Count() > 0)
+                            {
+                                foreach (var category in Model.Categories)
+                                {
+                                    <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="input-search-group">
+                        <input id="searchQuery" name="searchQuery" placeholder="Search courses" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
                 </div>
+
+
+
+                
+
             </form>
 
         </div>

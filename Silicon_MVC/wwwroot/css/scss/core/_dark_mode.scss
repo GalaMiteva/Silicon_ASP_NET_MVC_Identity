@@ -11,7 +11,7 @@
         color: $white !important;
     }
 
-    
+
     .btn-gray {
         background-color: #565973 !important;
         color: $gray-400;
@@ -147,11 +147,11 @@
 
                         .selected {
                             background-color: #151822 !important;
-                            border: 0.063rem solid $gray-800;
+                            //border: 0.063rem solid $gray-800;
                             color: $gray-600;
                         }
 
-                        i {
+                        svg {
                             color: $gray-400;
                         }
 
