@@ -312,10 +312,10 @@ h6, .h6 {
 .dark-mode .courses .container nav .pagination .page-link span {
   color: #9397AD;
 }
-.dark-mode .courses .container .banner {
+.dark-mode .courses .container .hero {
   background-color: #33354D !important;
 }
-.dark-mode .courses .container .banner #blue {
+.dark-mode .courses .container .hero #blue {
   color: #6366f1 !important;
 }
 .dark-mode #admin-portal {
