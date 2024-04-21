@@ -2,8 +2,28 @@
 @model AdminCoursesViewModel
 
 
+<span class="information mt-3 mb-3">
+    @if (TempData["StatusCode"] != null)
+    {
+        <span class="alert alert-danger">Status Code: @TempData["StatusCode"]</span>
+    }
 
-@if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <span class="alert alert-success">@TempData["SuccessMessage"]</span>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <span class="alert alert-danger">@TempData["ErrorMessage"]</span>
+    }
+</span>
+
+
+
+
+
+
+@* @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
 {
     <span class="alert alert-danger">
         Unable to contact the server. Please try again later.
@@ -42,7 +62,10 @@ else if (ViewData["StatusCode"] != null)
     <span class="alert alert-danger d-flex align-items-center justify-content-center">
         Error: @ViewData["StatusCode"]
     </span>
-}
+} *@
+
+
+
 
 
 
@@ -58,7 +81,7 @@ else if (ViewData["StatusCode"] != null)
                     <div class="form-wrapper">
 
                         @* Course form *@
-                        <form method="post" asp-action="Update" asp-controller="Courses" novalidate>
+                        <form method="post" asp-action="Courses" asp-controller="Courses" novalidate>
 
                             <div class="group-wrapper-nonflex">
                                 <div class="input-group">

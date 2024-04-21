@@ -5,7 +5,21 @@
 
 
 
+<span class="information mt-3 mb-3">
+    @if (TempData["StatusCode"] != null)
+    {
+        <span class="alert alert-danger">Status Code: @TempData["StatusCode"]</span>
+    }
 
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <span class="alert alert-success">@TempData["SuccessMessage"]</span>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <span class="alert alert-danger">@TempData["ErrorMessage"]</span>
+    }
+</span>
 
 
 
