@@ -76,33 +76,34 @@ public class AdminController(HttpClient http,IConfiguration configuration, HttpC
     public async Task<IActionResult> Update(AdminCoursesViewModel viewModel)
     {
 
-      try
-      {
+        try
+        {
+
+            var json = JsonConvert.SerializeObject(viewModel);
+            using var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var categoryResponse = await _httpClient.GetAsync($"https://localhost:7029/api/Category/{viewModel.Course.Category}?key={_configuration["ApiKey:Secret"]}");
+
+            if (categoryResponse.IsSuccessStatusCode)
+            {
+                var category = await _categoryIdAssigner.assignIdAsync(categoryResponse);
+                viewModel.Course.CategoryId = category.Id;
+                viewModel.Course.Category = category.CategoryName;
+            }
             
-                var json = JsonConvert.SerializeObject(viewModel);
-                using var content = new StringContent(json, Encoding.UTF8, "application/json");
-                //var response = await _http.PostAsync($"https://localhost:7029/api/courses?key={_configuration["ApiKey:Secret"]}", content);
-                var categoryResponse = await _httpClient.GetAsync($"https://localhost:7029/api/Category/{viewModel.Course.Category}?key={_configuration["ApiKey:Secret"]}");
-                
-                if (categoryResponse.IsSuccessStatusCode)
-                {
-                    var category = await _categoryIdAssigner.assignIdAsync(categoryResponse);
-                       viewModel.Course.CategoryId = category.Id;
-                       viewModel.Course.Category = category.CategoryName;
-                }
-                var contentCourse = new StringContent(JsonConvert.SerializeObject(viewModel.Course), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PutAsync($"https://localhost:7029/api/Courses?key={_configuration["ApiKey:Secret"]}", contentCourse);
-                if (response.IsSuccessStatusCode)
-                {
-                    ViewData["CourseStatus"] = "Course updated succesfully";
-                    return RedirectToAction("Courses");
-                }
-                else
-                {
-                    ViewData["CourseStatus"] = response.StatusCode;
-                    return RedirectToAction("Courses");
-                }
             
+            var contentCourse = new StringContent(JsonConvert.SerializeObject(viewModel.Course), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"https://localhost:7029/api/Courses?key={_configuration["ApiKey:Secret"]}", contentCourse);
+            if (response.IsSuccessStatusCode)
+            {
+                ViewData["CourseStatus"] = "Course updated succesfully";
+                return RedirectToAction("Courses");
+            }
+            else
+            {
+                ViewData["CourseStatus"] = response.StatusCode;
+                return RedirectToAction("Courses");
+            }
+
         }
         catch
         {
@@ -118,42 +119,52 @@ public class AdminController(HttpClient http,IConfiguration configuration, HttpC
 
 
 
-    [HttpGet("/admin/courses")]
+
     public async Task<IActionResult> Courses(string category = "", string searchQuery = "")
     {
         var viewModel = new AdminCoursesViewModel();
 
-        var categoriesResponse = await _httpClient.GetAsync($"https://localhost:7029/api/Category?key={_configuration["ApiKey:Secret"]}");
-        if (categoriesResponse.IsSuccessStatusCode)
+        try
         {
-            var jsonStrings = await categoriesResponse.Content.ReadAsStringAsync();
-            var categories = JsonConvert.DeserializeObject<IEnumerable<CategoryModel>>(jsonStrings);
-            if (categories != null)
+            var responseCategory = await _httpClient.GetAsync($"https://localhost:7029/api/Courses?category={Uri.EscapeDataString(category)}&searchQuery={Uri.EscapeDataString(searchQuery)}&key={_configuration["ApiKey:Secret"]}");
+            if (responseCategory.IsSuccessStatusCode)
             {
-                viewModel.Categories = categories!;
+                var jsonStrings = await responseCategory.Content.ReadAsStringAsync();
+                var courses = JsonConvert.DeserializeObject<CourseResultModel>(jsonStrings);
+                if (courses != null)
+                {
+                    viewModel.Courses = courses.Courses!;
+                    return View(viewModel);
+                }
+            }
+
+            var contentCourse = new StringContent(JsonConvert.SerializeObject(viewModel.Course), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"https://localhost:7029/api/Courses?key={_configuration["ApiKey:Secret"]}", contentCourse);
+            if (response.IsSuccessStatusCode)
+            {
+                ViewData["Status"] = "Success"; ;
+            }
+            else
+            {
+                ViewData["Status"] = "ConnectionFailed";
+                ViewData["StatusCode"] = (int)response.StatusCode;
             }
         }
-
-        var response = await _httpClient.GetAsync($"https://localhost:7029/api/Courses?category={Uri.EscapeDataString(category)}&searchQuery={Uri.EscapeDataString(searchQuery)}&key={_configuration["ApiKey:Secret"]}");
-        if (response.IsSuccessStatusCode)
+        catch
         {
-            var jsonStrings = await response.Content.ReadAsStringAsync();
-            var courses = JsonConvert.DeserializeObject<CourseResultModel>(jsonStrings);
-            if (courses != null)
-            {
-                viewModel.Courses = courses.Courses!;
-                return View(viewModel);
-            }
+            ViewData["Status"] = "ConnectionFailed";
         }
+        return View();
 
-        ViewData["CourseStatus"] = response.StatusCode;
-        return View(viewModel);
+
     }
 
 
 
 
-    [HttpPost("/admin/courses/delete")]
+
+
+    //[HttpPost("/admin/courses/delete")]
     public async Task<IActionResult> Delete(AdminCoursesViewModel viewModel)
     {
         //_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));

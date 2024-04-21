@@ -8,6 +8,53 @@
 }
 
 
+
+
+
+
+
+@if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+{
+    <span class="alert alert-danger">
+        Unable to contact the server. Please try again later.
+        @if (ViewData["StatusCode"] != null)
+        {
+            <text>Status Code: @ViewData["StatusCode"]</text>
+        }
+    </span>
+}
+else if (ViewData["Status"]?.ToString() == "Success")
+{
+    <span class="alert alert-success d-flex align-items-center justify-content-center">
+        Course is created!
+    </span>
+}
+else if (ViewData["Status"]?.ToString() == "AlreadyExist")
+{
+    <span class="alert alert-warning d-flex align-items-center justify-content-center">
+        Courses already exist!
+    </span>
+}
+else if (ViewData["Status"]?.ToString() == "Invalid")
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        You must enter a valid course!
+    </span>
+}
+else if (ViewData["Status"]?.ToString() == "Unauthorized")
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        An error occurred. Please contact the web admin.
+    </span>
+}
+else if (ViewData["StatusCode"] != null)
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        Error: @ViewData["StatusCode"]
+    </span>
+}
+
+
 <section class="admin-courses">
     <div class="container">
 

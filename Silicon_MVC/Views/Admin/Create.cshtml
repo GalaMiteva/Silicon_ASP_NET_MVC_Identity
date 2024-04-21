@@ -6,6 +6,9 @@
 
 
 
+
+
+
 @if (ViewData["Status"]?.ToString() == "ConnectionFailed")
 {
     <span class="alert alert-danger">
@@ -48,10 +51,11 @@ else if (ViewData["StatusCode"] != null)
 }
 
 
+
 <section class="create">
     <div class="container">
         <h2>Create a Course</h2>
-        <form asp-action="Create" asp-controller="Courses" method="post">
+        <form asp-action="Create" asp-controller="Admin" method="post">
             <div class="mb-3">
                 <label for="Title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="Title" name="Title" asp-for="Title">

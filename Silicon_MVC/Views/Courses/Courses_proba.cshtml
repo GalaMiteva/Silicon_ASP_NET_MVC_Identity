@@ -1,0 +1,182 @@
+﻿@using Silicon_MVC.ViewModels.Admin
+@model AdminCoursesViewModel
+
+
+
+@{
+    ViewData["Title"] = "Admin-Courses";
+}
+
+@if (ViewData["CourseStatus"]?.ToString() == "ConnectionFailed")
+{
+    <span class="alert alert-danger">
+        Unable to contact the server. Please try again later.
+        @if (ViewData["StatusCode"] != null)
+        {
+            <text>Status Code: @ViewData["StatusCode"]</text>
+        }
+    </span>
+}
+else if (ViewData["CourseStatus"]?.ToString() == "Success")
+{
+    <span class="alert alert-success d-flex align-items-center justify-content-center">
+        Course is created!
+    </span>
+}
+else if (ViewData["CourseStatus"]?.ToString() == "AlreadyExist")
+{
+    <span class="alert alert-warning d-flex align-items-center justify-content-center">
+        Courses already exist!
+    </span>
+}
+else if (ViewData["CourseStatus"]?.ToString() == "Invalid")
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        You must enter a valid course!
+    </span>
+}
+else if (ViewData["CourseStatus"]?.ToString() == "Unauthorized")
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        An error occurred. Please contact the web admin.
+    </span>
+}
+else if (ViewData["StatusCode"] != null)
+{
+    <span class="alert alert-danger d-flex align-items-center justify-content-center">
+        Error: @ViewData["StatusCode"]
+    </span>
+}
+
+
+
+<section class="admin-courses">
+    <div class="container">
+
+        <div class="grid-container items">
+            @if (@Model.Courses.Count() >= 1)
+            {
+                //Displays current courses in database
+                foreach (var course in Model.Courses)
+                {
+                    <div class="form-wrapper">
+
+                        @* Course form *@
+                        <form method="post" asp-action="Update" asp-controller="Admin" novalidate>
+
+                            <div class="group-wrapper-nonflex">
+                                <div class="input-group">
+                                    <label asp-for="@course.Title"></label>
+                                    <span asp-validation-for="@course.Title"></span>
+                                    <input asp-for="@course.Title">
+                                </div>
+
+                                <div class="input-group">
+                                    <label asp-for="@course.Author"></label>
+                                    <span asp-validation-for="@course.Author"></span>
+                                    <input asp-for="@course.Author">
+                                </div>
+                            </div>
+
+                            <div class="group-wrapper">
+                                <div class="input-group">
+                                    <label asp-for="@course.Img"></label>
+                                    <span asp-validation-for="@course.Img"></span>
+                                    <input asp-for="@course.Img" />
+                                </div>
+
+
+                            </div>
+
+                            <div class="group-wrapper">
+                                <div class="input-group">
+                                    <label asp-for="@course.Price"></label>
+                                    <span asp-validation-for="@course.Price"></span>
+                                    <input asp-for="@course.Price" />
+                                </div>
+
+                                <div class="input-group">
+                                    <label asp-for="@course.DiscountPrice"></label>
+                                    <input asp-for="@course.DiscountPrice">
+                                </div>
+                            </div>
+
+
+
+                            <div class="group-wrapper">
+
+                                <div class="input-group">
+                                    <label asp-for="@course.Id"></label>
+                                    <input asp-for="@course.Id" readonly>
+                                </div>
+                                <div class="input-group">
+                                    <label asp-for="@course.Hours"></label>
+                                    <span asp-validation-for="@course.Hours"></span>
+                                    <input asp-for="@course.Hours" />
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="group-wrapper">
+                                <div class="input-group">
+                                    <label asp-for="@course.LikesInNumbers"></label>
+                                    <span asp-validation-for="@course.LikesInNumbers"></span>
+                                    <input asp-for="@course.LikesInNumbers" />
+                                </div>
+
+                                <div class="input-group">
+                                    <label asp-for="@course.LikesInProcent"></label>
+                                    <span asp-validation-for="@course.LikesInProcent"></span>
+                                    <input asp-for="@course.LikesInProcent">
+                                </div>
+                            </div>
+
+
+
+                            <div class="checkbox-group">
+                                <label asp-for="@course.IsBestseller"></label>
+                                <input asp-for="@course.IsBestseller" />
+                                <span asp-validation-for="@course.Author"></span>
+                            </div>
+
+                            <div class="input-group-option">
+                                <label asp-for="@course.Category"></label>
+                                <select asp-for="@course.Category">
+                                    <option selected>@course.Category</option>
+                                    <option value="Frontend Development">Frontend Development</option>
+                                    <option value="App Development">App Development</option>
+                                    <option value="HTML & CSS">HTML & CSS</option>
+                                    <option value="Python">Python</option>
+                                    <option value="Game Development">Game Development</option>
+                                </select>
+                            </div>
+
+                            <div class="button-wrapper">
+                                <button class="btn-theme-s" type="submit">Save changes</button>
+                                <button class="btn-gray" type="reset">Cancel</button>
+                            </div>
+                        </form>
+
+
+
+
+
+
+                        <form method="post" asp-action="Delete" asp-controller="Admin" novalidate>
+                            <div class="input-group hidden">
+                                <label asp-for="@course.Id"></label>
+                                <input asp-for="@course.Id" readonly>
+                            </div>
+                            <button class="btn-delete-all btn-transparent" type="submit">Delete</button>
+                        </form>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</section>
