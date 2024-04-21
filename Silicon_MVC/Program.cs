@@ -68,7 +68,7 @@ builder.Services.AddAuthorization(x =>
     x.AddPolicy("Admins", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin"));
     x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin", "Manager"));
 });
-
+// GIT HUB AVVISADE DESSA SECRET COD OCH EFTER DET JAG KUNDE INTE PUSHA NÅT MER
 builder.Services.AddAuthentication().AddFacebook(x =>
 {
     x.AppId = "8031866396892885";
