@@ -99,23 +99,36 @@ else if (ViewData["StatusCode"] != null)
                 </select>
             </div>
 
+           
+
+
+
             <div class="mb-3">
                 <label for="Img" class="form-label">Image Name</label>
                 <input type="text" class="form-control" id="Img" name="Img" asp-for="Img">
             </div>
 
-
+@* 
 
             <div class="mb-3">
-                <label asp-for="Category" class="form-label">Category</label>
-                <select class="form-select" id="Category" name="IsBestseller" asp-for="Category">
+                <label asp-for="CategoryId" class="form-label">Category</label>
+                <select class="form-select" id="CategoryId" name="IsBestseller" asp-for="CategoryId">
                     <option selected>All Categories</option>
                     <option value="Frontend Development">Frontend Development</option>
                     <option value="App Development">App Development</option>
                     <option value="HTML & CSS">HTML & CSS</option>
                     <option value="Python">Python</option>
                     <option value="Game Development">Game Development</option>
+                    
                 </select>
+            </div> *@
+
+
+
+
+            <div class="mb-3">
+                <label for="CategoryId" class="form-label">CategoryId from 1 to 5</label>
+                <input type="text" class="form-control" id="CategoryId" name="CategoryId" asp-for="CategoryId">
             </div>
 
             <button type="submit" class="btn btn-theme-s">Create</button>

@@ -83,19 +83,13 @@ public class CoursesController(HttpClient http,CategoryService categoryService, 
 
     public async Task<IActionResult> Create(CourseRegistrationFormViewModel viewModel)
     {
-
         try
         {
             if (ModelState.IsValid)
             {
-                
-
                 var json = JsonConvert.SerializeObject(viewModel);
                 using var content = new StringContent(json, Encoding.UTF8, "application/json");
-                
                 var response = await _http.PostAsync($"https://localhost:7029/api/courses?key={_configuration["ApiKey:Secret"]}", content);
-
-
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -117,5 +111,7 @@ public class CoursesController(HttpClient http,CategoryService categoryService, 
     }
 
 
-    
+
+
+
 }

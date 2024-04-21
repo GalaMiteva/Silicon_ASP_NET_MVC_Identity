@@ -23,9 +23,9 @@ public class CourseRegistrationFormViewModel
     public string? Author { get; set; }
     [Display(Name = "Image Url")]
     public string? Img { get; set; }
-    [Display(Name = "Category")]
+    [Display(Name = "CategoryId")]
     
-    public string? Category { get; set; }
+    public string? CategoryId { get; set; }
 
    
 
