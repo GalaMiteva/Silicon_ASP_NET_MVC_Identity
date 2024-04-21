@@ -143,48 +143,25 @@ public class AdminController(UserManager<UserEntity> userManager, HttpClient htt
             var response = await _http.PutAsync($"https://localhost:7029/api/Courses?key={_configuration["ApiKey:Secret"]}", contentCourse);
             if (response.IsSuccessStatusCode)
             {
-                ViewData["Status"] = "Success"; ;
+                TempData["SuccessMessage"] = "Course updated successfully.";
             }
             else
             {
-                ViewData["Status"] = "ConnectionFailed";
+                TempData["ErrorMessage"] = "Failed to update course.";
                 ViewData["StatusCode"] = (int)response.StatusCode;
             }
         }
-        catch
+        catch (Exception ex)
         {
-            ViewData["Status"] = "ConnectionFailed";
+
+            //ViewData["Status"] = "ConnectionFailed";
+            Console.WriteLine($"Error: {ex.Message}");
+            TempData["ErrorMessage"] = "Failed to remove course. Please try again later.";
+            return RedirectToAction(nameof(Courses));
         }
         return View();
-
-
     }
 
-
-
-
-
-
-    //public async Task<IActionResult> Delete(AdminCoursesViewModel viewModel)
-    //{
-    //    //_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
-
-    //    var Id = viewModel.Course.Id;
-    //    var cancellationTokenSource = new CancellationTokenSource();
-    //    var cancellationToken = cancellationTokenSource.Token;
-
-    //    var response = await _httpClient.DeleteAsync($"https://localhost:7029/api/Courses/{Id}?key={_configuration["ApiKey:Secret"]}", cancellationToken);
-    //    if (response.IsSuccessStatusCode)
-    //    {
-    //        ViewData["CourseStatus"] = "Course deleted succesfully";
-    //        return RedirectToAction("Courses");
-    //    }
-    //    else
-    //    {
-    //        ViewData["CourseStatus"] = response.StatusCode;
-    //        return RedirectToAction("Courses");
-    //    }
-    //}
 
     [HttpPost]
     public async Task<IActionResult> Delete(int courseId)

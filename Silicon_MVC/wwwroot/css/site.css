@@ -233,6 +233,9 @@ h6, .h6 {
 .dark-mode .features .container .tools img {
   background-color: #1a1d26 !important;
 }
+.dark-mode .admin-courses .form-wrapper {
+  background-color: #151822 !important;
+}
 .dark-mode .switch .light {
   color: #F3F6FF !important;
 }
