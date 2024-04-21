@@ -67,7 +67,22 @@ builder.Services.AddAuthorization(x =>
     x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin", "Manager"));
 });
 
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("SuperAdmins", policy => policy.RequireRole("SuperAdmin"));
+    x.AddPolicy("CIO", policy => policy.RequireRole("SuperAdmin", "CIO"));
+    x.AddPolicy("Admins", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin"));
+    x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin", "Manager"));
+});
 
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "8031866396892885";
+    x.AppSecret = "64a511c49cc224f48cf03eeee77c71b4";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+
+});
 
 var app = builder.Build();
 
