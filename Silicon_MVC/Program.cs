@@ -3,10 +3,12 @@ using Infrastructure.Entities;
 using Infrastructure.Helpers;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
 using Microsoft.EntityFrameworkCore;
 using Silicin_MVC.Services;
+using System.Security.Claims;
 
 
 
@@ -67,14 +69,6 @@ builder.Services.AddAuthorization(x =>
     x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin", "Manager"));
 });
 
-builder.Services.AddAuthorization(x =>
-{
-    x.AddPolicy("SuperAdmins", policy => policy.RequireRole("SuperAdmin"));
-    x.AddPolicy("CIO", policy => policy.RequireRole("SuperAdmin", "CIO"));
-    x.AddPolicy("Admins", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin"));
-    x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "CIO", "Admin", "Manager"));
-});
-
 builder.Services.AddAuthentication().AddFacebook(x =>
 {
     x.AppId = "8031866396892885";
@@ -83,6 +77,16 @@ builder.Services.AddAuthentication().AddFacebook(x =>
     x.Fields.Add("last_name");
 
 });
+
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "515206983626-2384c9tkm839fv5o8eig9bl4q0oc4sqm.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+    options.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "given_name");
+    options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "family_name");
+    options.SaveTokens = true;
+});
+
 
 var app = builder.Build();
 
@@ -117,3 +121,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
