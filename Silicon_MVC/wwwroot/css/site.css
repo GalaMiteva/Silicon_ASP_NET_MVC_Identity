@@ -2162,6 +2162,11 @@ footer .container .social-media {
   }
 }
 
+#cookie-consent {
+  padding: 1.5rem 0 !important;
+  border-radius: 0;
+}
+
 #signin {
   height: 100%;
 }
@@ -3251,4 +3256,93 @@ footer .container .social-media {
 }
 #saved-courses .content .grid a .course-card .course-card_body {
   padding-left: 1rem;
+}
+
+.create #Category {
+  height: 38px;
+}
+
+#admin-portal .container a {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 50%;
+  font-weight: 700;
+}
+
+.admin-courses .container .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.admin-courses .container .grid-container .form-wrapper {
+  background-color: #FFFFFF;
+  border: 1px solid #B4B7C9;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.admin-courses .container .bottom-row {
+  display: block;
+  margin: 0 0 2rem;
+}
+.admin-courses .container .bottom-row button {
+  width: calc(50% - 1rem);
+  margin: 0 0 1rem;
+}
+.admin-courses .container .bottom-row form {
+  width: calc(50% - 1rem);
+}
+.admin-courses .container .bottom-row form button {
+  background-color: #BCF7D2;
+}
+.admin-courses form, .admin-courses #coursesForm {
+  margin: 0 1rem 1rem 0;
+}
+.admin-courses form #course_Title, .admin-courses #coursesForm #course_Title {
+  font-size: 1.3 rem;
+  font-weight: 700;
+}
+.admin-courses form .group-wrapper, .admin-courses #coursesForm .group-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+.admin-courses form .checkbox-group, .admin-courses #coursesForm .checkbox-group {
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+.admin-courses form .checkbox-group label, .admin-courses #coursesForm .checkbox-group label {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+.admin-courses form .input-group-option label, .admin-courses #coursesForm .input-group-option label {
+  margin-right: 20px;
+}
+.admin-courses form .input-group-option select, .admin-courses #coursesForm .input-group-option select {
+  height: 45px;
+  border-radius: 8px !important;
+}
+.admin-courses form .button-wrapper, .admin-courses #coursesForm .button-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+.admin-courses form .button-wrapper .btn-theme-s, .admin-courses #coursesForm .button-wrapper .btn-theme-s {
+  margin: 2rem 0 0;
+  border: none;
+}
+.admin-courses form .button-wrapper .btn-gray, .admin-courses #coursesForm .button-wrapper .btn-gray {
+  margin: 2rem 0 0;
+  color: white;
+  background-color: #565973 !important;
+  padding: 0.68rem 3rem;
+}
+.admin-courses form #course_Id, .admin-courses #coursesForm #course_Id {
+  margin-bottom: 20px;
+}
+.admin-courses form .btn-delete-all, .admin-courses #coursesForm .btn-delete-all {
+  background-color: #D4D7E5 !important;
 }

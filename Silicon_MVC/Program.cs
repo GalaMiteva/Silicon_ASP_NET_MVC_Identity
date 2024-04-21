@@ -1,5 +1,6 @@
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Helpers;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,8 @@ builder.Services.AddScoped<AddressManager>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<CourseService>();
 //builder.Services.AddScoped<AccountManager>();
+builder.Services.AddScoped<CategoryIdAssigner>();
+
 
 builder.Services.ConfigureApplicationCookie(x =>
 {

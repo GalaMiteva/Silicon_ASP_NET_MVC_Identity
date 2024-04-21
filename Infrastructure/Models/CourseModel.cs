@@ -14,6 +14,7 @@ public class CourseModel
     public string? Img { get; set; }
 
     public string? Category { get; set; } = null!;
-    //public int? CategoryId { get; set; } 
+    
+    public int? CategoryId { get; set; } 
 
 }

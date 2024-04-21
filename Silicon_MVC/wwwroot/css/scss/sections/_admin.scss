@@ -1,0 +1,110 @@
+#admin-portal {
+    .container {
+        a {
+            margin-top:40px;
+            margin-bottom: 40px;
+            width:50%;
+            font-weight:700;
+
+        }
+    }
+}
+
+
+.admin-courses {
+    .container {
+
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+
+            .form-wrapper {
+                background-color: $white;
+                border: 1px solid $gray-500;
+                border-radius: 0.5rem;
+                padding: 1rem;
+            }
+        }
+
+        .bottom-row {
+            display: block;
+            margin: 0 0 2rem;
+
+            button {
+                width: calc((50%) - 1rem);
+                margin: 0 0 1rem;
+            }
+
+            form {
+                width: calc((50%) - 1rem);
+
+                button {
+                    background-color: $success;
+                }
+            }
+        }
+    }
+
+    form, #coursesForm {
+        margin: 0 1rem 1rem 0;
+
+        #course_Title{
+            font-size:1.3 rem;
+            font-weight:700;
+        }
+        .group-wrapper {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group {
+            padding: 0;
+            margin: 0.5rem 0 1rem;
+
+            label {
+                @include h6;
+            }
+        }
+
+        .input-group-option {
+            label {
+                margin-right: 20px;
+            }
+
+            select {
+                height: 45px;
+                border-radius: 8px !important;
+            }
+        }
+
+
+
+        .button-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+
+            .btn-theme-s {
+                margin: 2rem 0 0;
+                border: none;
+            }
+
+            .btn-gray {
+                margin: 2rem 0 0;
+                color: white;
+                background-color: $gray-700 !important;
+                padding: 0.68rem 3rem;
+            }
+        }
+
+        #course_Id {
+            margin-bottom: 20px;
+        }
+
+        .btn-delete-all {
+            background-color: $gray-400 !important
+        }
+    }
+}
